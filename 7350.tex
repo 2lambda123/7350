@@ -1,9 +1,9 @@
 \documentclass[oneside]{article}
 
 \usepackage[
-	paperheight = 9in,
-	paperwidth  = 6in,
-	textheight  = 7.5in,
+	paperheight = 8in,
+	paperwidth  = 5.4in,
+	textheight  = 7in,
 	textwidth   = 5in
 ]{geometry}
 
@@ -11,18 +11,23 @@
 	amsmath,
 	amssymb,
 	amsthm,
-	bookmark,  % replaces (and loads) hyperref
 	microtype, % improved formatting
 	stmaryrd,  % formal power series
+	thmtools,  % fixes theorem referencing
 	7350       % custom commands for, e.g. bold and script letters
 }
 
-\hypersetup{
+\usepackage[
+	backref=page,
 	colorlinks = true,
 	linkcolor  = blue,
 	urlcolor   = cyan
-}
+]{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+
+
+
+
 
 \title{Non-archimedean and tropical geometry}
 \author{Farbod Shokrieh}
@@ -38,10 +43,14 @@
 
 \section{Introduction}
 
-Foo. 
+Conrad's note \cite{conrad-2008} is a good overview. We will use 
+\cite{berkovich-1990} and \cite{bosch-2014} as more technical references. 
 
 
 
 
+
+\bibliographystyle{alpha}
+\bibliography{7350}
 
 \end{document}
