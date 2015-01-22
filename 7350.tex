@@ -23,7 +23,6 @@
 	linkcolor  = blue,
 	urlcolor   = cyan
 ]{hyperref}
-\PassOptionsToPackage{hyphens}{url}
 
 
 
@@ -43,9 +42,194 @@
 
 \section{Introduction}
 
-Conrad's note \cite{conrad-2008} is a good overview. We will use 
-\cite{berkovich-1990} and \cite{bosch-2014} as more technical references. 
+Conrad's note \cite{conrad-2008} is a good overview. For a long term, 
+\cite{bgr-1984} was the main reference, but it is difficult to read. We will 
+primarily use \cite{berkovich-1990} and \cite{bosch-2014} as more technical 
+references. 
 
+We'll partially follow \cite{berkovich-1990}, which is freely available on 
+the Cornell Library. Parts of the book are really frustrating. Some sections 
+have turned into whole series of papers. The introduction is fantastic, the 
+first chapter is pretty good, and it goes downhill from there. The algebraic 
+and analytic foundations for this course are developed in \cite{bgr-1984}. 
+
+The course will largely be self-contained, but we'll occasionally refer to 
+outside theorems. The subject is currently very active; a lot of foundational 
+material is not contained in books. 
+
+Non-archimedean geometry is related to many different fields. It uses 
+algebraic geometry, analysis, algebra, and has applications in those fields, 
+combinatorics, and number theory. Many of the rings that arise are 
+non-noetherian, for example. If this course lived ``over $\bC$,'' it would 
+be a combination of functional analysis, commutative algebra, and Riemann 
+surfaces. 
+
+Non-archimedean geometry has many fantastic application (local Langlands, etc.) 
+but sadly, we will not be able to say much about contemporary applications. 
+
+
+
+
+
+\subsection{Motivation and background}
+
+First, what is the archimedean property? Fix a field $K$, and a ``norm'' 
+(we'll give precise definitions later) $|\cdot|:K\to \bR$. We say that $K$ 
+satisfies the \emph{archimedean property} if for any $x\in K^\times$, there 
+exists $n\in \bZ$ such that $|n x|>1$. 
+
+\begin{example}
+The fields of real and complex numbers, with their classical absolute 
+values, are archimedean.
+\end{example}
+
+According to a theorem of Gelfand and Mazur, $\bR$ and $\bC$ are the ``only'' 
+examples of archimedean fields. Since there are many examples of 
+non-archimedean fields, there is a sense in which $\bR$ and $\bC$ are 
+exceptional. 
+
+\begin{example}
+In classical (complex) algebraic geometry, one is interested in the zero sets 
+of polynomials in $\bC^n$. Call such sets \emph{algebraic}. This gives us a 
+topology on $\bC^n$ and its subvarieties known as the \emph{Zariski topology}. 
+We can also give $\bC^n$ the topology coming from the absolute value $|\cdot|$ 
+on $\bC$. This finer topology is called the \emph{canonical topology}. It 
+allows us to do analysis on complex varieties. 
+\end{example}
+
+The canonical topology (and the analytic techniques accompanying it) allow for: 
+\begin{itemize}
+  \item Cauchy integrals
+  \item holomorphic / meromorphic functions / differential forms
+  \item Hodge theory
+  \item Morse theory
+\end{itemize}
+and there are formal GAGA (for \emph{Geometrie algebrique et geometrie 
+analytique}) corresponces after Serre's paper [GAGA]. Essentially, Serre's 
+paper says that as far as sheaves and cohomology on proper varieties are 
+concerned, algebraic geometry is the same as analytic geometry. 
+
+In modern algebraic geometry, we also care about solutions (to polynomial 
+equations) in $K^n$, where $K$ is for example $\bQ$, $\bQ_p$ (in number 
+theory), or $\bC\laurent{t}$ (in the deformation theory of complex varieties). 
+All these fields have interesting absolute values, which are \emph{not} 
+archimedean.
+
+\begin{example}
+Any field $K$ can be given the ``stupid'' absolute value by 
+\[
+  |x|_\mathrm{stupid} = \begin{cases} 1 & x\ne 0 \\ 0 & x=0 \end{cases} .
+\]
+Although it seems like a degenerate case, the theory of the ``stupid'' 
+absolute value is highly interesting. 
+\end{example}
+
+\begin{example}
+The field $K=\bQ$ has two classes of absolute values. One is the classical 
+absolute value, which we denote by $|\cdot|_\infty$. There is of course the 
+``stupid'' absolute value, which we denote $|\cdot|_0$. Fix a prime $p$. There 
+is an absolute value $|\cdot|_p$ on $\bQ$, defined by 
+\[
+  \left|\frac a b\right|_p = \left|p^e \frac{a'}{b'}\right|_p = p^{-\alpha} ,
+\]
+where $\frac a b=p^e \frac{a'}{b'}$ is such that both $a$ and $b$ are 
+relatively prime to $p$. 
+\end{example}
+
+In a precise sense, Otrowski's theorem tells us that 
+$\{|\cdot|_\infty,|\cdot|_0,|\cdot|_p:\text{$p$ prime}\}$ is essentially a 
+complete list of the possible absolute values on $\bQ$. Note that 
+$|\cdot|_p$ and $|\cdot|_0$ are non-archimedean. Equivalently, the familiar 
+triangle inequality $|x+y|\leqslant |x|+|y|$ can be strengthened to the 
+inequality 
+\[
+  |x+y| \leqslant \max\{|x|,|y|\} .
+\]
+It is easy to prove that this ``strong triangle inequality'' holds for 
+$|\cdot|_0$ and the $|\cdot|_p$. 
+
+It's a good idea to complete $\bQ$ with respect to $|\cdot|_p$. We write 
+$\bQ_p$ for this completion, called the field of \emph{$p$-adic numbers}. 
+(Incidentally, it is easy to check that $\bQ$ is not complete with respect 
+to $|\cdot|_p$. Alternatively: general theorem about complete metric spaces\ldots). 
+
+\begin{example}
+The field $\bC\laurent{t}$ is often given the \emph{$t$-adic} absolute 
+value: 
+\[
+  \bigg|\sum_{i\geqslant j} a_i t^i\bigg|_t = e^{-j} ,
+\]
+whenever $a_k\ne 0$. The algebraic closure of $\bC\laurent{t}$ has an easy 
+explicit description, and is called the field of \emph{Puiseaux series}, first 
+studied by Isaac Newton. 
+\end{example}
+
+Recall how one constructs $\bR$ from $\bQ$. First form the ring of Cauchy 
+sequences, then mod out by the (maximal) ideal of sequences converging to zero. 
+The same procedure works for any topological field. However, when we completed 
+$\bQ$ to get $\bR$, the operation of ``filling in the holes'' turned the 
+totally disconnected $\bQ$ into a connected space. This phenomenon is 
+pathological! In the non-archimedean world, the completion is still totally 
+disconnected. In fact, \emph{all} non-archimedean fields are totally 
+disconnected. This would seem to make any kind of analysis difficult (for 
+example: how to discuss paths?). 
+
+It makes sense to to talk about power series and their convergence over 
+non-archimedean fields. Indeed, convergence of formal power series is far 
+easier to check in the non-archimedean case than otherwise! (A series converges 
+if and only if its terms tend to zero.) Recall that in complex analysis, 
+a function is analytic if it can locally be written as a convergent power 
+series. For $X$ some ``geometric object'' over a non-archimedean field $K$, we 
+can define a function $f\colon X\to K$ to be analytic if it is 
+locally presentable by a convergent power series. This is a bad definition 
+because the notion of ``locally'' behaves badly for totally disconnected 
+spaces. 
+
+Before the 1960's, things stood here; no satisfactory theory existed. Today 
+a plethora of solutions to this problem exist:
+\begin{enumerate}
+\item Tate-Grothendieck, 1960's. John Tate realized that certain types of elliptic 
+    curves can be ``formally uniformized'' over arbitrary fields. He wrote to 
+    Grothendieck with this discovery, but Grothendieck was unimpressed. Despite 
+    this, Tate was able to use Grothendieck's mathematical machinery to 
+    construct the category of \emph{rigid analytic spaces}, in which uniformization 
+    makes sense. Better theories 
+    exist today, but many foundational results are only written in the language 
+    of rigid spaces. The main difficulty here is that the ``spaces'' involved 
+    are not actually topological spaces; they only carry a Grothendieck
+    topology. The introduction to [aws-book] has a good historical 
+    overview. Affinoid algebras, the analytic substitute for polynomial rings, 
+    are the only aspect of the theory still actively used today. 
+
+\item Raynaud, a former student of Grothendieck, developed an extremely 
+    powerful technique for approaching non-archimedean geometry using ``formal 
+    models.'' A downside is that the theory is quite technical. It is analogous 
+    to writing down a variety $V_{/\bQ}$ as the zero-set of polynomials with 
+    coefficients in $\bZ$. In Raynaud's theory, the ``model'' for a rigid 
+    space is a formal scheme. A non-archimedean field $K$ contains a 
+    valuation ring $R$, and one represents rigid $K$-varieties with formal 
+    $R$-schemes. Raynaud's theory is good for answering ``algebraic'' 
+    questions, e.g.~of flatness, base change, fiber dimension,\ldots. 
+
+\item Berkovich spaces, developed in \cite{berkovich-1990}. This turns Tate's 
+rigid spaces into honest topological spaces by adding points. One ends up with 
+a topological space together with a structure sheaf. The topological space is 
+compact, Hausdorff, and locally path connected on connected components. In a 
+precise sense, a Berkovich space is a ``space of rank-one valuations.'' 
+
+\item Huber has defined a category of adic spaces. In a precise sense, an adic 
+space is the ``limit of all formal models'' (Riemann-Zariski space). 
+Equivalently, an adic space is the ``space of all valuations'' on some 
+reasonable ring. Recently, Scholze used adic spaces in [cite] to prove 
+spectacular theorems. 
+\end{enumerate}
+
+Let $K$ be a non-archimedean field. Berkovich's idea is to use seminorms 
+to ``add points'' to $K$, to result in a $\bR$-tree. This construction 
+can be glued to turn each variety $X_{/K}$ into a topological space 
+$X^\an$. It is an extremely 
+hard theorem that this ``Berkovich space'' deformation retracts onto a 
+finite simplicial complex. 
 
 
 
