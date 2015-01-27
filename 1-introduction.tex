@@ -149,6 +149,12 @@ locally presentable by a convergent power series. This is a bad definition
 because the notion of ``locally'' behaves badly for totally disconnected 
 spaces. 
 
+
+
+
+
+\subsection{Approaches to non-archimedean geometry}
+
 Before the 1960's, things stood here; no satisfactory theory existed. Today 
 a plethora of solutions to this problem exist:
 \begin{enumerate}
@@ -194,3 +200,72 @@ can be glued to turn each variety $X_{/K}$ into a topological space
 $X^\an$. It is an extremely 
 hard theorem that this ``Berkovich space'' deformation retracts onto a 
 finite simplicial complex. 
+
+\begin{theorem}[Berkovich, Thuillier, Loeser-Hrushovski]
+Any analytic space (in the sense of Berkovich) has a strong deformation retract 
+onto a finite simplicial complex. 
+\end{theorem}
+
+[sources for proof?]
+
+So the ``wild'' spaces we will construct will always be homotopy equivalent to 
+something managable. For curves, this simplicial complex will be a graph. 
+
+
+
+
+
+\subsection{Tropicalization}
+
+Consider the curve $X:z_1+z_2=1$. The idea of behind \emph{am\oe{}bas} is that 
+instead of looking at $X(\bC)$, which is hard to plot, one should consider the 
+set 
+\[
+  \mathrm{trop}_t(X) = \{(-\log_t|z_1|,-\log_t|z_2|)\in \bR^2\colon (z_1,z_2)\in X(\bC)\} .
+\]
+This can be plotted: it looks like [include graph]. If we let $t\to 0$, then 
+the limiting set exists; it looks like [include graph]. The better approach is 
+to consider the following set: 
+\[
+  \mathrm{trop}(X)=\{(v_t(z_1),v_t(z_2))\colon (z_1,z_2)\in X(\bC\laurent t)\} .
+\]
+
+Let $X_{/K}$ be a variety. Given a rational map 
+$g\colon X\to (K^\times)^N$, we let 
+$f:X(K)\colon \bR^N$ be the map 
+\[
+  f(z_1,\dots,z_n) = (-\log|z_1|,\dots,-\log|z_n|) [polish]
+\]
+and put $\mathrm{trop}(X) = \overline{\mathrm{image}(f)}$. Clearly this depends on 
+$g$. The tropicalization map factors through the analytification of $X$: 
+\[
+\begin{tikzcd}
+  X \ar[r] \ar[dr, dotted]
+    & X^\mathrm{an} \ar[d] \\
+  & \mathrm{trop}(X)
+\end{tikzcd}
+\]
+So $\mathrm{trop}(X)$ is a ``snapshot'' of $X^\mathrm{an}$. 
+
+\begin{theorem}[Thuillier, Berkovich, Payne, \ldots]
+$X^\mathrm{an}$ is the limit of all tropicalizations of $X$. 
+\end{theorem}
+
+[sources?]
+
+
+
+
+
+\subsection{Applications of tropicalization}
+
+Semistable reduction theorems in arithmetic geometry. N\'eron models, 
+local heights, $p$-adic Hodge theory, Local Langlands. Motivic zeta 
+functions, uniformizations, counting curves, arithmetic dynamics, 
+complex dynamics, Bogomolov conjecture, minimal model program, 
+toroidal embeddings / toric varieties. (Bruhat-Tits) buildings, resolution 
+of singularities in characteristic $p$. 
+
+
+
+

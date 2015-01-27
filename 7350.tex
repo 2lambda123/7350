@@ -11,8 +11,10 @@
 	amsmath,
 	amssymb,
 	amsthm,
+	bm,        % bold Greek letters
 	microtype, % improved formatting
 	stmaryrd,  % formal power series
+	tikz-cd,   % commutative diagrams
 	thmtools,  % fixes theorem referencing
 	7350       % custom commands for, e.g. bold and script letters
 }
@@ -36,6 +38,7 @@
 \date{Spring 2015}
 
 \begin{document}
+\setcounter{tocdepth}{2}
 \maketitle
 \tableofcontents
 
@@ -44,6 +47,7 @@
 
 
 \input{1-introduction}
+\input{2-foundations}
 
 
 
