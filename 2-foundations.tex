@@ -4,9 +4,8 @@
 
 \subsection{Absolute values and valuations}
 
-Good source: Engler, Prestel: ``valued fields.''
-
-Let $K$ be a field. 
+A good source for this section is the textbook \cite{engler-prestel}. 
+Fix a field $K$ for the remainder of the section. 
 
 \begin{definition}
 An \emph{absolute value} (norm) on $K$ is a function $|\cdot|\colon K\to \bR$ 
@@ -31,7 +30,7 @@ Let $(K,|\cdot|)$ be a field with absolute value. Then
 \begin{enumerate}
 \item $|1|=1$
 \item $|1/x|=1/|x|$
-\item If $x\in \bmu_n(K)$, then $|x|=1$
+\item If $x\in \bmu(K)$, then $|x|=1$
 \item $|-x|=|x|$
 \item $|\cdot|\colon K^\times\to \bR^{>0}$ is a group homomorphism
 \end{enumerate}
@@ -43,22 +42,26 @@ Given an absolute value, we can define a metric on $K$ by
 \]
 hence $K$ becomes a topological space. We call the topology induced by 
 $|\cdot|$ the \emph{canonical} topology on $K$. To be pedantic, $U\subset K$ 
-is open if for all $u\in U$, there exists $r>0$ such that 
+is open if for all $u\in U$, there exists $r>0$ such that the ``open disk''
 \[
-  D^-(a,r) = \{x\in K:|x-u|<r\}\subset U .
+  \disk^-(a,r) = \{x\in K:|x-u|<r\}\subset U .
 \]
 
+\begin{lemma}
 The topology induced by $|\cdot|$ is discrete if and only if $|\cdot|$ is 
 the ``stupid'' absolute value (also known as the trivial absolute value) 
 given by 
 \[
-  |x|=\begin{cases} 1 & x\ne 0 \\ 0 & x=0 \end{cases}
+  |x|=\begin{cases} 1 & x\ne 0 \\ 0 & x=0 \end{cases} .
 \]
+\end{lemma}
+\begin{proof}
 Indeed, $\Leftarrow$ is trivial. Showing $\Rightarrow$ is not trivial. If 
 $|\cdot|$ is not trivial, then there exists $x\in K$ with 
 $0<|x|<1$. The sequence $\{x^n:n\geqslant 1\}$ converges to zero because 
 $|x^n|=|x|^n\to 0$. Since we're in a field, no $x^n=0$, so $\{0\}$ is 
 \emph{not} open. 
+\end{proof}
 
 In fact, we get a topological field: addition, multiplication, and inversion 
 are all continuous. Moreover, $K$ is Hausdorff under the canonical topology. 
@@ -144,7 +147,7 @@ inequality. Since the non-archimedean triangle inequality holds when raised to
 arbitrary positive powers, if $|\cdot|$ is non-archimedean, then 
 $|\cdot|^e$ is an absolute value for all $e>0$. 
 
-The following lemma is quite important. 
+The following simple lemma is quite important. 
 
 \begin{lemma}
 In a non-archimedean field, if $|x|\ne |y|$, then 
@@ -163,17 +166,18 @@ a contradiction.
 
 
 
-\subsection{Dramatic topological consequences}
+\subsection{Topological consequences}
 
-\subsubsection{}
+\subsubsection{Center of a disk}
+
 Let $(K,|\cdot|)$ be a non-archimedean field. Let $a,a'\in K$ with 
 $|a-a'|\leqslant r$ for some $r>0$. Then $|x-a|\leqslant r$ if and only if 
 $|x-a'|\leqslant r$. In other words: \emph{all points in a disk of radius $r$ 
 are the center of the disk}! In other words, any point in the set  
 \[
-  D(a,r) = \{x\in K:|x-a|\leqslant r\} ,
+	\disk(a,r) = \{x\in K:|x-a|\leqslant r\} ,
 \]
-is a ``center'' of $D(a,r)$. To see this, suppose $|x-a|\leqslant r$. Then 
+is a ``center'' of $\disk(a,r)$. To see this, suppose $|x-a|\leqslant r$. Then 
 \begin{align*}
   |x-a'| 
     &= |x-a+a-a'| \\
@@ -181,7 +185,7 @@ is a ``center'' of $D(a,r)$. To see this, suppose $|x-a|\leqslant r$. Then
     &\leqslant r .
 \end{align*}
 
-\subsubsection{}
+\subsubsection{Clopen sets}
 Clearly the ``closed disk'' $\disk(a,r)$ is closed with respect to the canonical 
 topology. (This works for any metric space.) The terrible problem with 
 non-archimedean fields is that $\disk(a,r)$ is also open! Indeed, let 
@@ -191,13 +195,13 @@ $x_0\in \disk(a,r)$ (so $|x_0-a|\leqslant r$) and consider the ``open ball''
 \]
 We have $\disk^-(x_0,r)\subset \disk(a,r)$. 
 
-\subsubsection{}
+\subsubsection{Boundaries}
 Contrary to intuition, in a non-archimedean field, the set 
 $\{x\colon |x-a|=r\}$ is \emph{not} the topological boundary (closure 
 $\smallsetminus$ interior) of $\disk(a,r)$. In fact, any small neighborhood of 
 a point in this set is contained in $\disk(a,r)$. 
 
-\subsubsection{}
+\subsubsection{Disconnectedness}
 Putting everything together, the canonical topology on $K$ is totally 
 disconnected. In other words, the only non-empty connected components are 
 singletons. Indeed, let $x_0\in K$, and let $A$ be the connected component 
