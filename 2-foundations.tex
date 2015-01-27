@@ -1,0 +1,213 @@
+% !TEX root = 7350.tex
+
+\section{Foundations}
+
+\subsection{Absolute values and valuations}
+
+Good source: Engler, Prestel: ``valued fields.''
+
+Let $K$ be a field. 
+
+\begin{definition}
+An \emph{absolute value} (norm) on $K$ is a function $|\cdot|\colon K\to \bR$ 
+with the following properties: 
+\begin{enumerate}
+\item
+$|x|=0$ if and only if $x=0$
+
+\item
+$|xy|=|x| |y|$
+
+\item $|x+y|\leqslant |x|+|y|$. 
+\end{enumerate}
+\end{definition}
+
+Eventually, we will relax many of these requirements. The obvious examples 
+are $\bR$, $\bC$ with the standard absolute value. The definition has some 
+immediate consequences. 
+
+\begin{lemma}
+Let $(K,|\cdot|)$ be a field with absolute value. Then 
+\begin{enumerate}
+\item $|1|=1$
+\item $|1/x|=1/|x|$
+\item If $x\in \bmu_n(K)$, then $|x|=1$
+\item $|-x|=|x|$
+\item $|\cdot|\colon K^\times\to \bR^{>0}$ is a group homomorphism
+\end{enumerate}
+\end{lemma}
+
+Given an absolute value, we can define a metric on $K$ by 
+\[
+  d(x,y) = |x-y| ,
+\]
+hence $K$ becomes a topological space. We call the topology induced by 
+$|\cdot|$ the \emph{canonical} topology on $K$. To be pedantic, $U\subset K$ 
+is open if for all $u\in U$, there exists $r>0$ such that 
+\[
+  D^-(a,r) = \{x\in K:|x-u|<r\}\subset U .
+\]
+
+The topology induced by $|\cdot|$ is discrete if and only if $|\cdot|$ is 
+the ``stupid'' absolute value (also known as the trivial absolute value) 
+given by 
+\[
+  |x|=\begin{cases} 1 & x\ne 0 \\ 0 & x=0 \end{cases}
+\]
+Indeed, $\Leftarrow$ is trivial. Showing $\Rightarrow$ is not trivial. If 
+$|\cdot|$ is not trivial, then there exists $x\in K$ with 
+$0<|x|<1$. The sequence $\{x^n:n\geqslant 1\}$ converges to zero because 
+$|x^n|=|x|^n\to 0$. Since we're in a field, no $x^n=0$, so $\{0\}$ is 
+\emph{not} open. 
+
+In fact, we get a topological field: addition, multiplication, and inversion 
+are all continuous. Moreover, $K$ is Hausdorff under the canonical topology. 
+So far so good. Given an absolute value on a field, we get a Hausdorff topological 
+field. However, much of the course will be centered around remedying various 
+defects of the canonical topology. 
+
+\begin{lemma}
+If $|\cdot|$ is an absolute value on $K$ and $0<e\leqslant 1$, then 
+$|\cdot|^e$ is also an absolute value on $K$. 
+\end{lemma}
+\begin{proof}
+$|\cdot|^e$ is trivially multiplicative. Showing the triangle inequality 
+is harder, and needs $e\leqslant 1$. It turns out that if $|\cdot|$ is 
+non-archimedean, then $e>1$ works as well. 
+\end{proof}
+
+\begin{theorem}
+Let $|\cdot|$, $|\cdot|'$ be two absolute values on $K$. These induce the 
+same topology on $K$ if and only if there exists $e>0$ such that 
+$|\cdot|'=|\cdot|^e$. 
+\end{theorem}
+\begin{proof}
+$\Leftarrow$ is obvious. For the converse, see [cite source]. 
+\end{proof}
+
+Recall that for any field (commutative ring, even) $K$, there is a unique 
+unital ring homomorphism $\bZ\to K$, determined by $1\mapsto 1$. 
+
+\begin{definition}
+Let $|\cdot|\colon K\to \bR$ be an absolute value. Let $f:\bZ\to K$ be the 
+unique ring map. If $\image(f)$ is bounded in $\bR$, we say $|\cdot|$ is 
+\emph{non-archimedean}. 
+\end{definition}
+
+This is a topological condition. In other words, if $|\cdot|$ and $|\cdot|'$ 
+are equivalent absolute values, then one is non-archimedean if and only if the 
+other is. 
+
+\begin{example}
+The trivial absolute value is non-archimedean. 
+\end{example}
+
+\begin{example}
+If $K$ has positive characteristic, all absolute values on $K$ are 
+non-archimedean. Indeed, the image of $\bZ\to K$ consists of 
+$\{0\}\cup \bF_p^\times$; the latter set consists of $(p-1)$-st roots of 
+unity. So $|n|\leqslant 1$ for all $n\in \bZ$. 
+\end{example}
+
+\begin{example}
+The field $\bQ$ with its usual absolute value $|\cdot|_\infty$ is archimedean. 
+\end{example}
+
+\begin{theorem}
+An absolute value $|\cdot|$ on $K$ is non-archimedean if and only if for all 
+$x,y\in K$, 
+\begin{equation}\label{eq:triangle}
+  |x+y|\leqslant \max\{|x|,|y|\} .
+\end{equation}
+\end{theorem}
+\begin{proof}
+$\Leftarrow$ is easy. Indeed, $|n|\leqslant 1$ by induction on $n$. 
+
+$\Rightarrow$ is more subtle. There exists some $C$ such that 
+$|n|\leqslant C$ for all $n\in \bZ$. We use the binomial theorem: 
+\begin{align*}
+  |(x+y)^n| 
+    &= \left|\sum \binom n i x^i y^{n-i} \right| \\
+    &\leqslant \sum \left|\binom n i \right| |x^i y^{n-i}| \\
+    &\leqslant C(n+1)\max\{|x|,|y|\}^n .
+\end{align*}
+Taking $n$-th roots of both sides, we obtain 
+\[
+  |x+y|\leqslant \sqrt[n]{C(n+1)} \max\{|x|,|y|\} .
+\]
+Letting $n\to \infty$, we obtain the result. 
+\end{proof}
+
+The inequality \eqref{eq:triangle} is called the ultrametric inequality in 
+older sources. Today, it is generally called the non-archimedean triangle 
+inequality. Since the non-archimedean triangle inequality holds when raised to 
+arbitrary positive powers, if $|\cdot|$ is non-archimedean, then 
+$|\cdot|^e$ is an absolute value for all $e>0$. 
+
+The following lemma is quite important. 
+
+\begin{lemma}
+In a non-archimedean field, if $|x|\ne |y|$, then 
+$|x+y|=\max\{|x|,|y|\}$. 
+\end{lemma}
+\begin{proof}
+We may assume $|x|<|y|$. We need to show $|x+y|=|y|$. If not, we have 
+$|x+y|<|y|$. But 
+\[
+  |y|=|y+x-x| \leqslant \max\{|y+x|,|x|\} < y ,
+\]
+a contradiction. 
+\end{proof}
+
+
+
+
+
+\subsection{Dramatic topological consequences}
+
+\subsubsection{}
+Let $(K,|\cdot|)$ be a non-archimedean field. Let $a,a'\in K$ with 
+$|a-a'|\leqslant r$ for some $r>0$. Then $|x-a|\leqslant r$ if and only if 
+$|x-a'|\leqslant r$. In other words: \emph{all points in a disk of radius $r$ 
+are the center of the disk}! In other words, any point in the set  
+\[
+  D(a,r) = \{x\in K:|x-a|\leqslant r\} ,
+\]
+is a ``center'' of $D(a,r)$. To see this, suppose $|x-a|\leqslant r$. Then 
+\begin{align*}
+  |x-a'| 
+    &= |x-a+a-a'| \\
+    &\leqslant \max\{|x-a|,|a-a'|\} \\
+    &\leqslant r .
+\end{align*}
+
+\subsubsection{}
+Clearly the ``closed disk'' $\disk(a,r)$ is closed with respect to the canonical 
+topology. (This works for any metric space.) The terrible problem with 
+non-archimedean fields is that $\disk(a,r)$ is also open! Indeed, let 
+$x_0\in \disk(a,r)$ (so $|x_0-a|\leqslant r$) and consider the ``open ball'' 
+\[
+  \disk^-(x_0,r) = \{x\in K:|x-x_0|<r\} .
+\]
+We have $\disk^-(x_0,r)\subset \disk(a,r)$. 
+
+\subsubsection{}
+Contrary to intuition, in a non-archimedean field, the set 
+$\{x\colon |x-a|=r\}$ is \emph{not} the topological boundary (closure 
+$\smallsetminus$ interior) of $\disk(a,r)$. In fact, any small neighborhood of 
+a point in this set is contained in $\disk(a,r)$. 
+
+\subsubsection{}
+Putting everything together, the canonical topology on $K$ is totally 
+disconnected. In other words, the only non-empty connected components are 
+singletons. Indeed, let $x_0\in K$, and let $A$ be the connected component 
+containing $x_0$. Assume $x_1\ne x_0$ is also in $A$. Let 
+$|x_1-x_0|>r>0$. Then 
+\[
+  A = \left(A\cap \disk(r,x_0)\right) \sqcup \left(A\smallsetminus \disk(r,x_0)\right) 
+\]
+is a decomposition of $A$ into a disjoint union of open nonempty subsets. 
+
+
+
+
