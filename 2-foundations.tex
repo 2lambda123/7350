@@ -116,7 +116,7 @@ unity. So $|n|\leqslant 1$ for all $n\in \bZ$.
 The field $\bQ$ with its usual absolute value $|\cdot|_\infty$ is archimedean. 
 \end{example}
 
-\begin{theorem}
+\begin{theorem}\label{thm:non-arch-characterization}
 An absolute value $|\cdot|$ on $K$ is non-archimedean if and only if for all 
 $x,y\in K$, 
 \begin{equation}\label{eq:triangle}
@@ -149,7 +149,7 @@ $|\cdot|^e$ is an absolute value for all $e>0$.
 
 The following simple lemma is quite important. 
 
-\begin{lemma}
+\begin{lemma}\label{lem:abs-value-of-difference}
 In a non-archimedean field, if $|x|\ne |y|$, then 
 $|x+y|=\max\{|x|,|y|\}$. 
 \end{lemma}
@@ -211,6 +211,240 @@ $|x_1-x_0|>r>0$. Then
   A = \left(A\cap \disk(r,x_0)\right) \sqcup \left(A\smallsetminus \disk(r,x_0)\right) 
 \]
 is a decomposition of $A$ into a disjoint union of open nonempty subsets. 
+
+
+
+
+
+\subsection{Ostrowski's theorem}
+
+Consider the field $\bQ$. We already know of the following absolute values: 
+\begin{enumerate}
+\item
+$|\cdot|_\infty^e$ for any $0<e\leqslant 1$.
+
+\item 
+$|\cdot|_0$, the trivial absolute value.
+
+\item 
+For each prime $p$, $|\cdot|_p^e$ is an absolute value for any $e>0$. Recall 
+that for any $\frac a b\in \bQ$, write $\frac a b=p^\alpha \frac{a'}{b'}$ for 
+$a',b'$ not divisible by $p$. One has $|a/b|_p^e = (p^e)^{-\alpha}$. We 
+generally normalize by requiring $|p|_p = 1/p$; this is needed for the 
+product formula: 
+\[
+  \prod_{\substack{v\text{ prime} \\ \text{or }\infty}} |x|_v = 1\qquad (\text{any }x\in \bQ^\times) .
+\]
+\end{enumerate}
+
+The field $\bQ$ is totally disconnected for all these topologies. For 
+$|\cdot|_\infty$, this can be solved via completion. For the $p$-adic and 
+trivial absolute values, we need Berkovich's theory. 
+
+\begin{theorem}[Ostrowski]
+All absolute values on $\bQ$ are, up to topological equivalence, of the form 
+$|\cdot|_0$, $|\cdot|_\infty$, or $|\cdot|_p$ for some $p$. 
+\end{theorem}
+\begin{proof}
+Let $|\cdot|$ be an absolute value on $\bQ$. 
+
+Case 1: $|\cdot|$ is non-archimedean. Then $|n|\leqslant 1$ for all $n\in \bZ$. 
+If $|p|=1$ for all primes $p$, then by unique factorization, $|\cdot|$ is the 
+trivial absolute value. If there exists a prime $p$ for which $|p|<1$, there is 
+no $l\ne p$ prime such that $|l|<1$. For, since $l$ and $p$ are coprime, there 
+is $x,y\in \bZ$ for which $p x+l y=1$. But then 
+\[
+  1 = |1| = |p x+l y| \leqslant \max\{|p x|,|p y|\} < 1 ,
+\]
+a contradiction. So $|p|<1$ for a unique $p$. After possibly replacing 
+$|\cdot|$ by an equivalent absolute value, we may assume $|p|=1/p$. Unique 
+factorization, combined with $|l|=1$ ($l\ne p$) tells us that 
+$|\cdot|=|\cdot|_p$. 
+
+Case 2: $|\cdot|$ is archimedean. There exists $n\in \bZ^{>0}$ such that 
+$|n|>1$; let $n_0$ be the smallest such $n$. Write $|n_0|=n_0^\alpha$. Given 
+$n\in \bZ^{>0}$, we need to show $|n|=n^\alpha=|n|_\infty^\alpha$. Write $n$ 
+in ``base $n_0$,'' i.e.~as 
+\begin{equation}\label{eq:base-n}
+  n = a_0 + a_1 n_0 + \cdots + a_s n_0^s ,
+\end{equation}
+where each $0\leqslant a_0<n_0$ and $a_s\ne 0$. First we show 
+$|n|\leqslant |n|_\infty^\alpha$. Put $C=\sum_{i\geqslant 0} n_0^{-\alpha i}$; 
+then 
+\begin{align*}
+  |n| 
+    &= \bigg|\sum_{i=0}^s a_i n_0^i\bigg| \\
+    &\leqslant \sum_{i=0}^s |a_i| |n_0|^i \\
+    &\leqslant \sum_{i=0}^s n_0^{\alpha i} \\
+    &\leqslant n_0^{s\alpha} (1+n_0^{-\alpha} + n_0^{-2\alpha} + \cdots) \\
+    &\leqslant C n^\alpha .
+\end{align*}
+So $|n^N|\leqslant C n^{\alpha N}$ for all $N$. Thus 
+$|n|\leqslant \sqrt[N]{C} n^\alpha$; letting $N\to \infty$ yields 
+$|n|\leqslant n^\alpha$. Now we prove $|n|\geqslant n^\alpha$. Once again 
+write $n$ in base $n_0$ as in \eqref{eq:base-n}. We get 
+\begin{align*}
+  |n_0^{s+1}| 
+    &= |n+n_0^{s+1}-n| \\
+    &\leqslant |n|+|n_0^{s+1}-n| \\
+    &\leqslant |n|+(n_0^{s+1}-n)^\alpha \\
+    &\leqslant |n|+(n_0^{s+1}-n^s)^\alpha .
+\end{align*}
+Moreover, 
+\begin{align*}
+  |n| 
+    &\geqslant n_0^{\alpha(s+1)} \left(1-\left(1-\frac{1}{n_0}\right)^\alpha\right) \\
+    &\geqslant C' n^\alpha ,
+\end{align*}
+where as above $C'$ does not depend on $n$. The same trick (raise to $N$, let 
+$N\to \infty$) yields the result. 
+\end{proof}
+
+There are versions of Ostrowski's theorem for arbitrary Dedekind domains, or 
+function fields like $\bF_p(t)$. 
+
+
+
+
+
+\subsection{Completion}
+
+Here, will discuss ``completion'' in the sense of metric spaces. One can also 
+``complete'' topological spaces; there is a more general notion of completion 
+that works for ``uniform spaces,'' which are topological spaces together with a 
+uniform structure. We will focus on metrics coming from absolute values. 
+
+\begin{definition}
+A metric space is \emph{complete} if every Cauchy sequence converges. 
+\end{definition}
+
+Let $K$ be a field with absolute value $|\cdot|$. Note that $(K,|\cdot|)$ is 
+complete if and only if $(K,|\cdot|^e)$ is complete, so completeness of a field 
+is a topological property. 
+
+\begin{example}
+The field $\bQ$ with $|\cdot|_0$ is complete (Cauchy sequences stabilize). 
+\end{example}
+
+\begin{example}
+The field $\bQ$ with $|\cdot|_\infty$ is \emph{not} complete. It's completion 
+is denoted $\bR$; this is as nice as we could hope for (as a topological 
+space). 
+\end{example}
+
+\begin{example}
+The field $\bQ$ with $|\cdot|_p$ is also not complete. For example, for any 
+integer $n\geqslant 1$, the sequence 
+\[
+  n,n^p,n^{p^2},n^{p^3},\dots
+\]
+is Cauchy, and (if $p$ is odd) it does not converge in $\bQ$ when we set 
+$n=p-1$. [more perspective]
+\end{example}
+
+\begin{definition}
+Let $(K,|\cdot|)$ be a field with absolute value. A \emph{completion} of 
+$(K,|\cdot|)$ is tuple $(K',|\cdot|',i)$, where 
+\begin{enumerate}
+\item $(K',|\cdot|')$ is a complete field, 
+\item $i\colon K\hookrightarrow K'$ is an isometry 
+(i.e.~$|x|=|i(x)|'$ for all $x\in K$), and 
+\item for any isometry $j:K\hookrightarrow F$ from $K$ into a complete field 
+$(F,|\cdot|'')$, there exists a unique isometry $i'\colon K'\hookrightarrow F$ 
+such that the following diagram commutes:
+\[
+\begin{tikzcd}
+  K \ar[r, "i"] \ar[dr, "j"]
+    & K' \ar[d, "i'", dotted] \\
+  & F .
+\end{tikzcd}
+\]
+\end{enumerate}
+\end{definition}
+
+So a completion is an embedding of $K$ into a complete field that is 
+``initial'' among such embeddings. Standard arguments show that the completion 
+of $K$ is uniquely determined by the universal property. 
+
+\begin{theorem}
+Let $K$ be a field with absolute value $|\cdot|$. Then: 
+\begin{enumerate}
+\item A completion $(K',|\cdot|',i)$ of $K$ exists.  
+\item $i(K)$ is dense in $K'$.
+\item $|\cdot|$ is non-archimedean if and only if $|\cdot|'$ is non-archimedean.  
+\item If $|\cdot|$ is non-archimedean, then 
+\[
+  |K^\times| = \{|x|\colon x\in K^\times\} = |{K'}^\times|' .
+\]
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+1, 2 are classical. Construct $K'$ as the quotient of the ring of Cauchy 
+sequences by the (maximal) ideal of nullsequences. 
+
+3. Obvious corollary of \autoref{thm:non-arch-characterization}. 
+
+4. Roughly: suppose $x\in K'$ is written $x=\lim x_n$, for $\{x_n\}$ a Cauchy 
+sequence in $K$. Then $|x|'=\lim |x_n|$. For $m,n\gg 0$, we have 
+$|x_n-x_m|<|x|/2<|x_n|$. By \autoref{lem:abs-value-of-difference}, this can 
+only happen if $|x_n|=|x_m|$. So the sequence $\{|x_n|\}$ stabilizes. 
+\end{proof}
+
+It is true (though we will not prove) that if $K\hookrightarrow K'$ is 
+\emph{any} isometry from $K$ to a complete field with dense image, then $K'$ is 
+a completion of $K$. 
+
+Part 4 clearly fails when passing from $\bQ$ to $\bR$. On the other hand, now 
+we know that $\bQ_p$ has ``no new absolute values.'' 
+
+
+
+
+
+\subsection{The \texorpdfstring{$p$}{p}-adics}
+
+For each prime $p$, we write $\bQ_p$ for any completion of $\bQ$ with respect 
+to $|\cdot|_p$; we call $\bQ_p$ the \emph{field of $p$-adic numbers}. Define 
+\begin{align*}
+  \bQ_p^\circ = \bZ_p &= \{x\in \bQ_p\colon |x|\leqslant 1\} \\
+  \bQ_p^{\circ\circ} = \fm &= \{x\in \bQ_p\colon |x|<1\} .
+\end{align*}
+One calls $\bZ_p$ the ring of \emph{$p$-adic integers}. One has 
+$\bZ_p/\fm\simeq \bF_p$. Choose a 
+set $S=\{\alpha_0,\dots,\alpha_{p-1}\}$, where $\alpha_i$ is a $p$-adic integer 
+such that $\alpha_i\equiv i\pmod p$. We could use $S=\{0,\dots,p-1\}$, but 
+there are better choices (e.g. Teichm\"uller representatives). Then some 
+elementary work shows that every $\alpha\in \bQ_p$ has exactly one 
+representative Cauchy sequence $\{a_i\}$, where 
+\[
+  a_i = b_0 p^{-m} + b_1 p^{-(m-1)} + \cdots + b_{i-1} p^{i-1-m} ,
+\]
+where the $b_j\in S$. 
+
+\begin{example}
+Work in $\bQ_3$ and let $S=\{0,1,2\}$. One such sequence is: 
+\begin{align*}
+  a_1 &= 1 \\
+  a_2 &= 1+0\cdot 3 \\
+  a_3 &= 1+0\cdot 3+2\cdot 3^2 \\
+  a_4 &= 1+0\cdot 3+3\cdot 3^2 + 1\cdot 3^3 \\
+  \vdots &
+\end{align*}
+\end{example}
+
+Given a representation 
+\[
+  a = b_0 p^{-m} + b_1 p^{-(m-1)} + \cdots ,
+\]
+where $b_0\ne 0$, one can check that $|a|_p = p^m$. 
+
+The field $\bQ_p$ is complete, totally disconnected, but not algebraically 
+closed. An abstract algebraic closure $\overline{\bQ_p}$ exists. However, 
+unlike the passage from $\bR$ to $\bC$, the extension $\overline{\bQ_p}/\bQ_p$ 
+is \emph{not} finite. Moreover, $\overline{\bQ_p}$ is not complete with respect 
+to the unique absolute value extending the one on $\bQ_p$. Let 
+$\bC_p=\widehat{\overline{\bQ_p}}$; here we we are lucky and $\bC_p$ is 
+algebraically closed. The field $\bC_p$ is the $p$-adic analogue of $\bC$. 
 
 
 
