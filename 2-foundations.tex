@@ -227,14 +227,11 @@ $|\cdot|_\infty^e$ for any $0<e\leqslant 1$.
 $|\cdot|_0$, the trivial absolute value.
 
 \item 
-For each prime $p$, $|\cdot|_p^e$ is an absolute value for any $e>0$. Recall 
+For each prime $p$, we have an absolute value $|\cdot|_p^e$ for any $e>0$. Recall 
 that for any $\frac a b\in \bQ$, write $\frac a b=p^\alpha \frac{a'}{b'}$ for 
 $a',b'$ not divisible by $p$. One has $|a/b|_p^e = (p^e)^{-\alpha}$. We 
-generally normalize by requiring $|p|_p = 1/p$; this is needed for the 
-product formula: 
-\[
-  \prod_{\substack{v\text{ prime} \\ \text{or }\infty}} |x|_v = 1\qquad (\text{any }x\in \bQ^\times) .
-\]
+generally normalize by requiring $|p|_p = 1/p$; there are good analytical 
+reasons from this involving normalization of Haar measures. 
 \end{enumerate}
 
 The field $\bQ$ is totally disconnected for all these topologies. For 
@@ -263,8 +260,7 @@ $|\cdot|=|\cdot|_p$.
 
 Case 2: $|\cdot|$ is archimedean. There exists $n\in \bZ^{>0}$ such that 
 $|n|>1$; let $n_0$ be the smallest such $n$. Write $|n_0|=n_0^\alpha$. Given 
-$n\in \bZ^{>0}$, we need to show $|n|=n^\alpha=|n|_\infty^\alpha$. Write $n$ 
-in ``base $n_0$,'' i.e.~as 
+$n\in \bZ^{>0}$, we need to show $|n|=|n|_\infty^\alpha$. Write $n$ in base $n_0$: 
 \begin{equation}\label{eq:base-n}
   n = a_0 + a_1 n_0 + \cdots + a_s n_0^s ,
 \end{equation}
@@ -285,17 +281,16 @@ $|n|\leqslant n^\alpha$. Now we prove $|n|\geqslant n^\alpha$. Once again
 write $n$ in base $n_0$ as in \eqref{eq:base-n}. We get 
 \begin{align*}
   |n_0^{s+1}| 
-    &= |n+n_0^{s+1}-n| \\
     &\leqslant |n|+|n_0^{s+1}-n| \\
     &\leqslant |n|+(n_0^{s+1}-n)^\alpha \\
-    &\leqslant |n|+(n_0^{s+1}-n^s)^\alpha .
+    &\leqslant |n|+(n_0^{s+1}-n_0^s)^\alpha .
 \end{align*}
-Moreover, 
-\begin{align*}
+It follows that
+\[
   |n| 
-    &\geqslant n_0^{\alpha(s+1)} \left(1-\left(1-\frac{1}{n_0}\right)^\alpha\right) \\
-    &\geqslant C' n^\alpha ,
-\end{align*}
+    \geqslant n_0^{\alpha(s+1)} \left(1-\left(1-\frac{1}{n_0}\right)^\alpha\right) \\
+    \geqslant C' n^\alpha ,
+\]
 where as above $C'$ does not depend on $n$. The same trick (raise to $N$, let 
 $N\to \infty$) yields the result. 
 \end{proof}
@@ -339,7 +334,9 @@ integer $n\geqslant 1$, the sequence
   n,n^p,n^{p^2},n^{p^3},\dots
 \]
 is Cauchy, and (if $p$ is odd) it does not converge in $\bQ$ when we set 
-$n=p-1$. [more perspective]
+$n=p-1$. Alternatively, it is known that any complete metric space without 
+isolated points is uncountable; since $\bQ$ is countable, it cannot be complete 
+in any non-discrete topology. 
 \end{example}
 
 \begin{definition}
