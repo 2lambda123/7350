@@ -79,7 +79,7 @@ is harder, and needs $e\leqslant 1$. It turns out that if $|\cdot|$ is
 non-archimedean, then $e>1$ works as well. 
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{thm:field-equiv-abs}
 Let $|\cdot|$, $|\cdot|'$ be two absolute values on $K$. These induce the 
 same topology on $K$ if and only if there exists $e>0$ such that 
 $|\cdot|'=|\cdot|^e$. 
@@ -238,7 +238,7 @@ The field $\bQ$ is totally disconnected for all these topologies. For
 $|\cdot|_\infty$, this can be solved via completion. For the $p$-adic and 
 trivial absolute values, we need Berkovich's theory. 
 
-\begin{theorem}[Ostrowski]
+\begin{theorem}[Ostrowski]\label{thm:ostrowski}
 All absolute values on $\bQ$ are, up to topological equivalence, of the form 
 $|\cdot|_0$, $|\cdot|_\infty$, or $|\cdot|_p$ for some $p$. 
 \end{theorem}
@@ -302,7 +302,7 @@ function fields like $\bF_p(t)$.
 
 
 
-\subsection{Completion}
+\subsection{Completion}\label{sec:completion}
 
 Here, will discuss ``completion'' in the sense of metric spaces. One can also 
 ``complete'' topological spaces; there is a more general notion of completion 
@@ -346,7 +346,7 @@ $(K,|\cdot|)$ is tuple $(K',|\cdot|',i)$, where
 \item $(K',|\cdot|')$ is a complete field, 
 \item $i\colon K\hookrightarrow K'$ is an isometry 
 (i.e.~$|x|=|i(x)|'$ for all $x\in K$), and 
-\item for any isometry $j:K\hookrightarrow F$ from $K$ into a complete field 
+\item for any isometry $j\colon K\hookrightarrow F$ from $K$ into a complete field 
 $(F,|\cdot|'')$, there exists a unique isometry $i'\colon K'\hookrightarrow F$ 
 such that the following diagram commutes:
 \[
@@ -363,7 +363,7 @@ So a completion is an embedding of $K$ into a complete field that is
 ``initial'' among such embeddings. Standard arguments show that the completion 
 of $K$ is uniquely determined by the universal property. 
 
-\begin{theorem}
+\begin{theorem}\label{thm:existence-completion}
 Let $K$ be a field with absolute value $|\cdot|$. Then: 
 \begin{enumerate}
 \item A completion $(K',|\cdot|',i)$ of $K$ exists.  
@@ -442,6 +442,200 @@ is \emph{not} finite. Moreover, $\overline{\bQ_p}$ is not complete with respect
 to the unique absolute value extending the one on $\bQ_p$. Let 
 $\bC_p=\widehat{\overline{\bQ_p}}$; here we we are lucky and $\bC_p$ is 
 algebraically closed. The field $\bC_p$ is the $p$-adic analogue of $\bC$. 
+
+
+
+
+
+\subsection{Absolute values under algebraic extensions}
+
+A field extension is naturally a vector space over the base field, so our 
+first results will be in the more general context of vector spaces over 
+normed fields. 
+
+\begin{definition}
+Let $K$ be a field with absolute value $|\cdot|$, $V$ be a vector space over 
+$K$. A \emph{($K$-vector space) norm} on $V$ is a map 
+$\|\cdot\|\colon V\to \bR$, satisfying: 
+\begin{enumerate}
+\item 
+$\|v\|\geqslant 0$ for all $v\in V$, with equality if and only if $v=0$. 
+
+\item
+$\|c v\| = |c|\|v\|$ for all $c\in K$, $v\in V$. 
+
+\item
+$\|v+w\|\leqslant \|v\|+\|w\|$ for all $v,w\in V$. 
+\end{enumerate}
+\end{definition}
+
+We get in the natural way a metric (hence topology) on $V$. Thus concepts like 
+completeness and completion make sense. The whole machinery of 
+\autoref{sec:completion} carries through. 
+
+Two norms $\|\cdot\|_1$, $\|\cdot\|_2$ induce some topology if and only if 
+\[
+  c_2 \|\cdot\|_2 \leqslant \|\cdot\|_1 \leqslant c1 \|\cdot\|_2 ,
+\]
+for some $c_1,c_2>0$. We call such norms \emph{equivalent}. 
+In classical linear algebra, one often rescales vectors 
+to make them have norm one. Here, if $v\in V$, we might not be able to 
+rescale $v$ to get $\|cv\|=1$. This is because $\{|c|\colon c\in K^\times\}$ 
+can be a proper subgroup of $\bR^{>0}$. 
+
+\begin{example}
+Fix a basis $B=\{v_1,\dots,v_d\}$ of $V$. Given $x=\sum a_i v_i$, put 
+\[
+  \|x\|_{\sup,B} = \|x\|_{\max,B} = \max_{1\leqslant i\leqslant d} |a_i| .
+\]
+It is easy to show that this actually is a norm. If $K$ is complete with 
+respect to $|\cdot|$, then $(V,\|\cdot\|_{\max})$ is also complete. If 
+$|\cdot|$ is non-archimedean, then 
+\[
+  \|v+w\|_{\max} \leqslant \max\{\|v\|_{\max},\|w\|_{\max}\} .
+\]
+Finally, the max norm with respect to different bases are equivalent. 
+\end{example}
+
+\begin{theorem}\label{thm:unique-norm-vect}
+If $K$ is complete with respect to $|\cdot|$ and $V$ is finite-dimensional over 
+$K$, then all $K$-vector space norms on $V$ are equivalent. Moreover, $V$ is 
+also complete, all vector subspaces are closed, and if $|\cdot|$ is 
+non-archimedean, then $\|\cdot\|$ is also non-archimedean, in the weaker sense 
+that 
+\[
+  \|v+w\| \leqslant C\max\{\|v\|,\|w\|\} ,
+\]
+for some fixed $C$. 
+\end{theorem}
+\begin{proof}
+Fix a basis $B=\{v_1,\dots,v_d\}$ of $V$. Given any norm $\|\cdot\|$ on $V$, we 
+show it's equivalent to $\|\cdot\|_{\max,B}$. One direction doesn't use 
+completeness: 
+\begin{align*}
+  \|x\| 
+    &= \left\|\sum a_i v_i\right\| \\
+    &\leqslant \sum |a_i| \|v_i\| \\
+    &\leqslant d \max_i \|v_i\| \max_ii |a_i| .
+\end{align*}
+Put $C_1=d \max\{v_i\}$; this yields 
+$|\cdot|\leqslant C_1 \|\cdot\|_{\max,B}$. To show that 
+$\|\cdot\|_{\max}\leqslant C_2\|\cdot\|$, we induct on $d=\dim(V)$. For $d=1$, 
+the result is immediate: just observe $\|v\|=|a_1|\|v_1\|$. 
+If $d>1$, we may assume that all proper subspaces of $V$ are complete. General 
+nonsense tells us that subspaces are closed. Let $H_i=\sum_{j\ne i} K v_j$. 
+Let $\pi_i\colon V\to V/H_i = L_i$ be the projection map. Define a new norm on $L_i$ 
+by 
+\[
+  \|u\|_i = \inf\{\|v\|\colon \pi_i(v)=u\} .
+\]
+Since $H_i$ is closed, $\|u_i\|=0$ implies $u\in H_i$. For $v=\sum a_i v_i$, 
+we have $\pi_i(v)=a_i \pi_v(v_i)$. Note that 
+$\|\pi_i(v)\|_i = |a_i| \|\pi_i(v_i)\|_i$, which implies 
+\[
+  \frac{\|\pi_i(v)\|_i}{\|\pi_i(v_i)\|_i} \leqslant \frac{\|v\|}{\|\pi_i(v_i)\|_i} \leqslant B_i \|v\| ,
+\]
+where $B_i=\|\pi_i(v_i)\|_i^{-1}$. Put $C_2=\max\{B_i\}$. 
+\end{proof}
+
+The moral of the story is that finite-dimensional vector spaces over a complete 
+field carry a unique topology. 
+
+\begin{theorem}\label{thm:extend-absolute-value}
+Let $K$ be a field complete with respect to $|\cdot|$. Let $L/K$ be an 
+extension. 
+\begin{enumerate}
+\item 
+There is exactly one extension of $|\cdot|$ to an absolute value $|\cdot|'$ on 
+$L$. Moreover, $|\cdot|'$ is non-archimedean if and only if $|\cdot|$ is 
+non-archimedean. 
+
+\item
+If $[L \colon K]<\infty$, then $(L,|\cdot|')$ is complete. If $K$ is 
+non-archimedean, then for all $x\in L$, 
+\begin{equation}\label{eq:extend-norm}
+  |x|' = \left|\norm_{L/K}(x)\right|^{\frac{1}{[L\colon K]}} .
+\end{equation}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+1. That there is \emph{at most} one extension follows almost immediately from 
+\autoref{thm:unique-norm-vect}. The field $L$ is a direct limit of finite 
+extensions, so we may as well assume $L$ is a finite extension of $K$. Since 
+$L$ is a finite-dimensional $K$-vector space, it has a unique topology 
+induced by vector space norm. Since $K$ is complete, $L$ is also complete. Let 
+$|\cdot|_1$ and $|\cdot|_2$ be two norms on $L$. If the topology induced 
+by $|\cdot|_1$, then everything in sight is discrete. If $|\cdot|_1$ induces 
+a non-discrete topology, then by \autoref{thm:field-equiv-abs}, 
+$|\cdot|_1=|\cdot|_2^e$ for some $e$. Restricting to $K$, we see that $e=1$. 
+
+2. Recall that for $x\in L$, the map ``multiply by $x$'' is a $K$-linear map 
+$(x\cdot)\colon L\to L$. The \emph{norm} of $x$ is by definition 
+$\norm_{L/K}(x)=\det(x\cdot)$. It's not easy to show that 
+\eqref{eq:extend-norm} satisfies the triangle inequality. (One uses Hensel's 
+lemma to show that $\norm_{L/K}(x)\in K^\circ$ if and only if 
+$x\in L^\circ$.)
+\end{proof}
+
+It is easy to show that \eqref{eq:extend-norm} is the only possible extension 
+of a norm, using the Galois definition of the norm. Abstract nonsense reduces 
+us to the case where $L/K$ is finite Galois. In this case, we know that 
+\[
+  \norm_{L/K}(x) = \prod_{\sigma\in \galois(L/K)}\sigma(x) .
+\]
+It follows that 
+\begin{align*}
+  |\norm_{L/K}(x)| 
+    &= |\norm_{L/K}(x)|' \\
+    &= \prod_{\sigma\in \galois(L/K)} |\sigma(x)|' \\
+    &= {|x|'}^{[L\colon K]} .
+\end{align*}
+The last equality holds because $|\sigma(x)|'=|x|'$ for all $\sigma$. 
+
+\begin{example}
+Let $\bQ_p$ be the completion of $\bQ$ with respect to the $p$-adic absolute 
+value $|\cdot|_p$. By \autoref{thm:extend-absolute-value}, 
+$\overline{\bQ_p}$ carries a unique extension of $|\cdot|_p$; the set 
+$|\overline{\bQ_p}^\times|\subset \bR^{>0}$ is dense!
+\end{example}
+
+In general, if $K$ is a complete non-archimedean field, then its algebraic 
+closure $\overline K$ will not be complete. The only exception is when 
+$\overline K=\bC$.
+
+\begin{theorem}[Gelfand, Mazur]\label{thm:Gelfand-Mazur}
+The only complete archimedean fields are $(\bR,|\cdot|_\infty^e)$ and 
+$(\bC,|\cdot|_\infty^e)$ for $0\leqslant e<1$. 
+\end{theorem}
+\begin{proof}
+This is \cite[1.2.4]{engler-prestel}. 
+\end{proof}
+
+\begin{corollary}
+If $(K,|\cdot|)$ is an archimedean field, then $K$ admits a dense isometry 
+into either $\bR$ or $\bC$. 
+\end{corollary}
+
+\begin{lemma}\label{lemma:spec-Banach}
+Let $A$ be a commutative Banach $\bR$-algebra containing $\bC$. For every 
+$a\in A$, the set $\{c\in \bC\colon a-c\notin A^\times\}$ is compact and 
+nonempty. 
+\end{lemma}
+\begin{proof}
+To show that the set, known as the \emph{spectrum} of $a$, is nonempty, 
+one uses the map $\bC\to A$ given by $c\mapsto (a-c)^{-1}$. For details, see 
+\cite[18.6]{rudin-1987}. 
+\end{proof}
+
+\begin{corollary}
+Let $(K,|\cdot|)$ be an extension of $(\bR,|\cdot|_\infty)$. Then either 
+$K=\bR$ or $K=\bC$. 
+\end{corollary}
+\begin{proof}
+If $K$ contains $\bC$, then applying \autoref{lemma:spec-Banach} shows that 
+$K=\bC$. If $K$ does not contain any such $j$, the field $K(\sqrt{-1})$ must be 
+$\bC$, hence $K=\bR$. 
+\end{proof}
 
 
 

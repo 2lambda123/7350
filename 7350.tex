@@ -9,9 +9,9 @@
 
 \usepackage{
 	amsmath,
-	amssymb,
 	amsthm,
 	bm,        % bold Greek letters
+	bookmark,  % replaces (and loads) hyperref
 	microtype, % improved formatting
 	MnSymbol,  % dashed arrow
 	stmaryrd,  % formal power series
@@ -19,13 +19,14 @@
 	thmtools,  % fixes theorem referencing
 	7350       % custom commands for, e.g. bold and script letters
 }
+\usepackage[hyperpageref]{backref}
 
-\usepackage[
-	backref=page,
+\hypersetup{
 	colorlinks = true,
 	linkcolor  = blue,
 	urlcolor   = cyan
-]{hyperref}
+}
+
 
 \pagestyle{myheadings}
 \markright{\hfill Non-archimedean geometry\hfill}
