@@ -447,7 +447,7 @@ algebraically closed. The field $\bC_p$ is the $p$-adic analogue of $\bC$.
 
 
 
-\subsection{Absolute values under algebraic extensions}
+\subsection{Absolute values and field extensions}
 
 A field extension is naturally a vector space over the base field, so our 
 first results will be in the more general context of vector spaces over 
@@ -644,13 +644,20 @@ $\bC$, hence $K=\bR$.
 \end{proof}
 
 If $(K,|\cdot|)$ is a non-archimedean field which is \emph{not} complete, and 
-$L/K$ is an algebraic extension, how can we extend $|\cdot|$ to $L$? This is 
-easy. Let $\widehat K$ be the completion of $K$; it carries a unique extension 
+$L/K$ is an algebraic extension, how can we extend $|\cdot|$ to $L$? 
+
+\begin{theorem}
+Let $(K,|\cdot|)$ be a non-archimedean field, $L/K$ an algebraic extension. 
+Then $|\cdot|$ admits an extension to $L$. 
+\end{theorem}
+\begin{proof}
+Let $\widehat K$ be the completion of $K$; it carries a unique extension 
 of $|\cdot|$. Let $\overline{\widehat K}$ be an algebraic closure of 
-$\widehat K$; this also carries a unique extension of $|\cdot|$. We have an 
-embedding $i:L\hookrightarrow \overline{\widehat K}$. The pullback via $i$ of 
-the absolute value on $\overline{\widehat K}$ is an extension of $|\cdot|$ to 
-$L$. 
+$\widehat K$; this also carries a unique extension of $|\cdot|$. Since $L/K$ is 
+algebraic, we have an embedding $i:L\hookrightarrow \overline{\widehat K}$. The 
+pullback via $i$ of the absolute value on $\overline{\widehat K}$ is an 
+extension of $|\cdot|$ to $L$. 
+\end{proof}
 
 \begin{theorem}[Krasner]\label{thm:krasner}
 Let $K$ be an algebraically closed field with absolute value $|\cdot|$. Then 
@@ -672,18 +679,29 @@ factorization $g=\prod (x-\beta_i)$, so
 So at least one $\beta_i$ satisfies $|\alpha-\beta_i|\leqslant \epsilon$. 
 \end{proof}
 
-We mentioned that $(\bQ,|\cdot|_p)$ is not complete. There is an explicit, 
-algorithmic way to show this, which comes from sequences $\{a_i\mod{p^i}\}$. 
-This is done very nicely in [Gouvea, p.~52]. 
+We mentioned that earlier that $(\bQ,|\cdot|_p)$ is not complete. There is an 
+explicit, algorithmic way to show this. One shows that if $(\bQ,|\cdot|_p)$ 
+were complete, then all $(p-1)$-st roots of unity would lie in $\bQ$, which is 
+not the case, at least if $p\geqslant 5$. The general technique relies on the 
+isomorphism $\bZ_p=\varprojlim \bZ/pie$, and uses Hensel's Lemma to construct 
+compatible sequences $\{a_i\mod{p^i}\}$. This is done very nicely in 
+\cite[3.2.3]{gouvea-1997}. 
 
-For any non-archimedean field $K$, we can pass to the completion $\widehat K$, 
-its algebraic closure $\overline{\widehat K}$, then finally to the completion 
-of that field: $\widehat{\overline{\widehat K}}$. By \autoref{thm:krasner}, 
-this is a complete, algebraically closed, non-archimedean field. The 
-absolute value $|\cdot|$ on $K$ has a unique extension to 
-$\widehat{\overline{\widehat K}}$. One thing to be careful of: while 
-$|K^\times|=|\widehat K^\times|$ and similarly for the embedding 
-$\overline{\widehat K}\hookrightarrow\widehat{\overline{\widehat K}}$. But 
+For any non-archimedean field $K$, we have a sequence of embeddings:
+\begin{equation}\label{eq:completion-closure}
+  K \hookrightarrow 
+  \widehat K \hookrightarrow 
+  \overline{\widehat K} \hookrightarrow 
+  \widehat{\overline{\widehat K}} .
+\end{equation}
+Each field has a canonical (unique) extension of the absolute value $|\cdot|$ 
+of $K$. We denote these absolute values by $|\cdot|$ as well. One might wonder 
+if the process of passing to algebraic closure and them completion can be 
+repeated indefinitely. By \autoref{thm:krasner}, the sequence 
+\eqref{eq:completion-closure} is is as far as we need to go: the field 
+$\widehat{\overline{\widehat K}}$ is as far as we need to go. One thing to be 
+careful of: the value group stays the same in the first and third embeddings 
+\eqref{eq:completion-closure}, but 
 $|\overline{\widehat K}^\times|$ may be strictly larger than 
 $|\widehat K^\times|$. 
 
@@ -692,14 +710,20 @@ For $(\bQ,|\cdot|_p)$, we get the following chain of embeddings:
 \[
   \bQ\hookrightarrow \bQ_p \hookrightarrow \overline{\bQ_p} \hookrightarrow \widehat{\overline{\bQ_p}} = \bC_p .
 \]
-The field $\bC_p$ is the ``$p$-adic analogue of $\bC$.'' See 
-[Koblitz, $p$-adic\ldots] for a careful explanation of each step. 
+The field $\bC_p$ is the ``$p$-adic analogue of $\bC$.'' See the book 
+\cite{koblitz-1984} for a careful explanation of each step. 
 \end{example}
 
 \begin{definition}
 Let $K$ be any field. The \emph{field of Puiseaux series} over $K$, is 
 \[
   K\puiseaux{t} = \left\{\sum_{k=k_0}^\infty a_i t^{k/n}\colon n\in \bZ^{>0}\right\} .
+\]
+That is, elements consist of formal sums $\sum_{r\in \bQ} a_r t^r$ such that 
+the set $\{r\colon a_r\ne 0\}$ is bounded below and an element of some 
+$\bZ[\frac 1 n]$. Alternatively, 
+\[
+  K\puiseaux{t} = \varinjlim_n K\laurent{t^{1/n}} .
 \]
 \end{definition}
 
@@ -717,7 +741,8 @@ Newton proved this theorem by creating an early version of what is now called
   \widehat{K{\puiseaux{t}}} ,
 \]
 in which the last field is known as the field of \emph{formal Puiseaux 
-series}. [Eisenbud's commutative algebra, cor.~13.15]
+series}. It is sometimes written $K\laurent{t^\bQ}$. For a proof of Newton's 
+theorem, see \cite[Cor.~13.15]{eisenbud-1995}. 
 
 \begin{definition}
 Let $(K,|\cdot|)$ be a non-archimedean field. Put 
@@ -727,6 +752,12 @@ Let $(K,|\cdot|)$ be a non-archimedean field. Put
   K^\natural &= K^\circ / K^{\circ\circ} && \text{``residue (class) field''} .
 \end{align*}
 \end{definition}
+
+Note that the non-archimedean triangle inequality implies that 
+$K^\circ$ actually is a ring. One often puts $R=K^\circ$; this is a local ring 
+with maximal ideal $\fm=K^{\circ\circ}$ and residue field $K^\natural=R/\fm$. 
+All the assignments $(-)^\circ$, $(-)^{\circ\circ}$, and $(-)^\natural$ are 
+functorial. 
 
 \begin{lemma}
 Let $(K,|\cdot|)$ be a non-archimedean field. Then the embedding 
@@ -765,16 +796,17 @@ proper immediate extensions.
 \end{definition}
 
 \begin{definition}
-Let $(V,|\cdot|)$ be a non-archimedean normed space. We say $V$ is 
-\emph{spherically complete} if, whenever $\{D_i\}$ is a nested set of 
-closed disks $\disk(a,r)=\{x\in V\colon |x-a|\leqslant r\}$, then 
-$\bigcap_i D_i\ne \varnothing$. 
+Let $(X,d)$ be a metric space. We say $X$ is \emph{spherically complete} if, 
+whenever $\{D_i\}_{i\in I}$ is a nested set of closed disks (i.e.~each 
+$D_i=\disk(a_i,r_i)=\{x\in X:d(x,a_i)\leqslant r_i\}$ for some $a_i,r_i$, and 
+for any $i,j$, either $D_i\subset D_j$ or $D_j\subset D_i$), then 
+$\bigcap_i D_i\ne\varnothing$. 
 \end{definition}
 
 It turns out that spherical completeness is important for functional analysis. 
 For example, the proof of the Hahn-Banach theorem requires spherical 
-completeness. As an easy exercise, show that spherical completeness implies 
-completeness. 
+completeness. As an easy exercise, show that a spherically complete metric 
+space is complete. 
 
 \begin{example}
 The fields $(\bR,|\cdot|_\infty)$ and $(\bC,|\cdot|_\infty)$ are spherically 
@@ -783,8 +815,9 @@ complete.
 
 \begin{example}
 The field $(\bC_p,|\cdot|_p)$ is \emph{not} spherically complete. This is 
-non-trivial, and highly frustrating. See [Roberts, ``a course in $p$-adic 
-analysis., ch.~3]
+non-trivial, and highly frustrating. See Chapter 3 of \cite{robert-2000} for an 
+explicit example of a sequence of nested disks in $\bC_p$ with empty 
+intersection. 
 \end{example}
 
 \begin{theorem}
@@ -792,24 +825,24 @@ A non-archimedean field is spherically complete if and only if it is
 maximally complete. 
 \end{theorem}
 
-For a good general discussion of spherically complete fields, see chapter 2 
-of ``functional analysis and valuation theory,'' by Narici+\ldots. This 
-theorem is proved on p.~34,43.
+For a good general discussion of spherically complete fields, see Chapter 2 of 
+\cite{narici-beckenstein-bachman}. This theorem is a combination of results on 
+p.~34 and 43 of that book. 
 
 \begin{theorem}[Krull]
 All valued fields have a maximally complete extension. 
 \end{theorem}
 
-[previous book, p.~54]
+This proved on p.~54 of \cite{narici-beckenstein-bachman}. 
 
-\begin{corollary}
+\begin{theorem}
 All non-archimedean fields can be embedded into a spherically complete 
 extension with the same value group and residue field. 
-\end{corollary}
+\end{theorem}
 
 \begin{example}
 Let's apply the above results to $\bC_p$. We get an algebraically closed, 
-spherically complete extension of $\bQ_p$. Denote this by ???
+spherically complete extension of $\bQ_p$. Denote this by $\bQ_p^\odot$
 \end{example}
 
 We would like some notion of uniqueness for maximally complete extensions. 
@@ -819,24 +852,19 @@ Sadly, this doesn't work in general.
 If $K^\natural$ is characteristic zero, there is a unique maximal extension. 
 \end{theorem}
 
-[See Poonen, Hahn series. Also ch.3 of Robert's book, where the 
-construction uses ultraproducts.]
+So this can't be applied to $\bQ_p$. See Chapter 3 of \cite{robert-2000} for 
+a construction using ultraproducts. He ends up with a field $\Omega_p$ which 
+contains $\bC_p$, is spherically complete and algebraically closed. Moreover, 
+$|\Omega_p|=\bR^{\geqslant 0}$, as opposed to $|\bC_p^\times|=p^\bQ$. As a 
+field, $\bC\simeq \bC_p$. This is a special case of the general theorem that 
+the isomorphism of an uncountable algebraically closed field depends only on 
+its cardinality (the theory of such fields is \emph{categorical}). See 
+\S 3.5 of \cite{robert-2000}. 
 
-Get a field $\Omega_p$ satisfying:
-\begin{enumerate}
-\item
-the field contains $\bQ_p$, $\bC_p$
-
-\item
-it's algebraically closed, 
-
-\item
-it's spherically complete
-\end{enumerate}
-
-Moreover, $|\Omega_p|=\bR^{\geqslant 0}$, as opposed to 
-$|\bC_p^\times|=p^\bQ$. As a field, $\bC\simeq \bC_p$ [see logic stuff, 
-see \S 3.5 of Robert's book.]
+There are more algebraic constructions due to Poonen \cite{poonen-1993} and 
+Kedlaya \cite{kedlaya-2001}, which rely on Mal'cev-Neumann rings (or fields of 
+Hahn series) and their $p$-adic analogue. We will return to this in a later 
+section on arbitrary valuations. 
 
 
 
