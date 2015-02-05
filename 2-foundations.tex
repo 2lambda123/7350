@@ -608,7 +608,13 @@ The only complete archimedean fields are $(\bR,|\cdot|_\infty^e)$ and
 $(\bC,|\cdot|_\infty^e)$ for $0\leqslant e<1$. 
 \end{theorem}
 \begin{proof}
-This is \cite[1.2.4]{engler-prestel}. 
+This is \cite[1.2.4]{engler-prestel}. If $(K,|\cdot|)$ is a complete 
+archimedean field, then $K$ has characteristic zero, so $\bQ\hookrightarrow K$. 
+The absolute value $|\cdot|$ restricted to $\bQ$ is archimedean, so by 
+\autoref{thm:ostrowski}, $|\cdot|=|\cdot|_\infty^e$ on $\bQ$ for some 
+$0<e\leqslant 1$. By the universal property of (metric) completion, we get a 
+continuous embedding $\bR\hookrightarrow K$. By \autoref{cor:exts-of-R}, 
+$K=\bR$ or $K=\bC$. 
 \end{proof}
 
 \begin{corollary}
@@ -627,7 +633,7 @@ one uses the map $\bC\to A$ given by $c\mapsto (a-c)^{-1}$. For details, see
 \cite[18.6]{rudin-1987}. 
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{cor:exts-of-R}
 Let $(K,|\cdot|)$ be an extension of $(\bR,|\cdot|_\infty)$. Then either 
 $K=\bR$ or $K=\bC$. 
 \end{corollary}
@@ -636,6 +642,201 @@ If $K$ contains $\bC$, then applying \autoref{lemma:spec-Banach} shows that
 $K=\bC$. If $K$ does not contain any such $j$, the field $K(\sqrt{-1})$ must be 
 $\bC$, hence $K=\bR$. 
 \end{proof}
+
+If $(K,|\cdot|)$ is a non-archimedean field which is \emph{not} complete, and 
+$L/K$ is an algebraic extension, how can we extend $|\cdot|$ to $L$? This is 
+easy. Let $\widehat K$ be the completion of $K$; it carries a unique extension 
+of $|\cdot|$. Let $\overline{\widehat K}$ be an algebraic closure of 
+$\widehat K$; this also carries a unique extension of $|\cdot|$. We have an 
+embedding $i:L\hookrightarrow \overline{\widehat K}$. The pullback via $i$ of 
+the absolute value on $\overline{\widehat K}$ is an extension of $|\cdot|$ to 
+$L$. 
+
+\begin{theorem}[Krasner]\label{thm:krasner}
+Let $K$ be an algebraically closed field with absolute value $|\cdot|$. Then 
+$\widehat K$ is also algebraically closed. 
+\end{theorem}
+\begin{proof}
+This works via ``continuity of roots.'' Let $L$ be an algebraic closure of 
+$\widehat K$. We want to prove that $L=\widehat K$. Let $f\in \widehat K[x]$; 
+write $f=\sum_{i=0}^n c_i x^i$ with $c_n=1$. Let $\alpha\in L$ be a root of 
+$f$, i.e.~$f(\alpha)=0$. It suffices to show that $\alpha$ can be approximated 
+by elements $\beta_i\in K$ (so $\alpha=\lim \beta_i\in \widehat K$). Fix 
+$\epsilon>0$. We may choose $d_i\in K$ approximating the coefficients 
+$c_i\in \widehat K$, so that $g=\sum d_i x^i\in K[x]$ is monic and satisfies 
+$|g(\alpha)|\leqslant \epsilon^n$. Since $K$ is algebraically closed, we have a 
+factorization $g=\prod (x-\beta_i)$, so 
+\[
+  |g(\alpha)| = \prod_{i=1}^n |\alpha-\beta_i| \leqslant \epsilon^n .
+\]
+So at least one $\beta_i$ satisfies $|\alpha-\beta_i|\leqslant \epsilon$. 
+\end{proof}
+
+We mentioned that $(\bQ,|\cdot|_p)$ is not complete. There is an explicit, 
+algorithmic way to show this, which comes from sequences $\{a_i\mod{p^i}\}$. 
+This is done very nicely in [Gouvea, p.~52]. 
+
+For any non-archimedean field $K$, we can pass to the completion $\widehat K$, 
+its algebraic closure $\overline{\widehat K}$, then finally to the completion 
+of that field: $\widehat{\overline{\widehat K}}$. By \autoref{thm:krasner}, 
+this is a complete, algebraically closed, non-archimedean field. The 
+absolute value $|\cdot|$ on $K$ has a unique extension to 
+$\widehat{\overline{\widehat K}}$. One thing to be careful of: while 
+$|K^\times|=|\widehat K^\times|$ and similarly for the embedding 
+$\overline{\widehat K}\hookrightarrow\widehat{\overline{\widehat K}}$. But 
+$|\overline{\widehat K}^\times|$ may be strictly larger than 
+$|\widehat K^\times|$. 
+
+\begin{example}
+For $(\bQ,|\cdot|_p)$, we get the following chain of embeddings:
+\[
+  \bQ\hookrightarrow \bQ_p \hookrightarrow \overline{\bQ_p} \hookrightarrow \widehat{\overline{\bQ_p}} = \bC_p .
+\]
+The field $\bC_p$ is the ``$p$-adic analogue of $\bC$.'' See 
+[Koblitz, $p$-adic\ldots] for a careful explanation of each step. 
+\end{example}
+
+\begin{definition}
+Let $K$ be any field. The \emph{field of Puiseaux series} over $K$, is 
+\[
+  K\puiseaux{t} = \left\{\sum_{k=k_0}^\infty a_i t^{k/n}\colon n\in \bZ^{>0}\right\} .
+\]
+\end{definition}
+
+\begin{theorem}[Newton]
+If $K$ is algebraically closed of characteristic zero, then 
+$K\puiseaux{t} = \overline{K\laurent{t}}$. 
+\end{theorem}
+
+Newton proved this theorem by creating an early version of what is now called 
+\emph{Newton's method}. Thus we have a sequence of embeddings 
+\[
+  K(t)\hookrightarrow 
+  K\laurent{t} \hookrightarrow 
+  K\puiseaux{t} \hookrightarrow 
+  \widehat{K{\puiseaux{t}}} ,
+\]
+in which the last field is known as the field of \emph{formal Puiseaux 
+series}. [Eisenbud's commutative algebra, cor.~13.15]
+
+\begin{definition}
+Let $(K,|\cdot|)$ be a non-archimedean field. Put 
+\begin{align*}
+  K^\circ &= \{x\in K\colon |x|\leqslant 1\} && \text{``valuation ring''} \\
+  K^{\circ\circ} &= \{x\in K\colon |x|<1\} && \text{``(unique) maximal ideal''} \\
+  K^\natural &= K^\circ / K^{\circ\circ} && \text{``residue (class) field''} .
+\end{align*}
+\end{definition}
+
+\begin{lemma}
+Let $(K,|\cdot|)$ be a non-archimedean field. Then the embedding 
+$K\hookrightarrow \widehat K$ induces an isomorphism 
+$K^\natural\xrightarrow\sim\widehat K^\natural$.
+\end{lemma}
+\begin{proof}
+It is trivial to check that: 
+\begin{align*}
+  K^\circ &= \widehat K^\circ\cap K \\
+  K^{\circ\circ} &= \widehat K^{\circ\circ}\cap K .
+\end{align*}
+This gives us a well-defined map $K^\circ\to \widehat K^\natural$, namely 
+$a\mapsto a+\widehat K^{\circ\circ}$. It has kernel $K^{\circ\circ}$, so we get 
+an embedding $K^\natural\hookrightarrow \widehat K^\natural$. To see that this 
+map is surjective, note that for any $x\in \widehat K^\circ$, the set 
+$x+\widehat K^{\circ\circ}$ is an open set in $\widehat K$. Since $K$ is dense 
+in $\widehat K$, there is some $y\in (x+\widehat K^{\circ\circ})\cap K$; then 
+$y\mapsto x+\widehat K^{\circ\circ}$. 
+\end{proof}
+
+\begin{definition}
+Let $L/K$ be an arbitrary extension of fields with absolute value. If 
+$|K^\times|=|L^\times|$ and $K^\natural\xrightarrow\sim L^\natural$, we say $L$ 
+is an \emph{immediate extension} of $K$.  
+\end{definition}
+
+\begin{example}
+If $K$ is any non-archimedean field, then $\widehat K$ is an immediate 
+extension of $K$. 
+\end{example}
+
+\begin{definition}
+We say a field $(K,|\cdot|)$ is \emph{maximally complete} if it admits no 
+proper immediate extensions. 
+\end{definition}
+
+\begin{definition}
+Let $(V,|\cdot|)$ be a non-archimedean normed space. We say $V$ is 
+\emph{spherically complete} if, whenever $\{D_i\}$ is a nested set of 
+closed disks $\disk(a,r)=\{x\in V\colon |x-a|\leqslant r\}$, then 
+$\bigcap_i D_i\ne \varnothing$. 
+\end{definition}
+
+It turns out that spherical completeness is important for functional analysis. 
+For example, the proof of the Hahn-Banach theorem requires spherical 
+completeness. As an easy exercise, show that spherical completeness implies 
+completeness. 
+
+\begin{example}
+The fields $(\bR,|\cdot|_\infty)$ and $(\bC,|\cdot|_\infty)$ are spherically 
+complete. 
+\end{example}
+
+\begin{example}
+The field $(\bC_p,|\cdot|_p)$ is \emph{not} spherically complete. This is 
+non-trivial, and highly frustrating. See [Roberts, ``a course in $p$-adic 
+analysis., ch.~3]
+\end{example}
+
+\begin{theorem}
+A non-archimedean field is spherically complete if and only if it is 
+maximally complete. 
+\end{theorem}
+
+For a good general discussion of spherically complete fields, see chapter 2 
+of ``functional analysis and valuation theory,'' by Narici+\ldots. This 
+theorem is proved on p.~34,43.
+
+\begin{theorem}[Krull]
+All valued fields have a maximally complete extension. 
+\end{theorem}
+
+[previous book, p.~54]
+
+\begin{corollary}
+All non-archimedean fields can be embedded into a spherically complete 
+extension with the same value group and residue field. 
+\end{corollary}
+
+\begin{example}
+Let's apply the above results to $\bC_p$. We get an algebraically closed, 
+spherically complete extension of $\bQ_p$. Denote this by ???
+\end{example}
+
+We would like some notion of uniqueness for maximally complete extensions. 
+Sadly, this doesn't work in general. 
+
+\begin{theorem}[Kaplansky]
+If $K^\natural$ is characteristic zero, there is a unique maximal extension. 
+\end{theorem}
+
+[See Poonen, Hahn series. Also ch.3 of Robert's book, where the 
+construction uses ultraproducts.]
+
+Get a field $\Omega_p$ satisfying:
+\begin{enumerate}
+\item
+the field contains $\bQ_p$, $\bC_p$
+
+\item
+it's algebraically closed, 
+
+\item
+it's spherically complete
+\end{enumerate}
+
+Moreover, $|\Omega_p|=\bR^{\geqslant 0}$, as opposed to 
+$|\bC_p^\times|=p^\bQ$. As a field, $\bC\simeq \bC_p$ [see logic stuff, 
+see \S 3.5 of Robert's book.]
 
 
 
