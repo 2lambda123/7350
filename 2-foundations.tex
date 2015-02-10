@@ -866,6 +866,229 @@ Kedlaya \cite{kedlaya-2001}, which rely on Mal'cev-Neumann rings (or fields of
 Hahn series) and their $p$-adic analogue. We will return to this in a later 
 section on arbitrary valuations. 
 
+[Clarifications]
+
+1. Let $K$ be a field. Then the extension $\overline K/K$ is unique up to 
+(possibly non-unique) isomorphism. That is, $\overline K$ is a unique 
+isomorphism class of extensions of $K$. 
+
+This fails for spherical completions. 
+
+2. The notion of ``immediate extension'' does not make sense for archimedean 
+fields. All the notions of $K^\circ$, $K^{\circ\circ}$, $K^\natural$, 
+immediate extension, maximally complete, etc.~only make sense for non-archimedean 
+$|\cdot|$. 
+
+Krull's proof (that any field can be embedded into a maximally complete 
+field) in fact shows that the (maximally complete) field is maximal (in a 
+precise sense) among immediate extensions. So every field admits a maximally 
+complete immediate extension. 
+
+3. Krasner's theorem tells us that the completion of an algebraically closed 
+field is algebraically closed. It is not clear (and possibly not true) that 
+every field admits a dense embedding into a spherically complete field. 
+[Roberts, chapter 3] constructs a non-immediate algebraically closed spherically 
+complete field. Conclusion: Krasner's lemma doesn't (necessarily) hold for 
+spherical completion. 
+
+
+
+
+
+\subsection{Hensel's lemma}
+
+This is the main reason for why $\bQ_p$ is ``easy.'' It reduces problems from 
+$K$ to (purely algebraic) problems in $K^\natural$. Since 
+$\bQ_p^\natural=\bF_p$, this generally makes a problem effectively computable. 
+
+Let $(K,|\cdot|)$ be a complete non-archimedean field. We have a natural map 
+$K^\circ[x]\to K^\natural[x]$ denoted $f\mapsto \tilde f$, ``reduce modulo 
+$K^{\circ\circ}$.''
+
+\begin{theorem}[Hensel]
+Assume $g\in K^\circ[x]$; assume $\tilde g\in K^\natural[x]$ is nonzero. 
+Assume $\tilde g=p q$ in $K^\natural[x]$, where 
+\begin{itemize}
+\item
+$p$ is monic, 
+
+\item
+$\gcd(p,q)=1$ in $K^\natural[x]$.
+\end{itemize}
+Then $g=P Q$ in $K^\circ[x]$, where 
+\begin{itemize}
+\item $P$ is monic, 
+\item $\tilde P=p$, $\tilde Q=q$. 
+\end{itemize}
+\end{theorem}
+
+See \cite{bosch-2014} for a proof. 
+
+The usual proof uses completeness / denseness of $K$ by successively 
+approximating $P$ and $Q$. But in fact, completeness / denseness is not the 
+core reason for the truth of this theorem! There is a general notion of 
+completion for arbitrary (higher rank) valuation rings, and in this context the 
+standard Hensel's lemma can fail. It is replaced by something called the 
+``henselization'' of a ring. We will see more about this in [later section]. 
+
+\begin{corollary}\label{cor:integral-norm}
+Let $L/K$ be an algebraic extension. Then $\alpha\in L$ is integral over 
+$K^\circ$ if and only if $\norm_{K(\alpha)/K}(\alpha)\in K^\circ$. 
+\end{corollary}
+
+The proof is in \cite{bosch-2014}. In this generality, one needs Hensel's lemma 
+for the proof. We can now prove that the extension of a complete absolute 
+value $|\cdot|$ on $K$ to $L$ via 
+\[
+  |\alpha|' = |\norm_{K(\alpha)/K}(\alpha)|^{\frac{1}{[K(\alpha)\colon K]}} ,
+\]
+satisfies the non-archimedean triangle inequality: 
+\[
+  |\alpha+\beta|'\leqslant \max\{|\alpha|',|\beta|'\} .
+\]
+We may assume $|\beta|'\geqslant |\alpha|'$. Dividing by $\beta$, it comes 
+down to showing that $|1+\gamma|'\leqslant 1$ whenever $|\gamma|\leqslant 1$. 
+In light of \autoref{cor:integral-norm}, this is now obvious. 
+
+\begin{corollary}
+Let $(K,|\cdot|)$ be a complete non-archimedean field, $f\in K^\circ[x]$ 
+nonzero. Assume there is $\tilde a\in K^\natural[x]$ such that $f(\tilde a)=0$, 
+but $f'(\tilde a)\ne 0$. Then there exists $a\in K^\circ$ such that 
+$a\equiv \tilde a\mod{K^{\circ\circ}}$ and $f(a)=0$. 
+\end{corollary}
+
+For $K=\bQ_p$, this means that given $f\in \bZ_p[x]$ with a non-repeated root 
+$a$ modulo $p$, then $f$ has a root in $\bZ_p$. A direct proof works via a 
+$p$-adic version of Newton's algorithm (with guaranteed solution). This is 
+done very nicely in \cite{gouvea-1997}. 
+
+
+
+
+
+\subsection{Newton's method}
+
+This is really zero-dimensional tropical geometry. Let $(K,|\cdot|)$ be a 
+complete non-archimedean field. Let $f=\sum a_n x^n\in K[x^{\pm 1}]$ be a 
+Laurent polynomial of degree $d$. Let 
+$\lambda_1,\dots,\lambda_d\in \overline K$ be the roots of $f$. (Formally, 
+we're looking at the scheme $\spec(k[x^{\pm 1}]/f)$.) Put 
+$\valuation(\cdot)=-\log|\cdot|$. The set 
+\[
+	\{\valuation(\lambda_1),\dots,\valuation(\lambda_d)\} 
+\]
+can be described combinatorially. Write $\newtonpolygon(f)$ for the lower 
+convex hull of the set of points $\{n,\valuation(a_n)\}\subset \bR^2$. This is 
+the \emph{Newton Polygon} of $f$. 
+
+\begin{theorem}
+Let $f$ be as above. Then 
+\begin{enumerate}
+\item
+$-r$ is a slope in $\newtonpolygon(f)$ if and only if $f$ has a root $\lambda$ 
+with $\valuation(\lambda)=r$. 
+
+\item
+The number of $\lambda$ with $\valuation(\lambda)=r$ is the length of the 
+projection onto the $x$-axis of the line segment with slope $-r$. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Use the fact that each $a_i$ is an elementary symmetric function of the 
+$\lambda_j$s,together with the non-archimedean triangle inequality. For 
+example, when $x^2+b x+c=(x-\lambda_1)(x-\lambda_2)$, we have 
+\begin{align*}
+  b &= -(\lambda_1+\lambda_2) \\
+  c &= \lambda_1 \lambda_2 .
+\end{align*}
+\end{proof}
+
+\begin{example}
+Consider the polynomial $f(x)=x^2-(p+1)x+p\in \bQ_p[x]$. Normalize our 
+valuation by $\valuation(p)=1$ and $|p|_p=1/p$. Then $\newtonpolygon(f)$ is the 
+lower convex hull of $\{(0,1),(1,0),(2,0)\}$. This has slopes $-1$ and $0$, 
+each of length $1$, so $f$ has one root of valuation $0$ and $1$, respectively. 
+Of course, the roots are $1$ and $p$, so we already knew this. 
+\end{example}
+
+As an exercise, prove Eisenstein's criterion for irreducibility using Newton's 
+Method. 
+
+Newton's method can be generalized to convergent power series in more than one 
+variable. This has seen many applications, e.g.~to abelian varieties. 
+
+
+
+
+
+\subsection{Arbitrary valuations}
+
+This theory was initiated by Krull in the 1930s. As motivation: if 
+$(K,|\cdot|)$ is a non-archimedean field, the absolute value took values in 
+$\bR^{\geqslant 0}$. More precisely, $|\cdot|\colon K^\times \to \bR^{>0}$ is 
+a group homomorphism. We could just as well have used 
+$\valuation(\cdot)=-\log_a|\cdot|$; the topology does not depend on the choice 
+of base $a$. 
+
+So we have a function $\valuation\colon K \to \bR\cup\{\infty\}$ such that 
+\begin{enumerate}
+\item
+$\valuation(x)=\infty$ if and only if $x=0$, 
+
+\item
+$\valuation(x y) = \valuation(x)+\valuation(y)$, and 
+
+\item
+$\valuation(x+y)\geqslant \min\{\valuation(x),\valuation(y)\}$. 
+\end{enumerate}
+We have the \emph{valuation ring} given by 
+\[
+  K^\circ = \{x\in K\colon \valuation(x) \geqslant 0\} ,
+\]
+with maximal ideal $\{x\in K\colon \valuation(x)>0\}$ and residue field 
+$K^\natural=K^\circ/K^{\circ\circ}$. Krull's idea was that there is nothing 
+special about $\bR$, all we need is to be able to ``add valuations'' and 
+``compare valuations.'' He replaced $(\bR,+,\leqslant)$ with an arbitrary 
+totally ordered abelian group $(\Gamma,+,\leqslant)$. (The order $\leqslant$ is 
+required to be total and compatible with $+$ in the sense that 
+$\alpha\leqslant\beta\Rightarrow\gamma+\alpha\leqslant \gamma+\beta$.)
+
+\begin{definition}
+Let $K$ be a field. A \emph{valuation} on $K$ (with value group $\Gamma$) is a 
+function $\valuation\colon K\twoheadrightarrow \Gamma\cup\{\infty\}$ such that 
+\begin{enumerate}
+\item
+$\valuation(x)=\infty$ if and only if $x=0$, 
+
+\item
+$\valuation(x y) = \valuation(x)+\valuation(y)$, and 
+
+\item
+$\valuation(x+y)\geqslant \min\{\valuation(x),\valuation(y)\}$. 
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+Let $(K,|\cdot|)$ be a non-archimedean field. Then 
+$\valuation(\cdot)=-\log|\cdot|$ gives $K$ a valuation with $\Gamma$ a subgroup 
+of $\bR$. 
+\end{example}
+
+As an exercise, compute $\bQ^\circ$ for $|\cdot|_p$. 
+
+\begin{example}
+Let $\Gamma=\bZ\times\bZ$ with the lexicographic order. Put a valuation on 
+$k\laurent{x,y}$ by setting 
+\[
+  \valuation\left(\sum a_{m,n} x^m y^n\right) = \min\{(m,n)\in \Gamma\colon a_{m,n}\ne 0\} .
+\]
+It is a good exercise to check that these are actually valuations. 
+\end{example}
+
+Any field with valuation can be given a Hausdorff topology. The notions of 
+completeness and completion still make sense, but completion is very poorly 
+behaved in this generality. 
+
 
 
 
