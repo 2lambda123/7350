@@ -1085,9 +1085,211 @@ $k\laurent{x,y}$ by setting
 It is a good exercise to check that these are actually valuations. 
 \end{example}
 
-Any field with valuation can be given a Hausdorff topology. The notions of 
-completeness and completion still make sense, but completion is very poorly 
-behaved in this generality. 
+Any field with valuation can be given a Hausdorff topology in a functorial way. 
+This topology is not the naive definition via metrics, because we don't have an 
+absolute value on the field. But formally, it's the same idea. We define a 
+basis of open neighborhoods on the field $K$. For $\gamma\in \Gamma$, let 
+\[
+  U_\gamma(a) = \{b\in K\colon \valuation(b-a)>\gamma\} .
+\]
+It's easy to check that $\{U_\gamma(a)\colon a\in K,\gamma\in \Gamma\}$ form 
+the basis of a Hausdorff topology. The group $\Gamma=0$ if and only if all 
+$U_\gamma(a)=\{a\}$, which is equivalent to the topology being discrete. Call 
+two valuations \emph{equivalent} if they induce the same topology. It is known 
+that two valuations are equivalent if and only if they induce ``independant'' 
+valuation rings. Here, two valuation rings are dependent if\ldots. [There are 
+easy characterizations for valuations that induce the same topology.] 
+
+\begin{proposition}
+Let $(K,\valuation)$ be a valued field. Give $K$ the topology induced by 
+$\valuation$. Then 
+\begin{enumerate}
+\item
+The field operations $(\cdot,+,(\cdot)^{-1})$ are continuous. 
+
+\item
+For all $x,y\in K$, $\gamma\in \Gamma$, if $x y\in U_{2\gamma}(0)$, then 
+either $x\in U_\gamma(0)$ or $y\in U_\gamma(0)$. 
+\end{enumerate}
+\end{proposition}
+
+Such topologies are called \emph{v-topologies}. There is an deep converse 
+result: any v-topology comes from a valuation. [find source]
+
+The notions of completeness and completion still make sense (one needs to use 
+nets instead of sequences---see [Bourbaki]), but completion is very poorly 
+behaved in this generality. [put $\widehat K=$ Cauchy nets / nullsequence]. 
+Then $K\hookrightarrow \widehat K$ is a dense immediate extension. However, 
+Hensel's lemma might fail for complete fields [Engler?]. 
+
+[Uniform spaces, uniformizable\ldots uniform completion. Fit this into 
+context of ``uniform completion'' of Bourbaki. Is the valuation topology 
+``uniformizable'' and is the ``valuation completion'' the so-called 
+uniform (or Hausdorff) completion?]
+
+Recall that the ``standard'' proof of Hensel's lemma just uses denseness and 
+completion. A better field than $\widehat K$ to do arithmetic in is the 
+\emph{Henselization} of $K$, denoted $K^\henselization$. It is a field 
+containing $K$ for which Hensel's lemma holds, and that is in some sense 
+minimal with respect to these properties. 
+
+[Give better definition\ldots mention link to \'etale topology.]
+
+See [Engler+\ldots]
+
+\begin{proposition}
+Let $K$ be a valued field. Then 
+\begin{enumerate}
+\item
+$K^\henselization$ exists. 
+
+\item
+$K^\henselization/K$ is an algebraic extension, and is unique up to 
+valuation-preserving isomorphism. 
+
+\item
+The valuation on $K$ admits a canonical extension to $K^\henselization$. 
+
+\item
+The extension $K^\henselization/K$ is immediate. 
+\end{enumerate}
+\end{proposition}
+
+Note that $K$ is \emph{not} necessarily dense in $K^\henselization$. More 
+generally, a \emph{Henselian field} is a valued field such that 
+[list equivalent definitions]. 
+
+\subsubsection{Rank}
+
+Every valuation has an invariant known as the \emph{rank}. The rank only 
+depends on the value group. So, fix a totally ordered abelian group 
+$(\Gamma,+,\leqslant)$. Let $\Delta\subset \Gamma$ be a subgroup. We say 
+$\Delta$ is \emph{convex} if for any $\delta\in \Delta$, $\gamma\in \Gamma$ 
+such that $0\leqslant \gamma\leqslant \delta$, we have $\gamma\in \Delta$. 
+
+Let $\Sigma$ be the collection of all convex subgroups of $\Gamma$. The set 
+$\Sigma$ carries a natural ordering via inclusion. It is easy to see that 
+$(\Sigma,\subset)$ is totally ordered. The \emph{rank} of $\Gamma$, written 
+$\rank(\Gamma)$, is the order-type of $(\Sigma,\subset)$. 
+
+Recall from Cantor that two totally ordered sets have the same 
+\emph{order-type} if and only if there is an order-preserving bijection between 
+them. 
+
+[Example: $\rank(\bR)=\{0\subset\bR\}=1$]
+
+We will be concerned exclusively with finite order-types, namely those of 
+the finite sets $\{0,1,\dots,n\}$. So $\rank(\Gamma)=n$ if and only if there 
+are exactly $n$ distinct proper convex subgroups of $\Gamma$. 
+
+So $\rank(\Gamma)=1$ if and only if $0$ is the only convex proper subgroup of 
+$\Gamma$. Clearly, every subgroup of $\bR$ (with the obvious ordering) has no 
+nontrivial convex subgroup. This follows from the archimedean property of 
+$\bR$. The converse holds. 
+
+\begin{theorem}
+Let $\Gamma$ be a totally ordered abelian group. Then
+$\rank(\Gamma)\leqslant 1$ if and only if $\Gamma$ admits an order-preserving 
+embedding into $\bR$. 
+\end{theorem}
+
+The rank of $(\Gamma,+,\leqslant)$ depends strongly on the choice of ordering 
+$\leqslant$. For example, $(\bZ^2,\leqslant_\mathrm{lex})$ has rank two and is 
+discrete, i.e.~it has a minimal positive element. The group 
+$\bZ[\sqrt{2}]\subset \bR$ is isomorphic to $\bZ^2$ as an abstract group, but 
+has rank one and is not discrete. 
+
+[All nontrivial subgroups of $\bR$ are either lattices (discrete) or dense.]
+
+
+
+
+
+\subsection{Value groups, valuation rings, and residue fields}
+
+A valuation $\valuation\colon K\to \Gamma\cup\{+\infty\}$ induces a group 
+homomorphism $\valuation\colon K^\times \twoheadrightarrow \Gamma$. We call 
+$\Gamma=\valuation(K^\times)$ the \emph{value group} of $(K,\valuation)$. 
+
+Define $\rank(\valuation)=\rank(\Gamma)$. 
+
+The valuation ring $K^\circ=\{x\in K\colon \valuation(x)\geqslant 0\}$ depends 
+on $\valuation$, but we tacitly exclude this from the notation. 
+
+Note that 
+\begin{align*}
+  \valuation(1) &= 0 \\
+  \valuation(x^{-1}) &= -\valuation(x) \\
+  \valuation(-x) &= \valuation(x) \\
+  \valuation(x) < \valuation(y) &\Rightarrow \valuation(x+y) = \valuation(x) .
+\end{align*}
+One has $(K^\circ)^\times = \{x\in K\colon \valuation(x)=0\}$. So 
+$K^{\circ\circ}$ is the set of non-units of $K^\circ$. Thus 
+$K^{\circ\circ}\subset K^\circ$ is the unique maximal ideal and $K^\circ$ has 
+residue (class) field $K^\natural=K^\circ/K^{\circ\circ}$. 
+
+An integral domain $R$ is called a \emph{valuation ring} if for all 
+$x\in R_{(0)}=K$, either $x\in R$ or $x^{-1}\in R$. That is, 
+$K=R\cup R^{-1}$. Clearly our $K^\circ$ is a valuation ring in this new
+sense. Conversely, let $R\subset K$ be a valuation ring (in the new sense). 
+Then there exists a canonical valuation on $K$ such that $R=K^\circ$ with 
+respect to that valuation. 
+
+\begin{proof}
+Let $\Gamma=K^\times/R^\times$; this is an abelian group. Give $\Gamma$ an 
+ordering by setting $x R^\times \leqslant y X^\times$ if $y/x\in R$. Check 
+that this makes $\Gamma$ a totally ordered abelian group. We define a valuation 
+$\valuation\colon K\to \Gamma\cup\{+\infty\}$ by 
+\begin{align*}
+  \valuation(0) &= +\infty \\
+  \valuation(a) &= a R^\times \qquad (a\ne 0) .
+\end{align*}
+[See exercises in Atiyah-MacDonald.] Check that with this definition, 
+$R=K^\circ$. 
+\end{proof}
+
+\begin{corollary}
+Let $(K,\valuation)$ be a valued field. Then 
+$\Gamma\simeq K^\times/K^{\circ\times}$. 
+\end{corollary}
+
+[Notation convention, $(X^\spadesuit)^\heartsuit = X^{\spadesuit\heartsuit}$. ]
+
+\begin{example}
+Let $R$ be a valuation ring. Then the following are equivalent:
+\begin{enumerate}
+\item
+$R$ is noetherian.
+
+\item
+$R$ is a principal ideal ring. 
+
+\item
+$R$ is a discrete valuation ring.
+
+\item
+$\Gamma\simeq \bZ$. 
+\end{enumerate}
+Thus valuation rings are very rarely noetherian. 
+\end{example}
+
+\begin{example}
+The only valuations on $\bQ$ are the $p$-adic ones. These are discrete. 
+\end{example}
+
+\begin{example}
+On the field $K(x)$, there are 
+\begin{enumerate}
+\item
+$p$-adic valuations, for $p$ an irreducible polynomial in $K[x]$
+
+\item
+$\valuation_\infty(f/g)=\deg g-\deg f$, called the \emph{valuation at 
+infinity}. We write $K\laurent{x}=\widehat{K(x)}$; one calls the extension 
+of $\valuation_\infty$ to $K\laurent{x}$ the \emph{$x$-adic valuation}. 
+\end{enumerate}
+One can prove that these are the only valuations which are trivial on $K$. 
+\end{example}
 
 
 
