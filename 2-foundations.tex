@@ -447,7 +447,7 @@ algebraically closed. The field $\bC_p$ is the $p$-adic analogue of $\bC$.
 
 
 
-\subsection{Absolute values and field extensions}
+\subsection{Absolute values and field extensions}\label{sec:abs-val-field-ext}
 
 A field extension is naturally a vector space over the base field, so our 
 first results will be in the more general context of vector spaces over 
@@ -1295,8 +1295,7 @@ The rank of $(\Gamma,+,\leqslant)$ depends strongly on the choice of ordering
 $\leqslant$. For example, $(\bZ^2,\leqslant_\mathrm{lex})$ has rank two and is 
 discrete, i.e.~it has a minimal positive element. The group 
 $\bZ[\sqrt{2}]\subset \bR$ is isomorphic to $\bZ^2$ as an abstract group, but 
-has rank one and is not discrete. Generally, it is well-known that all 
-nontrivial subgroups of $\bR$ are either discrete or dense.
+has rank one and is not discrete. 
 
 
 
@@ -1341,16 +1340,14 @@ $\valuation\colon K\to \Gamma\cup\{+\infty\}$ by
   \valuation(0) &= +\infty \\
   \valuation(a) &= a R^\times \qquad (a\ne 0) .
 \end{align*}
-[See exercises in Atiyah-MacDonald.] Check that with this definition, 
-$R=K^\circ$. 
+See the exercises for chapter 5 of \cite{atiyah-macdonald} for a careful 
+proof of this. Check that with this definition, $R=K^\circ$. 
 \end{proof}
 
 \begin{corollary}
 Let $(K,\valuation)$ be a valued field. Then 
 $\Gamma\simeq K^\times/K^{\circ\times}$. 
 \end{corollary}
-
-[Notation convention, $(X^\spadesuit)^\heartsuit = X^{\spadesuit\heartsuit}$. ]
 
 \begin{example}
 Let $R$ be a valuation ring. Then the following are equivalent:
@@ -1370,6 +1367,19 @@ $\Gamma\simeq \bZ$.
 Thus valuation rings are very rarely noetherian. 
 \end{example}
 
+\begin{lemma}
+Any additive subgroup of $\bR$ is either cyclic or dense. 
+\end{lemma}
+\begin{proof}
+If $G\subset \bR$ is not dense, then there is some $\epsilon>0$ such that 
+$G\cap (0,\epsilon)=\varnothing$. By basic analysis, $G$ has a smallest 
+positive element; call it $a$. For any $x\in \bR$, write $x=n a+c$ with 
+$0\leqslant c<a$. If $x\in G$, we must have $c=0$, whence $G=\bZ a$. 
+\end{proof}
+
+Thus, if a valuation takes values in $\bR$, the valuation ring is either 
+a PID or non-noetherian. 
+
 \begin{example}
 The only valuations on $\bQ$ are the $p$-adic ones. These are discrete. 
 \end{example}
@@ -1387,6 +1397,197 @@ of $\valuation_\infty$ to $K\laurent{x}$ the \emph{$x$-adic valuation}.
 \end{enumerate}
 One can prove that these are the only valuations which are trivial on $K$. 
 \end{example}
+
+Let $(K,\valuation)$ be a valued field. Let $\Gamma'\supset\Gamma$ be a 
+larger totally ordered abelian group. Fix $\gamma\in \Gamma'$. Define 
+$\valuation'\colon K(x)\to \Gamma'\cup\{\infty\}$ by 
+\begin{align*}
+	\valuation'(0) &= 0 \\
+	\valuation'(f/g) &= \valuation'(f)-\valuation'(g) \\
+	\valuation'\left(\sum a_i x^i\right) &= \min_i \{\valuation(a_i)+\gamma i\} .
+\end{align*}
+Standard Grobner basis theory is the special case where $\Gamma=0$ and 
+$\Gamma'=\bR$. It's easy to show that $\valuation'$ is indeed a valuation. 
+The real content is showing that 
+$\valuation(f+g)\geqslant \max\{\valuation(f),\valuation(g)\}$; this is easy. 
+Showing that $\valuation'(fg)=\valuation'(f)\valuation'(g)$ is a bit more 
+technical. 
+
+[Gr\"obner bases for fields with valuation---see Chan and MacLagan's paper 
+``Gr\"obner bases over fields with valuations.'']
+
+The following gives a more algebraic definition of the rank of a valuation. 
+
+\begin{theorem}
+Let $(K,\valuation)$ be a valued field. There is a bijection 
+\[
+  \{\text{convex subgroups of $\Gamma$}\} \leftrightarrow \spec(K^\circ) ,
+\]
+defined by 
+\begin{align*}
+  \Delta\subset\Gamma &\mapsto \{x\in K\colon \valuation(x)>\delta\text{ for all }\delta\in \Delta\} \\
+  \fp\subset K^\circ &\mapsto \{\gamma\in\Gamma\colon \pm\gamma<\valuation(x)\text{ for all }x\in \fp\} .
+\end{align*}
+\end{theorem}
+
+The proof is an easy exercise. 
+
+\begin{corollary}
+If $(K,\valuation)$ is a finite-rank valued field, then 
+$\rank(\valuation)=\dim(K^\circ)$. 
+\end{corollary}
+
+By $\dim(R)$, we mean the Krull dimension of $R$. Of course, for an arbitrary 
+ring $R$, the ``Krull dimension'' of $R$ is an order type---namely that of the 
+longest increasing chain of prime ideals. With that definition of dimension, 
+$\dim(K^\circ)=\rank(\valuation)$ for all valuation fields. We also see that 
+$\rank=1$ if and only if $K^\circ$ is a maximal subring of $K$. 
+
+
+
+
+
+\subsection{Extensions of valuations}
+
+We worked out the story for rank-one valuations in 
+\autoref{sec:abs-val-field-ext}. In general, if $L/K$ is an arbitrary field 
+extension, we might ask whether a valuation on $K$ extends to one on $L$. 
+
+\begin{theorem}[Chevalley]\label{thm:chevalley-extend-valuation}
+Let $K$ be a field, $R\subset K$ a ring, $\fp\in \spec(R)$. Then there exists a 
+valuation ring $K^\circ\subset K$ such that $R\subset K$ and 
+$\fp=R\cap K^{\circ\circ}$. 
+\end{theorem}
+\begin{proof}
+This is a straightforward application of Zorn's Lemma.
+\end{proof}
+
+\begin{corollary}
+Let $L/K$ be an arbitrary field extension. For any valuation ring 
+$K^\circ\subset K$, there exists a valuation ring $L^\circ\subset L$ extending 
+$K^\circ$. 
+\end{corollary}
+\begin{proof}
+Apply \autoref{thm:chevalley-extend-valuation} to $R=K^\circ\subset K$. 
+\end{proof}
+
+Alternatively, we could have said that the valuation 
+$\valuation\colon K\to \Gamma$ extends to some 
+$\valuation'\colon L\to \Gamma'\supset \Gamma$. 
+
+\begin{lemma}
+Any valuation ring is integrally closed. 
+\end{lemma}
+\begin{proof}
+Let $K^\circ\subset K$ be a valuation ring. Suppose 
+$a_0+\cdots + a_{n-1} x^{n-1} + x^n = 0$ for some $x\in K$ and 
+$a_i\in K^\circ$. We want to show that $x\in K^\circ$. If not, then 
+$x^{-1}\in K^\circ$; in fact $x^{-1}\in K^{\circ\circ}$. Basic algebra 
+yields 
+\[
+  -1 = a_0 x^{-n} + a_1 x^{-(n-1)} + \cdots + a_{n-1} x^{-1} \in K^{\circ\circ} ,
+\]
+a contradiction. 
+\end{proof}
+
+For the rest of this section, $L/K$ is a valued extension. That is, 
+\begin{align*}
+  (K,K^\circ) &\subset (L,L^\circ) ,
+  L^\circ\cap K &= K^\circ ,
+  \valuation &\colon K^\times \twoheadrightarrow \Gamma=K^\times/K^{\circ\times} ,
+  \valuation' &\colon L^\times\twoheadrightarrow \Gamma' = L^\times/L^{\circ\times} \text{ extends }\valuation .
+\end{align*}
+We have $K^\times \hookrightarrow L^\times \xrightarrow{\valuation} \Gamma'$. 
+The kernel of this map is $K^\times\cap L^{\circ\times} = K^{\circ\times}$. So 
+we get an order-preserving map $\Gamma\hookrightarrow \Gamma'$. Similarly, the 
+inclusion $K^\circ\hookrightarrow L^\circ$ induces a field extension 
+$K^\natural\hookrightarrow L^\natural$. 
+
+\begin{definition}
+With the above notation, we put 
+\begin{align*}
+  e(L^\circ/K^\circ) &= [\Gamma'\colon \Gamma] && \text{``ramification index''} , \\
+  f(L^\circ/K^\circ) &= [L^\natural\colon K^\natural] && \text{``residue degree''} .
+\end{align*}
+\end{definition}
+
+We are interested in bounding the ramification index and residue degree. 
+For example, the extension $L/K$ is immediate if and only if $e=f=1$. We can 
+prove the best results when $L/K$ is algebraic. 
+
+\begin{theorem}
+Let $L/K$ be as above. 
+
+1. If $[L\colon K]=n<\infty$, then $e f\leqslant n$. 
+
+2. More generally, let $(L,L_1^\circ),\dots,(L,L_t^\circ)$ be pairwise 
+non-isomorphic valued extensions of $(K,K^\circ)$. Then 
+\begin{equation}\label{eq:bound-ramification-inertia}
+  \sum_i e(L_i^\circ/K^\circ) f(L_i^\circ/K^\circ) \leqslant n .
+\end{equation}
+
+3. If $\Gamma=K^\times/K^{\circ\times}\simeq \bZ$ and $L/K$ is separable, then 
+\eqref{eq:bound-ramification-inertia}, if the $L_i^\circ$ range over 
+\emph{all} valued extensions of $(K,K^\circ)$ in $L$. 
+\end{theorem}
+
+The proof of part 1 (which is a special case of Abhyankar's inequality) of 
+this theorem follows from the following result. 
+
+\begin{lemma}
+Let $L/K$ be as above; assume $[L\colon K]<\infty$. Pick 
+$\{\omega_1,\dots,\omega_f\}\subset L^\circ$ such that 
+$\{\overline{\omega_1},\dots,\overline{\omega_f}\}\subset L^\natural$ is 
+linearly independent over $K^\natural$. Also, let 
+$\{\pi_1,\dots,\pi_e\}\subset L^\times$ be such that 
+$\{\valuation'(\pi_1),\dots,\valuation'(\pi_e)\}$ are distinct in 
+$\Gamma'/\Gamma$. Then $\{\omega_i \pi_j\}$ is linearly independent over $K$. 
+\end{lemma}
+
+\begin{corollary}
+If $L/K$ is algebraic, then 
+\begin{enumerate}
+\item
+$\Gamma'/\Gamma$ is a torsion group, 
+
+\item
+$L^\natural/K^\natural$ is algebraic, 
+
+\item
+$\Gamma$ and $\Gamma'$ have the same rank. 
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+Parts 1 and 2 follow from the corresponding fact for any \emph{finite} 
+extension $L/K$. Part 3 only uses the fact that $\Gamma'/\Gamma$ is torsion. 
+More generally, $\Delta'\mapsto \Delta\cap \Gamma$ is an order-preserving 
+bijection between convex subgroups of $\Gamma'$ and convex subgroups of 
+$\Gamma$ \emph{whenever} $\Gamma\hookrightarrow \Gamma'$ is a torsion 
+extension. 
+\end{proof}
+
+\begin{lemma}
+If $K$ is an algebraically closed valued field, then 
+\begin{enumerate}
+\item
+$K^\natural$ is algebraically closed, 
+
+\item
+$\Gamma$ is divisible. 
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+1. Let 
+$\bar f=\overline{a_0} + \overline{a_1} x+ \cdots + x^n\in K^\natural[x]$. Lift 
+the $\overline{a_i}\in K^\natural$ to $a_i\in K^\circ$; we get a polynomial 
+$f=a_0+a_1 x + \cdots + a_n x^n\in K^\circ[x]$. Since $K$ is algebraically 
+closed, $f$ has a root $\alpha$ in $K$. Since $K^\circ$ is integrally closed, 
+$\alpha\in K^\circ$. Then $\bar f(\overline\alpha)=0$. 
+
+2. Recall that $\Gamma=K^\times/K^{\circ\times}$. We prove the stronger result 
+that $K^\times$ is divisible. For any $a\in K^\times$ and $n\geqslant 1$, the 
+equation $x^n-a=0$ has a solution in $K^\times$, so we're done. 
+\end{proof}
 
 
 
