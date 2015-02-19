@@ -1307,7 +1307,10 @@ A valuation $\valuation\colon K\to \Gamma\cup\{+\infty\}$ induces a group
 homomorphism $\valuation\colon K^\times \twoheadrightarrow \Gamma$. We call 
 $\Gamma=\valuation(K^\times)$ the \emph{value group} of $(K,\valuation)$. 
 
-Define $\rank(\valuation)=\rank(\Gamma)$. 
+\begin{definition}
+Let $(K,\valuation\colon K\to \Gamma\cup\{\infty\})$ be a valuation field. We 
+put $\rank(\valuation)=\rank(\Gamma)$. 
+\end{definition}
 
 The valuation ring $K^\circ=\{x\in K\colon \valuation(x)\geqslant 0\}$ depends 
 on $\valuation$, but we tacitly exclude this from the notation. 
@@ -1327,10 +1330,13 @@ residue (class) field $K^\natural=K^\circ/K^{\circ\circ}$.
 An integral domain $R$ is called a \emph{valuation ring} if for all 
 $x\in R_{(0)}=K$, either $x\in R$ or $x^{-1}\in R$. That is, 
 $K=R\cup R^{-1}$. Clearly our $K^\circ$ is a valuation ring in this new
-sense. Conversely, let $R\subset K$ be a valuation ring (in the new sense). 
+sense. Conversely, we have: 
+
+\begin{lemma}
+Let $R\subset K$ be a valuation ring (in the new sense). 
 Then there exists a canonical valuation on $K$ such that $R=K^\circ$ with 
 respect to that valuation. 
-
+\end{lemma}
 \begin{proof}
 Let $\Gamma=K^\times/R^\times$; this is an abelian group. Give $\Gamma$ an 
 ordering by setting $x R^\times \leqslant y X^\times$ if $y/x\in R$. Check 
@@ -1406,15 +1412,13 @@ $\valuation'\colon K(x)\to \Gamma'\cup\{\infty\}$ by
 	\valuation'(f/g) &= \valuation'(f)-\valuation'(g) \\
 	\valuation'\left(\sum a_i x^i\right) &= \min_i \{\valuation(a_i)+\gamma i\} .
 \end{align*}
-Standard Grobner basis theory is the special case where $\Gamma=0$ and 
+Standard Gr\"obner basis theory is the special case where $\Gamma=0$ and 
 $\Gamma'=\bR$. It's easy to show that $\valuation'$ is indeed a valuation. 
 The real content is showing that 
 $\valuation(f+g)\geqslant \max\{\valuation(f),\valuation(g)\}$; this is easy. 
 Showing that $\valuation'(fg)=\valuation'(f)\valuation'(g)$ is a bit more 
-technical. 
-
-[Gr\"obner bases for fields with valuation---see Chan and MacLagan's paper 
-``Gr\"obner bases over fields with valuations.'']
+technical. There is a general theory of Gr\"obner bases for fields with 
+valuation---see the preprint \cite{chan-maclagan}.
 
 The following gives a more algebraic definition of the rank of a valuation. 
 
@@ -1492,10 +1496,10 @@ a contradiction.
 
 For the rest of this section, $L/K$ is a valued extension. That is, 
 \begin{align*}
-  (K,K^\circ) &\subset (L,L^\circ) ,
-  L^\circ\cap K &= K^\circ ,
-  \valuation &\colon K^\times \twoheadrightarrow \Gamma=K^\times/K^{\circ\times} ,
-  \valuation' &\colon L^\times\twoheadrightarrow \Gamma' = L^\times/L^{\circ\times} \text{ extends }\valuation .
+  (K,K^\circ) &\subset (L,L^\circ) ,\\
+  L^\circ\cap K &= K^\circ ,\\
+  \valuation \colon K^\times \twoheadrightarrow \Gamma &=K^\times/K^{\circ\times} ,\\
+  \valuation' \colon L^\times \twoheadrightarrow \Gamma' &= L^\times/L^{\circ\times} \text{ extends }\valuation .
 \end{align*}
 We have $K^\times \hookrightarrow L^\times \xrightarrow{\valuation} \Gamma'$. 
 The kernel of this map is $K^\times\cap L^{\circ\times} = K^{\circ\times}$. So 
