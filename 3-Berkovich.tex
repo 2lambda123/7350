@@ -1,0 +1,85 @@
+% !TEX root = 7350.tex
+
+\section{Berkovich spaces}
+
+
+
+
+
+\subsection{Spectrum of a commutative Banach rings}
+
+This generalizes Gelfand's theory. Much of the theory even works for 
+non-commutative algebras. We do not require the existence of a base field, so 
+our theory applies to ``arithmetic'' rings like $\bZ$ or 
+$\bZ_2[x]/(7 x^3-5)$. 
+
+We start by defining norms and seminorms. (We could phrase everything in terms 
+of (rank-one) valuations and semivaluations.) Let $A$ be a commutative (unital) 
+ring. 
+
+\begin{definition}
+A \emph{seminorm} on $A$ is a function $\|\cdot\|\colon A\to \bR^{\geqslant 0}$ 
+satisfying 
+\begin{enumerate}
+\item
+$\|0\|=0$, $\|1\|\leqslant 1$, 
+
+\item
+$\|f+g\|\leqslant \|f\|+\|g\|$, 
+
+\item
+$\|f g\| \leqslant \|f\| \|g\|$. 
+\end{enumerate}
+\end{definition}
+
+If we replace axiom 2 with $\|f+g\| \leqslant \max\{\|f\|,\|g\|\}$, we say the 
+norm $\|\cdot\|$ is non-archimedean. We will focus primarily on non-archimedean 
+norms. We allow $x\ne 0$ to have $\|x\|=0$. Define 
+\[
+  \ker(\|\cdot\|) = \{x\in A\colon \|x\| = 0\} .
+\]
+(Huber calls this the \emph{support} of $\|\cdot\|$.) This is a prime ideal in 
+$A$. We call $\|\cdot\|$ a \emph{norm} if $\ker(\|\cdot\|)=0$. It turns out 
+that our hypotheses imply that either $\|1\|=0$ or $\|1\|=1$. For, if 
+$\|1\|\ne 0$, then $\|1\| \leqslant \|1\|\|1\|$, so $1\leqslant \|1\|$. If 
+$\|1\|=0$, then $\|f\|=0$ for all $f\in A$. We want to allow this possibility 
+so that the zero ring can have a norm. 
+
+If $(A,\|\cdot\|)$ is a ring with seminorm, then $(A,+)$ is naturally a 
+seminormed group, i.e.~it satisfies 
+\begin{align*}
+  \|0\| &=0 \\
+  \|f+g\| &\leqslant \|f\|+\|g\| \\
+  \|-f\| &= \|f\| .
+\end{align*}
+(Alternatively, replace the last two equations by 
+$\|f-g\| \leqslant \|f\|+\|g\|$.) Any seminormed group carries a natural 
+topology, so we get a topology on $A$. This topology is Hausdorff if and only 
+if $\ker(\|\cdot\|)=0$. The (Hausdorff) completion $\widehat A$ exists (it can 
+be defined via Cauchy sequences as usual), but the obvious map 
+$A\to \widehat A$ is injective if and only if $\ker(\|\cdot\|)=0$. 
+
+If we replace the axiom $\|f g\| \leqslant \|f\| \|g\|$ with 
+$\|f g\| = \|f\| \|g\|$, we say that $\|\cdot\|$ is \emph{multiplicative}. If 
+for all $f\in A$, $\|f^n\| = \|f\|^n$, we say $\|\cdot\|$ is 
+\emph{power-multiplicative}. 
+
+If $N$ is a subgroup of a seminormed group $(A,+)$, then we get a ``residue 
+seminorm'' on $A/N$, defined by 
+\[
+  \|g+N\| = \inf\{\|f\|\colon f-g\in N\} .
+\]
+This gives a norm on $A/N$ if and only if $N$ is closed. 
+
+Let $\varphi\colon M\to N$ be a homomorphism between seminormed groups. We call 
+$\varphi$ \emph{bounded} if there exists some $C>0$ such that 
+$\|\varphi(f)\|\leqslant C \|f\|$ for all $f\in M$. Clearly bounded functions 
+are continuous. The converse does not hold in this level of generality. 
+
+We say two seminorms $\|\cdot\|,\|\cdot\|'$ on a group are \emph{equivalent} if 
+there exists $C,C'>0$ such that 
+\[
+  C' \|\cdot\| \leqslant \|\cdot\|' \leqslant C \|\cdot\| .
+\]
+Equivalent seminorms induce the same topology, but the converse is false in 
+general. 
