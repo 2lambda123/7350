@@ -1519,7 +1519,7 @@ We are interested in bounding the ramification index and residue degree.
 For example, the extension $L/K$ is immediate if and only if $e=f=1$. We can 
 prove the best results when $L/K$ is algebraic. 
 
-\begin{theorem}
+\begin{theorem}\label{thm:efn}
 Let $L/K$ be as above. 
 
 1. If $[L\colon K]=n<\infty$, then $e f\leqslant n$. 
@@ -1592,6 +1592,88 @@ $\alpha\in K^\circ$. Then $\bar f(\overline\alpha)=0$.
 that $K^\times$ is divisible. For any $a\in K^\times$ and $n\geqslant 1$, the 
 equation $x^n-a=0$ has a solution in $K^\times$, so we're done. 
 \end{proof}
+
+There is another notion of rank of abelian groups. Let $G$ be an abelian 
+group, then it is a $\bZ$-module. The \emph{rational rank} of $G$ is 
+\begin{align*}
+  \rationalrank(G) &= \dim_\bQ (G\otimes_\bZ \bQ) \\
+  &= \max\{\# S\colon S\subset G\text{ is linearly independent}\} .
+\end{align*}
+Note that $\rationalrank(G)$ does not depend on any ordering on $G$. Clearly 
+$\rationalrank(G)=0$ if and only if $G$ is torsion. The group 
+$G_\bQ = G\otimes_\bZ \bQ$ is divisible, and the quotient 
+$G_\bQ/G$ is torsion. In fact, $G_\bQ$ is the ``smallest'' divisible group $H$ 
+containing $G$ such that $H/G$ is torsion. One calls $G_\bQ$ the ``divisible 
+hull'' of $G$. 
+
+If $G$ is totally ordered, we may extend the ordering to $G_\bQ$ by: 
+\[
+  g\otimes \frac 1 n \leqslant h\otimes \frac 1 m \qquad\Leftrightarrow \qquad m g \leqslant n h .
+\]
+As an exercise, check that this gives $G_\bQ$ the structure of a totally 
+ordered abelian group. Let $K$ be a valued field, $\overline K$ an algebraic 
+closure of $K$. Let $\Gamma$ (resp.~$\Gamma'$) be the value group of $K$ 
+(resp.~$\overline K$). Namely, 
+\begin{align*}
+  \Gamma &= K^\times / K^{\circ\times} ,\\
+  \Gamma' &= \overline K^\times / \overline K^{\circ\times} .
+\end{align*}
+Then $\Gamma' = \Gamma_\bQ$. This recovers our earlier claims that $\Gamma'$ is 
+divisible, $\Gamma'/\Gamma$ is torsion, and the minimality of $\Gamma'$ with 
+respect to these properties. 
+
+If $G$ is a totally ordered abelian group, we already defined the rank 
+$\rank(G)$. One has $\rank(G) = \rank(G_\bQ)$. 
+
+\begin{lemma}
+Let $G$ be a totally ordered group. Then $\rank(G)\leqslant \rationalrank(G)$. 
+\end{lemma}
+\begin{proof}
+Induct on $r=\rank(G)$. For $r=0$, there is nothing to prove. If $r>0$, let 
+$0=G_0\subsetneq G_1\subsetneq \cdots \subsetneq G_r=G$ be a chain of convex 
+subgroups. By induction, $\rationalrank(G_{r-1})\geqslant r-1$. Since 
+$G_{r-1}$ is convex, $G_r/G_{r-1}$ is ordered, hence torsion-free. It follows 
+that $\rationalrank(G/G_{r-1})\geqslant 1$. Then:
+\[
+  \rationalrank(G) = \rationalrank(G/G_{r-1}) + \rationalrank(G_{r-1}) \geqslant 1+r-1 = r .
+\]
+\end{proof}
+
+\begin{definition}
+The \emph{rational rank} of a valuation is the rational rank of its value 
+group. 
+\end{definition}
+
+
+
+
+
+\subsection{Transcendental extensions}
+
+The following deep theorem is an analogue of the inequality $e f\leqslant n$ 
+from \autoref{thm:efn}. 
+
+\begin{theorem}[Abhyankar's dimension inequality]
+Let $L/K$ be an arbitrary extension of valued fields with value groups 
+$\Gamma'\supset\Gamma$. Then 
+\[
+  \trdeg(L^\natural/K^\natural) + \rationalrank(\Gamma'/\Gamma) \leqslant \trdeg(L/K)
+\]
+\end{theorem}
+\begin{proof}
+This follows from something formally very similar to the proof of 
+\autoref{thm:efn}, namely the following lemma.
+\end{proof}
+
+\begin{lemma}
+Let $\{x_1,\dots,x_r\}\subset L^\circ$ be such that 
+$\{\overline{x_1},\dots,\overline{x_r}\}\subset L^\natural$ are algebraically 
+independent over $K^\natural$, $\{y_1,\dots,y_s\}\subset L^\times$ be such 
+that $\{\valuation'(y_1),\dots,\valuation'(y_s)\}$ represent linearly 
+independent elements of $\Gamma'/\Gamma$. Then 
+$\{x_1,\dots,x_r,y_1,\dots,y_s\}\subset L$ are algebraically independent over 
+$K$. 
+\end{lemma}
 
 
 
