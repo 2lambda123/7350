@@ -2,20 +2,19 @@
 
 \section{Berkovich spaces}
 
-
-
-
-
-\subsection{Spectrum of a commutative Banach rings}
-
 This generalizes Gelfand's theory. Much of the theory even works for 
 non-commutative algebras. We do not require the existence of a base field, so 
 our theory applies to ``arithmetic'' rings like $\bZ$ or 
 $\bZ_2[x]/(7 x^3-5)$. 
 
-We start by defining norms and seminorms. (We could phrase everything in terms 
-of (rank-one) valuations and semivaluations.) Let $A$ be a commutative (unital) 
-ring. 
+
+
+
+
+\subsection{Norms and seminorms}
+
+We could phrase everything in terms of (rank-one) valuations and semivaluations.
+Let $A$ be a commutative (unital) ring. 
 
 \begin{definition}
 A \emph{seminorm} on $A$ is a function $\|\cdot\|\colon A\to \bR^{\geqslant 0}$ 
@@ -57,12 +56,13 @@ $\|f-g\| \leqslant \|f\|+\|g\|$.) Any seminormed group carries a natural
 topology, so we get a topology on $A$. This topology is Hausdorff if and only 
 if $\ker(\|\cdot\|)=0$. The (Hausdorff) completion $\widehat A$ exists (it can 
 be defined via Cauchy sequences as usual), but the obvious map 
-$A\to \widehat A$ is injective if and only if $\ker(\|\cdot\|)=0$. 
+$Ai\colon\to \widehat A$ is injective if and only if $\ker(\|\cdot\|)=0$. In 
+fact, $|ker(i)=\ker(\|\cdot\|)$. 
 
 If we replace the axiom $\|f g\| \leqslant \|f\| \|g\|$ with 
-$\|f g\| = \|f\| \|g\|$, we say that $\|\cdot\|$ is \emph{multiplicative}. If 
-for all $f\in A$, $\|f^n\| = \|f\|^n$, we say $\|\cdot\|$ is 
-\emph{power-multiplicative}. 
+$\|f g\| = \|f\| \|g\|$ and also assume $\|\cdot\|\ne 0$, we say that 
+$\|\cdot\|$ is \emph{multiplicative}. If for all $f\in A$, $\|f^n\| = \|f\|^n$, 
+we say $\|\cdot\|$ is \emph{power-multiplicative}. 
 
 If $N$ is a subgroup of a seminormed group $(A,+)$, then we get a ``residue 
 seminorm'' on $A/N$, defined by 
@@ -77,9 +77,171 @@ $\|\varphi(f)\|\leqslant C \|f\|$ for all $f\in M$. Clearly bounded functions
 are continuous. The converse does not hold in this level of generality. 
 
 We say two seminorms $\|\cdot\|,\|\cdot\|'$ on a group are \emph{equivalent} if 
-there exists $C,C'>0$ such that 
+there exists $C_1,C_2>0$ such that 
 \[
-  C' \|\cdot\| \leqslant \|\cdot\|' \leqslant C \|\cdot\| .
+  C_1 \|\cdot\| \leqslant \|\cdot\|' \leqslant C_2 \|\cdot\| .
 \]
 Equivalent seminorms induce the same topology, but the converse is false in 
 general. 
+
+\begin{example}
+Let $K$ be any field; consider $M=k[x]$. Let $f=\sum_0^n a_i x^i\in M$, and 
+pick some $0<\alpha<1<\alpha'$. Define two seminorms on $M$ by:
+\begin{align*}
+  \|f\| &= \max\{\alpha^j\colon \alpha_j\ne 0\} \\
+  \|f\|' &= \max\{{\alpha'}^j\colon \alpha_j\ne 0\} .
+\end{align*}
+Let $\varphi\colon (M,\|\cdot\|')\to (M,\|\cdot\|)$ be the identity on $M$. It 
+is easy to check that $\varphi$ is bounded. Indeed, 
+\[
+  \frac{\|\varphi(f)\|}{\|f\|'} = \frac{\|f\|}{\|f\|'} = \frac{\alpha^j}{{\alpha'}^i} \leqslant 1 .
+\]
+Now $\varphi^{-1}$ is \emph{not} bounded (this is easy), but 
+$\varphi^{-1}$ is continuous. We conclude that continuity does not imply 
+boundedness. Moreover, bounded homeomorphisms need not have bounded inverses. 
+\end{example}
+
+Let $\varphi\colon M\to N$ be a linear map of seminormed groups. As groups, 
+$M/\ker\varphi\simeq \image\varphi$, but this isomorphis might not respect the 
+seminorms on the two groups. 
+
+\begin{definition}
+A linear map $\varphi\colon M\to N$ of seminormed groups is \emph{admissible} 
+(or \emph{strict}) if the residue seminorm on $M/\ker\varphi$ and the seminorm 
+on $\image\varphi$ are equivalent via the natural isomorphism 
+$M/\ker\varphi\simeq \image\varphi$. 
+\end{definition}
+
+\begin{definition}
+A \emph{Banach ring} is a normed ring which is complete (with respect to the 
+norm). 
+\end{definition}
+
+\begin{example}
+Any ring is with the trivial norm 
+\[
+  \|f\| = \begin{cases} 1 & \text{if }f\ne 0 \\ 0 & \text{if }f=0 \end{cases}
+\]
+is a Banach ring. 
+\end{example}
+
+\begin{example}
+The ring $(\bZ,\|\cdot\|_\infty)$ is a Banach ring. The induced topology is 
+discrete, but $\|\cdot\|_\infty$ is very far from being equivalent to the 
+trivial norm on $\bZ$. 
+\end{example}
+
+\begin{example}
+Let $A$ be a Banach ring, $\fa\subset A$ a closed ideal. Then $A/\fa$, with the 
+residue norm, is a Banach ring. 
+\end{example}
+
+\begin{example}
+In the context of the above example, if $\fm\subset A$ is any maximal ideal, 
+then $A/\fm$ is a Banach field. Here we implicitly take advantage of 
+\autoref{lem:maximal-ideal-closed}. 
+\end{example}
+
+\begin{lemma}\label{lem:maximal-ideal-closed}
+Let $A$ be a Banach ring, $\fm\subset A$ a maximal ideal. Then $\fm$ is closed. 
+\end{lemma}
+\begin{proof}
+If $\fa\subset A$ is any ideal, then its closure $\closure(\fa)$ is also an 
+ideal. Of course, if $\fa$ is a proper ideal, then 
+$\fa\cap A^\times=\varnothing$. But $A^\times$ is open. Indeed, if 
+$x\in A^\times$, then $\disk^-(x,r)\subset A^\times$ for 
+$r=\frac 1 2 \|x^{-1}\|^{-1}$. To see this, let $x+h\in \disk^-(x,r)$; we wish 
+to show that $x+h\in A^\times$. We know that $\|h\|<\frac 1 2 \|x^{-1}\|^{-1}$, 
+so $\|h x^{-1}\| \leqslant \|h\| \|x^{-1}\| < \frac 1 2$. Write 
+$x+h=x(1+h x^{-1})$; the element $1+h x^{-1}$ is invertible by 
+\autoref{lem:principle-units-invertible}
+\end{proof}
+
+\begin{lemma}\label{lem:principle-units-invertible}
+Let $A$ be a Banach ring. Then $\disk^-(1,1)\subset A^\times$. 
+\end{lemma}
+\begin{proof}
+We need to show that if $\|x\|<1$, then $1-x$ is invertible. The sequence 
+\[
+  a_n = 1 + x + \cdots + x^n ,
+\]
+is Cauchy because $\|x\|<1$, so it converges. One can easily check that the 
+limit is $(1-x)^{-1}$. 
+\end{proof}
+
+\begin{example}
+Let $A$ be a Banach ring with norm $\|\cdot\|$. Choose $r\in \bR^{>0}$. We 
+define the ring $A\respow{r^{-1} T}\subset A\pow{T}$ to be the set of power 
+series $f=\sum_{i\geqslant 0} a_i T^i$ such that 
+$\sum \|a_i\| r^i< \infty$. If $A$ is non-archimedean, we only need to require 
+$\|a_i\| r^i \to 0$. We call $A\respow{r^{-1} T}$ a ring of \emph{convergent 
+power series}. We define a norm on $A\respow{r^{-1} T}$ by: 
+\begin{align*}
+  \|f\| &= \sum \|a_i\| r^i && \text{archimedean case} \\
+  \|f\| &= \max\{ \|a_i\| r^i\} && \text{non-archimedean case} .
+\end{align*}
+We could have used the first definition in both cases, but the latter is easier 
+to handle. Claim: $(A\respow{r^{-1} T},\|\cdot\|)$ is a Banach ring. 
+\end{example}
+
+\begin{example}
+Let $\{A_i\}_{i\in I}$ be an arbitrary collection of Banach rings. Then the 
+direct product $A=\prod A_i$ can be ``too large'' to be a Banach ring. It 
+contains a natural Banach ring, namely the \emph{bounded direct product} 
+\[
+  \prod^\mathrm{b} A = \left\{(f_i)_{i\in I}\colon \sup\|f_i\|<\infty\right\} .
+\]
+This is a banach ring with respect to the norm 
+$\|(f_i)\| = \sup \|f_i\|$. 
+\end{example}
+
+[also notation for restricted direct product\ldots]
+\[
+  \prod^\mathrm{c} A_i = \{(f_i)\colon \lim \|f_i\|\to 0\} .
+\]
+and the direct sum $\bigoplus_i A_i$. Note that the restricted direct product 
+and direct sum will not be unital rings. 
+
+
+
+
+
+\subsection{Berkovich spectrum of a normed ring}
+
+Let $(A,\|\cdot\|)$ be a normed ring. A seminorm $|\cdot|$ on $A$ is called 
+\emph{bounded} (with respect to $\|\cdot\|$) if there exists $c>0$ such that 
+$|f|\leqslant c\|f\|$ for all $f\in A$. One also calls bounded seminorms 
+\emph{admissible}. If $|\cdot|$ is bounded, then the induced map 
+$|\cdot|\colon A\to \bR,f\mapsto |f|$ is continuous, where $\bR$ has its usual 
+topology and $A$ has the topology induced by $\|\cdot\|$. 
+
+\begin{definition}
+Let $A$ be a commutative unital Banach ring with fixed norm $\|\cdot\|$. The 
+\emph{spectrum} of $A$, denoted $\Berkspec(A)$, is the set of bounded 
+multiplicative seminorms on $A$. For $x\in \Berkspec(A)$, let $|\cdot|_x$ be 
+the corresponding seminorm. We give $\Berkspec(A)$ the weakest topology making 
+all maps $x\mapsto |f|_x$ continuous. 
+\end{definition}
+
+\begin{theorem}
+Let $A$ be a commutative Banach ring. Then 
+\begin{enumerate}
+\item
+$\Berkspec(A)\ne\varnothing$. 
+
+\item
+$\Berkspec(A)$ is Hausdorff. 
+
+\item
+$\Berkspec(A)$ is compact. 
+\end{enumerate}
+\end{theorem}
+
+If $\|\cdot\|$ is already multiplicative, then $\Berkspec(A)\ne\varnothing$ 
+because $\|\cdot\|\in \Berkspec(A)$. This is much harder in general. We didn't 
+actually need the completeness of $A$ in the above definition. This is because 
+any bounded seminorm on $A$ has a unique extension to $\widehat A$. We could 
+have replaced $\|\cdot\|$ with any equivalent seminorm and get the same 
+$\Berkspec(A)$. 
+
+
