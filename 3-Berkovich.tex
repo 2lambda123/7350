@@ -250,7 +250,9 @@ we may assume that $A$ is a field.
 Let $S$ be the set of all non-zero bounded seminorms on $A$. Given 
 $|\cdot|,|\cdot|'\in S$, we put $|\cdot|\leqslant |\cdot|'$ if 
 $|f|\leqslant |f|'$ for all $f\in A$. This gives $S$ a partial order. Since 
-$\|\cdot\|\in S$, the set $S$ is non-empty. Zorn's lemma gives us a minimal 
+$\|\cdot\|\in S$, the set $S$ is non-empty. If 
+$\{|\cdot|_i\}_{i\in I}\subset S$ is a chain, then $\inf_i |\cdot|_i\in S$ is 
+a lower bound for $\{|\cdot|_i\}_{i\in I}$. Zorn's lemma gives us a minimal 
 element $|\cdot|\in S$. We claim that 
 $|\cdot|$ is multiplicative. To show this, it's enough to show that 
 $|f^{-1}| = |f|^{-1}$ for all $f\in A^\times$. For, we already know that 
@@ -325,11 +327,195 @@ $\sH(x) = \widehat{(A/\fp_x)_{(0)}}$; this is the \emph{completed residue
 field} of $A$ at $x$. For $f\in A$, write $f(x)$ for the image of $f$ under the 
 composite map 
 \[
-  A \twoheadrightarrow A/\fp_x \hookrightarrow (A/\fp_x)_{(0)} \hookrightarrow \sH(x) .
+  A \twoheadrightarrow A/\fp_x \hookrightarrow (A/\fp_x)_{(0)} \hookrightarrow \widehat{(A/\fp_x)_{(0)}} = \sH(x) .
 \]
-The map $A\to \sH(x)$ is a ``character,'' in the following sense. 
+We will write $|\cdot|$ for the canonical extension of $|\cdot|_x$ to 
+$\sH(x)$. So $|f(x)| = |f(x)|_x = |f|_x$. The map $A\to \sH(x)$ is a 
+``character,'' in the following sense. 
 
 \begin{definition}
 Let $A$ be a Banach ring. A \emph{character} on $A$ is a nonzero bounded 
 homomorphism to a field complete with respect to some absolute value. 
 \end{definition}
+
+\begin{definition}
+Let $A$ be a Banach ring. The \emph{Gelfand transform} on $A$ is the natural 
+map 
+\[
+  A\to \prod^\mathrm{b}_{x\in \Berkspec(A)}  \sH(x) \qquad f\mapsto (f(x))_{x\in \Berkspec(A)} .
+\]
+\end{definition}
+
+Let $B=\prod_{x\in \Berkspec(A)}^\mathrm{b} \sH(x)$. Then $B$ is a Banach ring, 
+and the Gelfand transform $A\to B$ is a bounded map. We get an induced 
+surjective map $\Berkspec(B)\to \Berkspec(A)$. 
+
+\begin{lemma}
+Let $A$ be a Banach ring. Then $f\in A$ is invertible if and only if 
+$f(x)\ne 0$ for all $x\in \Berkspec(A)$. 
+\end{lemma}
+\begin{proof}
+If $f\in A^\times$, then $|1|_x = |f f^{-1}|_x = 1$, so $|f|_x\ne 0$, whence 
+$f(x)\ne 0$ in $\sH(x)$ for all $x$. If $f\notin A^\times$, then there is some 
+maximal (hence prime) ideal $\fm\supset \langle f\rangle$. As an exercise, 
+prove the reverse implication. 
+\end{proof}
+
+Let $x\in \Berkspec(A)$. We have seen that there is a natural character 
+$\chi_x\colon A\to \sH(x)$. Conversely, given a character $\chi\colon A\to K$, 
+we get a bounded multiplicative seminorm $|\cdot|_\chi\colon A\to \bR$, defined 
+by $|f|_\chi = |\chi(f)|$. At the moment, different characters might induce the 
+same seminorm on $A$. We handle this by noting that two characters 
+$\chi',\chi''$ give the same point in $\Berkspec(A)$ if and only if they are 
+equivalent in the following sense: there exists a character $\chi\colon A\to K$ 
+such that the following diagram commutes:
+\begin{equation}\label{eq:equiv-characters}
+\begin{tikzcd}
+  & A \ar[dl, swap, "\chi'"] \ar[d, "\chi"] \ar[dr, "\chi''"] \\
+  K' 
+    & K \ar[l, hook] \ar[r, hook]
+    & K''
+\end{tikzcd}
+\end{equation}
+
+\begin{example}[Algebraic characters]
+Let $A$ be a (commutative, unital) ring. Recall that $\spec(A)$ is the set of 
+prime ideals in $A$, i.e.
+\[
+  \spec(A) = \{\fp\subset A\colon \fp\text{ is prime}\} .
+\]
+The set $\spec(A)$ has a topology with closed sets 
+\[
+  V_\fa = \{\fp\in \spec(A)\colon \fp\supset \fa\} ,
+\]
+where $\fa$ ranges over ideals in $A$. An \emph{algebraic character} on $A$ is 
+a ring homomorphism from $A$ to a field, $\chi\colon A\to K$. 
+
+Given $\fp\in \spec(A)$, we get a character 
+\[
+  \chi_\fp\colon A\twoheadrightarrow A/\fp \hookrightarrow (A/\fp)_{(0)} .
+\]
+Conversely, given a character $\chi\colon A\to K$, the ideal 
+$\ker(\chi)\in \spec(A)$. Two characters $\chi',\chi''$ give the same point in 
+$\spec(A)$ if and only if a diagram \eqref{eq:equiv-characters} exists in the 
+algebraic category. 
+\end{example}
+
+There is a natural map $\ker\colon \Berkspec(A)\to \spec(A)$ (the \emph{kernel 
+map}), given by $|\cdot|\mapsto \ker(|\cdot|)$. This should not be mistaken for 
+the specialization map we will encounter later. 
+
+\begin{lemma}
+\leavevmode
+\begin{enumerate}
+\item
+The map $\ker\colon \Berkspec(A)\to \spec(A)$ is continuous. 
+
+\item
+If $\|\cdot\|$ (the fixed norm on $A$) is trivial, then 
+\begin{enumerate}
+\item
+$\ker\colon \Berkspec(A)\to \spec(A)$ is surjective, 
+
+\item
+there is a canonical section $\spec(A)\to \Berkspec(A)$
+\end{enumerate}
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+1. Let $\fa\subset A$ be an ideal. We claim that  
+\[
+  \ker^{-1}(V_\fa) = \bigcap_{f\in \fa}\{x\in \Berkspec(A)\colon |f|_x = 0\} .
+\]
+Indeed, if $x$ lies in the right hand side, then for all $f\in \fa$, 
+$|f|_x=0$, whence $f\in \fa\Rightarrow f\in \fp_x$, so we get 
+$\fa\subset \fp_x$, i.e.~$\fp_x\in V_\fa$. This is equivalent to 
+$\ker(|\cdot|_x)\subset V_\fa$, i.e.~$x\in \ker^{-1}(V_\fa)$. In fact, all the 
+above implications are equivalences.
+
+2. Givn $\fp\in \spec(A)$, define $|\cdot|_\fp\in \Berkspec(A)$ by 
+\[
+  |f|_\fp = \begin{cases} 0 & f\in \fp \\ 1 & f\notin \fp \end{cases} .
+\]
+Since $\|\cdot\|$ is trivial, $|\cdot|_\fp$ is a bounded multiplicative 
+norm on $A$. The map $\fp\mapsto |\cdot|_\fp$ is the desired canonical 
+section. 
+\end{proof}
+
+
+% subsubsection: functoriality of Berkspec
+
+We want to show that $A\mapsto \Berkspec(A)$ is functorial in the appropriate 
+sense. Let $\varphi\colon (A,\|\cdot\|)\to (B,\|\cdot\|')$ be a bounded 
+homomorphism of commutative Banach rings. (As always, we assume that 
+$\varphi(1)=1$.)
+
+\begin{theorem}
+\leavevmode
+\begin{enumerate}
+\item
+The map $\varphi^\ast\colon \Berkspec(B)\to \Berkspec(A)$ given by 
+$\varphi^\ast(|\cdot|') = |\cdot|$, $|f| = |\varphi(f)|'$, is well-defined and 
+continuous. 
+
+\item
+Assume the set 
+\[
+  \left\{\frac{\varphi(f)}{\varphi(g)}\colon f,g\in A\text{ and }\varphi(g)\in B^\times\right\} 
+\]
+is dense in $B$. Then $\varphi^\ast$ is injective. 
+
+\item
+If $\varphi^\ast$ is injective, then $\Berkspec(B)$ is homeomorphic to its 
+image in $\Berkspec(A)$. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+1. That $|\cdot| = \varphi^\ast(|\cdot|')$ is multiplicative is obvious. To see 
+that it is bounded, note that for all $f\in A$, we have 
+\[
+  |f| = |\varphi(f)|' \leqslant c_1 \|\varphi(f)\|' \leqslant c_1 c_2 \|f\| .
+\]
+Continuity follows from the fact that 
+\[
+  (\varphi^\ast)^{-1}\left(\{x\in \Berkspec(A)\colon |f(x)|>\alpha\}\right) = \{y\in \Berkspec(B)\colon |\varphi(f)(y)| > \alpha\} .
+\]
+
+2. Let $|\cdot|'\ne|\cdot|''\in \Berkspec(B)$ be such that 
+$\varphi^\ast(|\cdot|') = \varphi^\ast(|\cdot|'')$. Then there exists $h\in B$ 
+such that $|h|'\ne |h|''$, so we may as well assume $|h|'<|h|''$. Let 
+$2\epsilon < |h|''-|h|'$. By assumption, there exists $f,g\in A$ such that 
+$\varphi(g)\in B^\times$ and 
+$\left\|h-\frac{\varphi(f)}{\varphi(g)}\right\|' < \epsilon$. Thus 
+$\left|h-\frac{\varphi(f)}{\varphi(g)}\right| < \epsilon$ and 
+$\left|h-\frac{\varphi(f)}{\varphi(g)}\right|'' < \epsilon$. Apply the triangle 
+inequality:
+\begin{align*}
+  \left|\frac{\varphi(f)}{\varphi(g)}\right|' 
+    &= \left|\frac{\varphi(f)}{\varphi(g)} - h+ h\right|' \\
+    &\leqslant \left|\frac{\varphi(f)}{\varphi(g)} - h\right|' + |h|' \\
+    &< \epsilon + |h|' \\
+    &< |h|' - \epsilon .
+\end{align*}
+Similarly 
+\begin{align*}
+  |h|'' 
+    &= \left|h - \frac{\varphi(f)}{\varphi(g)} + \frac{\varphi(f)}{\varphi(g)}\right|'' \\
+    &\leqslant \left|h-\frac{\varphi(f)}{\varphi(g)}\right|'' + \left|\frac{\varphi(f)}{\varphi(g)}\right|'' \\
+    &< \epsilon + \left|\frac{\varphi(f)}{\varphi(g)}\right|'' .
+\end{align*}
+It follows that 
+$\left|\frac{\varphi(f)}{\varphi(g)}\right|' < \left|\frac{\varphi(f)}{\varphi(g)}\right|''$, 
+so $|\varphi(f)|' |\varphi(g)|'' < |\varphi(f)|'' |\varphi(g)|'$. This implies 
+$|f||g| < |f| |g|$, a contradiction. 
+
+3. This follows from the general fact, proved in [Folland, p.129], that if 
+$X$ is quasi-compact, $Y$ is Hausdorff, then any continuous bijection 
+$f\colon X\to Y$ is a homeomorphism. 
+\end{proof}
+
+Note that the recurring norm 
+\[
+  |f|_\fp = \begin{cases} 1 & f\notin \fp \\ 0 & f\in \fp \end{cases} ,
+\]
+comes from the trivial seminorm on $A/\fp$. 
