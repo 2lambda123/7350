@@ -1,4 +1,4 @@
-\documentclass[oneside]{article}
+\documentclass[oneside]{book}
 
 \usepackage[
 	paperheight = 21  cm,
@@ -41,15 +41,21 @@
 \date{Spring 2015}
 
 \begin{document}
-\setcounter{tocdepth}{2}
+
+\pagenumbering{Alph}
+
+\begin{titlepage}
 \maketitle
+\thispagestyle{empty}
+\end{titlepage}
+
+\pagenumbering{arabic}
+
+\frontmatter
 \tableofcontents
-
-
-
-
-
 \input{1-introduction}
+
+\mainmatter
 \input{2-foundations}
 \input{3-Berkovich}
 

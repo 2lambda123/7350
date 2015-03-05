@@ -1,11 +1,18 @@
 % !TEX root = 7350.tex
 
-\section{Foundations}
+\chapter{Foundations}
 
-\subsection{Absolute values and valuations}
+
+
+
+
+\section{Absolute values and valuations}
 
 A good source for this section is the textbook \cite{engler-prestel}. 
 Fix a field $K$ for the remainder of the section. 
+
+
+\subsection{Definitions and first properties}
 
 \begin{definition}
 An \emph{absolute value} (norm) on $K$ is a function $|\cdot|\colon K\to \bR$ 
@@ -447,11 +454,15 @@ algebraically closed. The field $\bC_p$ is the $p$-adic analogue of $\bC$.
 
 
 
-\subsection{Absolute values and field extensions}\label{sec:abs-val-field-ext}
+\section{Absolute values and field extensions}\label{sec:abs-val-field-ext}
 
 A field extension is naturally a vector space over the base field, so our 
 first results will be in the more general context of vector spaces over 
 normed fields. 
+
+
+
+\subsection{Normed vector spaces}
 
 \begin{definition}
 Let $K$ be a field with absolute value $|\cdot|$, $V$ be a vector space over 
@@ -541,6 +552,10 @@ where $B_i=\|\pi_i(v_i)\|_i^{-1}$. Put $C_2=\max\{B_i\}$.
 The moral of the story is that finite-dimensional vector spaces over a complete 
 field carry a unique topology. 
 
+
+
+\subsection{Existence of extensions}
+
 \begin{theorem}\label{thm:extend-absolute-value}
 Let $K$ be a field complete with respect to $|\cdot|$. Let $L/K$ be an 
 extension. 
@@ -598,6 +613,9 @@ value $|\cdot|_p$. By \autoref{thm:extend-absolute-value},
 $\overline{\bQ_p}$ carries a unique extension of $|\cdot|_p$; the set 
 $|\overline{\bQ_p}^\times|\subset \bR^{>0}$ is dense!
 \end{example}
+
+
+\subsection{Archimedean fields}
 
 In general, if $K$ is a complete non-archimedean field, then its algebraic 
 closure $\overline K$ will not be complete. The only exception is when 
@@ -658,6 +676,9 @@ algebraic, we have an embedding $i:L\hookrightarrow \overline{\widehat K}$. The
 pullback via $i$ of the absolute value on $\overline{\widehat K}$ is an 
 extension of $|\cdot|$ to $L$. 
 \end{proof}
+
+
+\subsection{Krasner's lemma}
 
 \begin{theorem}[Krasner]\label{thm:krasner}
 Let $K$ be an algebraically closed field with absolute value $|\cdot|$. Then 
@@ -743,6 +764,9 @@ Newton proved this theorem by creating an early version of what is now called
 in which the last field is known as the field of \emph{formal Puiseaux 
 series}. It is sometimes written $K\laurent{t^\bQ}$. For a proof of Newton's 
 theorem, see \cite[Cor.~13.15]{eisenbud-1995}. 
+
+
+\subsection{Immediate extensions and spherical closure}
 
 \begin{definition}
 Let $(K,|\cdot|)$ be a non-archimedean field. Put 
@@ -1021,7 +1045,7 @@ variable. This has seen many applications, e.g.~to abelian varieties.
 
 
 
-\subsection{Arbitrary valuations}
+\section{Arbitrary valuations}
 
 This theory was initiated by Krull in the 1930s. As motivation: if 
 $(K,|\cdot|)$ is a non-archimedean field, the absolute value took values in 
@@ -1029,6 +1053,9 @@ $\bR^{\geqslant 0}$. More precisely, $|\cdot|\colon K^\times \to \bR^{>0}$ is
 a group homomorphism. We could just as well have used 
 $\valuation(\cdot)=-\log_a|\cdot|$; the topology does not depend on the choice 
 of base $a$. 
+
+
+\subsection{Definitions}
 
 So we have a function $\valuation\colon K \to \bR\cup\{\infty\}$ such that 
 \begin{enumerate}
@@ -1084,6 +1111,9 @@ $k\laurent{x,y}$ by setting
 \]
 It is a good exercise to check that this actually is a valuation. 
 \end{example}
+
+
+\subsection{Topology and completion}
 
 Any field with valuation can be given a Hausdorff topology in a functorial way. 
 We can't do this in the naive way via metrics, because a valued field 
@@ -1194,7 +1224,10 @@ and as such it carries a canonical uniform structure
 $(\widehat K,+)$, is \emph{a priori} just a topological group. But by 
 \cite[III \S 6.8]{bourbaki-gentop1}, the field structure extends uniquely to 
 $\widehat K$. By \cite[2.4.4]{engler-prestel}, the extension 
-$K\hookrightarrow \widehat K$ is dense and immediate
+$K\hookrightarrow \widehat K$ is dense and immediate.
+
+
+\subsection{Henselization}
 
 All this seems great, but Hensel's lemma can fail for complete fields in this 
 generality \cite[2.4.6]{engler-prestel}. The ``standard'' proof of Hensel's 
@@ -1451,7 +1484,7 @@ $\rank=1$ if and only if $K^\circ$ is a maximal subring of $K$.
 
 
 
-\subsection{Extensions of valuations}
+\subsection{Extensions of arbitrary valuations}
 
 We worked out the story for rank-one valuations in 
 \autoref{sec:abs-val-field-ext}. In general, if $L/K$ is an arbitrary field 

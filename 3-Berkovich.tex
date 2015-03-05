@@ -1,6 +1,6 @@
 % !TEX root = 7350.tex
 
-\section{Berkovich spaces}
+\chapter{Berkovich spaces}
 
 This generalizes Gelfand's theory. Much of the theory even works for 
 non-commutative algebras. We do not require the existence of a base field, so 
@@ -11,10 +11,13 @@ $\bZ_2[x]/(7 x^3-5)$.
 
 
 
-\subsection{Norms and seminorms}
+\section{Berkovich spectrum of a normed ring}
 
 We could phrase everything in terms of (rank-one) valuations and semivaluations.
 Let $A$ be a commutative (unital) ring. 
+
+
+\subsection{Norms and seminorms}
 
 \begin{definition}
 A \emph{seminorm} on $A$ is a function $\|\cdot\|\colon A\to \bR^{\geqslant 0}$ 
@@ -117,6 +120,9 @@ A \emph{Banach ring} is a normed ring which is complete (with respect to the
 norm). 
 \end{definition}
 
+
+\subsection{Examples and first properties}
+
 \begin{example}
 Any ring is with the trivial norm 
 \[
@@ -205,7 +211,7 @@ and direct sum will not be unital rings.
 
 
 
-\subsection{Berkovich spectrum of a normed ring}
+\subsection{Spectrum: definition and first properties}
 
 Let $(A,\|\cdot\|)$ be a normed ring. A seminorm $|\cdot|$ on $A$ is called 
 \emph{bounded} (with respect to $\|\cdot\|$) if there exists $c>0$ such that 
@@ -378,7 +384,9 @@ such that the following diagram commutes:
 \end{tikzcd}
 \end{equation}
 
-\begin{example}[Algebraic characters]
+
+\subsection{Comparison with algebraic spectrum}
+
 Let $A$ be a (commutative, unital) ring. Recall that $\spec(A)$ is the set of 
 prime ideals in $A$, i.e.
 \[
@@ -398,8 +406,7 @@ Given $\fp\in \spec(A)$, we get a character
 Conversely, given a character $\chi\colon A\to K$, the ideal 
 $\ker(\chi)\in \spec(A)$. Two characters $\chi',\chi''$ give the same point in 
 $\spec(A)$ if and only if a diagram \eqref{eq:equiv-characters} exists in the 
-algebraic category. 
-\end{example}
+algebraic category.
 
 There is a natural map $\ker\colon \Berkspec(A)\to \spec(A)$ (the \emph{kernel 
 map}), given by $|\cdot|\mapsto \ker(|\cdot|)$. This should not be mistaken for 
@@ -443,7 +450,7 @@ section.
 \end{proof}
 
 
-% subsubsection: functoriality of Berkspec
+\subsection{Functoriality of \texorpdfstring{$\Berkspec$}{M}}
 
 We want to show that $A\mapsto \Berkspec(A)$ is functorial in the appropriate 
 sense. Let $\varphi\colon (A,\|\cdot\|)\to (B,\|\cdot\|')$ be a bounded 
