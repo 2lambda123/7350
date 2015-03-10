@@ -228,7 +228,7 @@ the corresponding seminorm. We give $\Berkspec(A)$ the weakest topology making
 all maps $x\mapsto |f|_x$ continuous. 
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{thm:Berkspec-not-empty}
 Let $A$ be a commutative Banach ring. Then 
 \begin{enumerate}
 \item
@@ -363,8 +363,10 @@ $f(x)\ne 0$ for all $x\in \Berkspec(A)$.
 \begin{proof}
 If $f\in A^\times$, then $|1|_x = |f f^{-1}|_x = 1$, so $|f|_x\ne 0$, whence 
 $f(x)\ne 0$ in $\sH(x)$ for all $x$. If $f\notin A^\times$, then there is some 
-maximal (hence prime) ideal $\fm\supset \langle f\rangle$. As an exercise, 
-prove the reverse implication. 
+maximal (hence prime) ideal $\fm\ni f$. By \autoref{thm:Berkspec-not-empty}, 
+$\Berkspec(A/\fm)\ne\varnothing$. Choose $|\cdot|\in \Berkspec(A/\fm)$, and 
+let $|\cdot|_x\in \Berkspec(A)$ be its pullback. Then 
+$|f|_x = |f+\fm| = |\fm| = 0$. 
 \end{proof}
 
 Let $x\in \Berkspec(A)$. We have seen that there is a natural character 
@@ -526,3 +528,200 @@ Note that the recurring norm
   |f|_\fp = \begin{cases} 1 & f\notin \fp \\ 0 & f\in \fp \end{cases} ,
 \]
 comes from the trivial seminorm on $A/\fp$. 
+
+%-----------------------------
+
+Usually (e.g., in classical algebraic geometry) one cares about rings that are 
+also $K$-vector spaces, for some field $K$. 
+
+\begin{definition}
+Let $R$ be a commutative ring. A (unital, associative) \emph{$R$-algebra} is an 
+abelian group $A$ equipped with the structure of both a (associative, unital) 
+ring and an $R$-module, such that ring multiplication is $R$-bilinear in the 
+sense that $r\cdot(x y) = (r\cdot x) y = x(r\cdot y)$. 
+\end{definition}
+
+We are often interested in commutative $R$-algebras, but some aspects of the 
+theory (especially over $\bC$) work just as well for possibly non-commutative 
+algebras. 
+
+Let $K$ be a field with absolute value, $A$ a $K$-algebra. A \emph{norm} 
+$|\cdot|$ on $A$ is both a ring norm and a $K$-vector space norm. This in 
+particular requires that $\|a v\| = |a| \| v\|$ for all $a\in K$, $v\in A$. 
+So any norm on $A$ ``remembers'' the norm on $K$. More precisely, if $A$ is a 
+normed $K$-algebra, $\|\cdot\|_x\colon A\to \bR$ a bounded multiplicative 
+seminorm. Then $|\cdot|_x$ induces an absolute value on $\sH(x)$. But $\sH(x)$ 
+is a complete extension of $K$. It turns out that $|\cdot|_x$ on $\sH(x)$ 
+must restrict to $|\cdot|$ on $K$. This is Exercise 4.3.1 in Conrad's notes in 
+\cite{aws-2008}.
+
+
+
+
+
+\subsection{Boundedness versus continuity for \texorpdfstring{$K$}{K}-algebras}
+
+Let $\varphi\colon A\to B$ be a $K$-algebra homomorphism. We assume that 
+$A$ and $B$ have been given ($K$-)norms $\|\cdot\|$ and $\|\cdot\|'$. Clearly, 
+if $\varphi$ is bounded (i.e.~$\|\varphi(f)\|' \leqslant c\|f\|$ for all 
+$f\in A$), then $\varphi$ is continuous. We have sen that the converse does not 
+always hold. 
+
+Let's try working towards proving the converse. Let $\varphi\colon A\to B$ be a 
+continuous homomorphism. Then $\varphi$ is continuous if and only if it is 
+continuous at $0$. So there exists a neighborhood $U\ni 0$ such that 
+$\varphi(U)\subset \{b\in B\colon \|b\|'<1\}$. There is $\delta>0$ such that 
+$\{a\in A\colon \|a\|\leqslant \delta\}\subset U$. So 
+$\|\varphi(x)\|'\leqslant 1$ whenever $\|x\|\leqslant \delta$. If we were 
+working over $\bC$, we would not rescale. But this doesn't work if the norm on 
+$K$ is trivial. If the norm $|\cdot|$ on $K$ is \emph{not} trivial (i.e., 
+$|K^\times|\ne 1$) then by rescaling we can say that 
+$\|x\|\leqslant |a|\Rightarrow \|\varphi(x)\|' \leqslant \frac{|a|}{\delta}$. 
+So generally, $\|\varphi(x)\|' \leqslant \frac{1}{\delta}\|x\|$, and 
+$\varphi$ is bounded. 
+
+If $|\cdot|$ is trivial on $K$, then continuity does not imply boundedness. If 
+$|\cdot|$ is nontrivial, many other (but not all) basic facts of functional 
+analysis are also true, e.g.~Banach's open mapping theorem (a bijective bounded 
+$K$-algebra homomorphism $A\to B$ has bounded inverse). 
+
+
+
+
+
+\subsection{Gelfand's theory for \texorpdfstring{$K=\bC$}{K=C}}
+
+Much of this material can be found in [Rudin, Functional analysis ch.10-11].
+Here is our motivating example. 
+
+\begin{example}
+Let $X$ be a nonempty compact Hausdorff space. Let $A=C^0(X)$ be the space of 
+continuous $\bC$-valued functions on $X$. With pointwise multiplication, $A$ is 
+naturally a (commutative, unital) $\bC$-algebra. We give $A$ the supremum norm: 
+\[
+  \|f\| = \sup_{x\in X} |f(x)| .
+\]
+It's a standard fact that $A$ is complete, i.e.~it is a Banach $\bC$-algebra.
+\emph{Warning}: $\|fg\|\leqslant \|f\|\|g\|$, and we \emph{don't} have 
+equality. 
+\end{example}
+
+\begin{example}
+Let $X$ be a finite set with $n$ points. Then $C^0(X)=\bC^n$. 
+\end{example}
+
+It is natural to ask: ``given any commutative Banach $\bC$-algebra $A$, can we 
+embed $A$ into $C^0(X)$ for some compact Hausdorff $X$?''
+
+\begin{example}
+Consider $(L^1(\bR^n),\ast)$, the convolution algebra of $L^1$-functions on 
+$\bR^n$. This is a commutative (non-unital) algebra. We fix the absense of a 
+unit by instead considering $A$, the space of Borel measures on $\bR^n$ of the 
+form $\mu=f+\lambda\delta$, where $f\in L^1(\bR^n)$, $\lambda\in \bC$, and 
+$\delta$ is the \emph{Dirac delta}, which behaves as 
+\[
+  (f_1+\lambda_1\delta) \ast (f_2+\lambda_2 \delta) = (f_1\ast f_2+\lambda_2 f_1 + \lambda_1 f_2) + \lambda_1 \lambda_2 \delta .
+\]
+Give $A$ a norm by 
+\[
+  \|f+\lambda\delta\| = \|f\|_{L^1} + |\lambda| .
+\]
+\end{example}
+
+\begin{example}
+Let $X$ be a Banach space over $\bC$. Let $B(X)$ be the algebra of bounded 
+linear operators on $X$, with $\|\cdot\|$ the operator norm. For example, if 
+$\dim(X)=n$, then $B(X)\simeq M_n(\bC)$. Note that if $n>1$, then $B(X)$ is 
+\emph{not} commutative. The theory of Gelfand-Mazur (and some of Berkovich's) 
+work for non-commutative algebras as well. 
+\end{example}
+
+\begin{definition}
+Let $A$ be a $\bC$-algebra. Put 
+\[
+  \sigma(f) = \{\lambda\in \bC\colon \lambda-f\notin A^\times\} .
+\]
+(In functional analysis, one calls $\sigma(f)$ the spectrum of $f$, but we will 
+avoid using this terminology. The complement $\bC\smallsetminus \sigma(f)$ is 
+called the resolvent of $f$.)
+\end{definition}
+
+For $K$ non-archimedean, one can give a definition for $\sigma(f)$, but this is 
+quite difficult, so we won't. See \cite[Ch.~7]{berkovich-1990} for details. 
+
+\begin{theorem}
+Let $f\in A$. Then 
+\begin{enumerate}
+\item
+$\sigma(f)\ne\varnothing$, 
+
+\item
+$\sigma(f)$ is compact. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Part 1 is essentially \autoref{lemma:spec-Banach}. For part 2, it suffices to 
+show that $\sigma(f)$ is closed and bounded. That $\sigma(f)$ is closed follows 
+(essentially) from the fact that $A^\times$ is open. For boundedness of 
+$\sigma(f)$, see below. 
+\end{proof}
+
+\begin{definition}
+For $f\in A$, put 
+\[
+  \rho(f) = \sup\{|\lambda|\colon \lambda\in \sigma(f)\} .
+\]
+\end{definition}
+
+\begin{theorem}
+$\rho(f) = \lim_{n\to \infty} \|f^n\|^{1/n}$. 
+\end{theorem}
+The proof will be given in a more general setting, after giving an equivalent 
+definition of $\rho(f)$. 
+
+\begin{definition}
+Let $A$ be a Banach $\bC$-algebra. As a set, 
+\[
+  \cM(A) = \{\chi\colon A\twoheadrightarrow \bC\text{ a homomorphism of $\bC$-algebras}\} .
+\]
+\end{definition}
+
+\begin{lemma}
+\leavevmode
+\begin{enumerate}
+\item
+Any $\chi\in \cM(A)$ is bounded.
+
+\item
+$\cM(A)$ can be identified with the space of maximal ideals in $A$ via 
+$\chi\leftrightarrow \ker(\chi)$. 
+
+\item
+$\cM(A)=\Berkspec(A)$
+
+\item
+$f\in A^\times$ if and only if $\chi(f)\ne 0$ for all $\chi\in \cM(A)$. 
+
+\item
+$\lambda\in \sigma(f)$ if and only if $\chi(f)=\lambda$ for some 
+$\chi\in \cM(A)$. 
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+1. Use the fact that $\chi\colon A\to \bC$ respects the $\bC$-algebra structure 
+of $A$. 
+
+2. For $x\in \cM(A)$, $\sH(x)$ is a complete field containing $\bC$, we have 
+$\sH(x)=\bC$. 
+
+4. If $f\notin A^\times$, then $f\notin \fm$ for all $\fm$ maximal. 
+
+5. Apply part 4 to $\lambda-f$. 
+\end{proof}
+
+For $f\in A$, the \emph{Gelfand transform} of $f$ is the function 
+$\hat f\colon \cM(A)\to \bC$ defined by 
+\[
+  \hat f(\chi) = \chi(f) .
+\]
+We have seen that $\rho(f) = \sup_{\chi\in \cM(A)} |\hat f(\chi)|$. 
