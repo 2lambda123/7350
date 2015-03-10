@@ -529,7 +529,9 @@ Note that the recurring norm
 \]
 comes from the trivial seminorm on $A/\fp$. 
 
-%-----------------------------
+
+
+\subsection{Boundedness versus continuity for \texorpdfstring{$K$}{K}-algebras}
 
 Usually (e.g., in classical algebraic geometry) one cares about rings that are 
 also $K$-vector spaces, for some field $K$. 
@@ -541,9 +543,12 @@ ring and an $R$-module, such that ring multiplication is $R$-bilinear in the
 sense that $r\cdot(x y) = (r\cdot x) y = x(r\cdot y)$. 
 \end{definition}
 
-We are often interested in commutative $R$-algebras, but some aspects of the 
-theory (especially over $\bC$) work just as well for possibly non-commutative 
-algebras. 
+It is equivalent to specify a (unital, associative) ring $A$ together with a 
+ring homomorphism $R\to \zentrum(A)$, where 
+$\zentrum(A)=\{a\in A\colon a b=ba\text{ for all }b\in A\}$ is the center of 
+$A$. We are mainly interested in commutative $R$-algebras, but some aspects of 
+the theory (especially over $\bC$) work just as well for possibly 
+non-commutative algebras. 
 
 Let $K$ be a field with absolute value, $A$ a $K$-algebra. A \emph{norm} 
 $|\cdot|$ on $A$ is both a ring norm and a $K$-vector space norm. This in 
@@ -555,17 +560,11 @@ is a complete extension of $K$. It turns out that $|\cdot|_x$ on $\sH(x)$
 must restrict to $|\cdot|$ on $K$. This is Exercise 4.3.1 in Conrad's notes in 
 \cite{aws-2008}.
 
-
-
-
-
-\subsection{Boundedness versus continuity for \texorpdfstring{$K$}{K}-algebras}
-
 Let $\varphi\colon A\to B$ be a $K$-algebra homomorphism. We assume that 
 $A$ and $B$ have been given ($K$-)norms $\|\cdot\|$ and $\|\cdot\|'$. Clearly, 
 if $\varphi$ is bounded (i.e.~$\|\varphi(f)\|' \leqslant c\|f\|$ for all 
-$f\in A$), then $\varphi$ is continuous. We have sen that the converse does not 
-always hold. 
+$f\in A$), then $\varphi$ is continuous. We have seen that the converse does 
+not always hold. 
 
 Let's try working towards proving the converse. Let $\varphi\colon A\to B$ be a 
 continuous homomorphism. Then $\varphi$ is continuous if and only if it is 
@@ -591,19 +590,19 @@ $K$-algebra homomorphism $A\to B$ has bounded inverse).
 
 \subsection{Gelfand's theory for \texorpdfstring{$K=\bC$}{K=C}}
 
-Much of this material can be found in [Rudin, Functional analysis ch.10-11].
+Much of this material can be found in \cite[Ch.~10-11]{rudin-1991}. 
 Here is our motivating example. 
 
 \begin{example}
-Let $X$ be a nonempty compact Hausdorff space. Let $A=C^0(X)$ be the space of 
+Let $X$ be a nonempty compact Hausdorff space. Let $A=\sC^0(X)$ be the space of 
 continuous $\bC$-valued functions on $X$. With pointwise multiplication, $A$ is 
 naturally a (commutative, unital) $\bC$-algebra. We give $A$ the supremum norm: 
 \[
   \|f\| = \sup_{x\in X} |f(x)| .
 \]
-It's a standard fact that $A$ is complete, i.e.~it is a Banach $\bC$-algebra.
-\emph{Warning}: $\|fg\|\leqslant \|f\|\|g\|$, and we \emph{don't} have 
-equality. 
+It's a standard fact that $A$ is complete, i.e.~it is a Banach $\bC$-algebra. 
+\emph{Warning}: the norm on $\sC^0(X)$ is \emph{not} in general multiplicative, 
+i.e.~we only have $\|fg\|\leqslant \|f\|\|g\|$.
 \end{example}
 
 \begin{example}
@@ -611,27 +610,29 @@ Let $X$ be a finite set with $n$ points. Then $C^0(X)=\bC^n$.
 \end{example}
 
 It is natural to ask: ``given any commutative Banach $\bC$-algebra $A$, can we 
-embed $A$ into $C^0(X)$ for some compact Hausdorff $X$?''
+embed $A$ into $\sC^0(X)$ for some compact Hausdorff $X$?''
 
 \begin{example}
-Consider $(L^1(\bR^n),\ast)$, the convolution algebra of $L^1$-functions on 
-$\bR^n$. This is a commutative (non-unital) algebra. We fix the absense of a 
-unit by instead considering $A$, the space of Borel measures on $\bR^n$ of the 
-form $\mu=f+\lambda\delta$, where $f\in L^1(\bR^n)$, $\lambda\in \bC$, and 
-$\delta$ is the \emph{Dirac delta}, which behaves as 
+We give $\Lp^1(\bR^n)$ the structure of a $\bC$-algebra via convolution:
+\[
+  (f\ast g)(x) = \int_{\bR^n} f(y) g(x-y)\, \mathrm{d} y .
+\]
+This makes $\Lp^1(\bR^n)$ a commutative, but non-unital algebra. We give 
+$\Lp^1(\bR^n)$ a unit as follows. Let $A=\Lp^1(\bR^n)\oplus\bC\delta$, where 
+$\delta$ is the ``Dirac delta'' with multiplication as follows:
 \[
   (f_1+\lambda_1\delta) \ast (f_2+\lambda_2 \delta) = (f_1\ast f_2+\lambda_2 f_1 + \lambda_1 f_2) + \lambda_1 \lambda_2 \delta .
 \]
 Give $A$ a norm by 
 \[
-  \|f+\lambda\delta\| = \|f\|_{L^1} + |\lambda| .
+  \|f+\lambda\delta\| = \|f\|_{\Lp^1} + |\lambda| .
 \]
 \end{example}
 
 \begin{example}
-Let $X$ be a Banach space over $\bC$. Let $B(X)$ be the algebra of bounded 
+Let $X$ be a Banach space over $\bC$. Let $\sB(X)$ be the algebra of bounded 
 linear operators on $X$, with $\|\cdot\|$ the operator norm. For example, if 
-$\dim(X)=n$, then $B(X)\simeq M_n(\bC)$. Note that if $n>1$, then $B(X)$ is 
+$\dim(X)=n$, then $\sB(X)\simeq M_n(\bC)$. Note that if $n>1$, then $\sB(X)$ is 
 \emph{not} commutative. The theory of Gelfand-Mazur (and some of Berkovich's) 
 work for non-commutative algebras as well. 
 \end{example}
@@ -641,13 +642,14 @@ Let $A$ be a $\bC$-algebra. Put
 \[
   \sigma(f) = \{\lambda\in \bC\colon \lambda-f\notin A^\times\} .
 \]
-(In functional analysis, one calls $\sigma(f)$ the spectrum of $f$, but we will 
-avoid using this terminology. The complement $\bC\smallsetminus \sigma(f)$ is 
-called the resolvent of $f$.)
+(In functional analysis, one calls $\sigma(f)$ the \emph{spectrum} of $f$, but 
+we will avoid using this terminology. The complement 
+$\bC\smallsetminus \sigma(f)$ is called the \emph{resolvent} of $f$.)
 \end{definition}
 
-For $K$ non-archimedean, one can give a definition for $\sigma(f)$, but this is 
-quite difficult, so we won't. See \cite[Ch.~7]{berkovich-1990} for details. 
+For $K$ non-archimedean, one can give a definition for $\sigma(f)$, but it's 
+quite a bit more complicated, so we won't reproduce it here. See 
+\cite[Ch.~7]{berkovich-1990} for details. 
 
 \begin{theorem}
 Let $f\in A$. Then 
