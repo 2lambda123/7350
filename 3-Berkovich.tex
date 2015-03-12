@@ -684,7 +684,7 @@ definition of $\rho(f)$.
 \begin{definition}
 Let $A$ be a Banach $\bC$-algebra. As a set, 
 \[
-  \cM(A) = \{\chi\colon A\twoheadrightarrow \bC\text{ a homomorphism of $\bC$-algebras}\} .
+  \cM(A) = \{\chi\colon A\to \bC\text{ a homomorphism of $\bC$-algebras}\} .
 \]
 \end{definition}
 
@@ -721,9 +721,141 @@ $\sH(x)=\bC$.
 5. Apply part 4 to $\lambda-f$. 
 \end{proof}
 
+Parts 2 and 3 essentially say that ``Berkovich analytification'' does 
+\emph{not} produce any new points when we endow $\bC$ with the archimedean 
+absolute value. When we endow $\bC$ with the trivial absolute value, the 
+Berkovich analytification carries a lot of extra information. 
+
 For $f\in A$, the \emph{Gelfand transform} of $f$ is the function 
 $\hat f\colon \cM(A)\to \bC$ defined by 
 \[
   \hat f(\chi) = \chi(f) .
 \]
-We have seen that $\rho(f) = \sup_{\chi\in \cM(A)} |\hat f(\chi)|$. 
+The Gelfand transform is \emph{a priori} a function $A\to \prod_{\cM(A)}\bC$. 
+We have seen that $\rho(f) = \sup_{\chi\in \cM(A)} |\hat f(\chi)|$. Give 
+$\cM(A)$ the weakest topology making each $\hat f$ continuous (this recovers 
+the topology on $\Berkspec(A)$ we defined earlier). Then the Gelfand 
+transform is a map $A\to \sC^0(\cM(A))$ and 
+\[
+  \rho(f) = \|\hat f\|_{\sC^0(\cM(A))} .
+\]
+Let $B=\{\hat f\colon f\in A\}\subset \sC^0(\cM(A))$. Clearly, the Gelfand 
+transform gives us a $\bC$-algebra homomorphism 
+$A\twoheadrightarrow B\hookrightarrow \sC^0(\cM(A)),f\mapsto \hat f$. What is 
+the kernel of $A\twoheadrightarrow B$? Suppose $\hat f=0$, 
+i.e.~$\hat f(\chi)=0$ for all $\chi$, i.e.~$\chi(f)=f\mod\ker(\chi)=0$ for all 
+$\chi$. In other words, $\hat f=0$ if and only if $f\in \fm$ for all maximal 
+ideals $\fm$ of $A$. So 
+\[
+  \ker(\hat\cdot) = \bigcap_{\fm\in \mathrm{mSpec}(A)} \fm = \text{Jacobson radical of } A  = \ker(\rho).
+\]
+So $\hat\cdot$ is injective if and only if $\rho$ is a norm (not just a 
+seminorm) on $A$, if and only if $A$ is Jacobson semisimple. (We say a algebra 
+$A$ is \emph{Jacobson semisimple} if its Jacobson radical vanishes.)
+
+The algebra $A$ has a norm $\|\cdot\|$ already, while 
+$B\subset \sC^0(\cM(A))$ carries the sup-norm. The map $\hat\cdot\colon A\to B$ 
+is an sometry if and only if $\rho(\cdot)=\|\cdot\|$. Since $\rho$ is 
+power-multiplicative, clearly a necessary condition is for $\|\cdot\|$ to be 
+power-multiplicative. We will see later that $\rho(\cdot)=\|\cdot\|$ if and 
+only if $\|\cdot\|$ is power-multiplicative. 
+
+\begin{definition}[Old]
+A $\bC$-Banach algebra $A$ is called \emph{uniform} if there exists a compact 
+Hausdorff space $X$ such that there is a bounded $\bC$-algebra homomorphism
+$A\hookrightarrow \sC^0(X)$ with image a closed subspace containing the 
+constant functions and separating points of $X$. 
+\end{definition}
+
+(Recall that $S\subset \sC^0(X)$ \emph{separates points} if for any 
+$x\ne y\in X$, there is $s\in S$ such that $s(x)\ne s(y)$.) An algebra 
+$(A,\|\cdot\|)$ is uniform if and only if $\rho(\cdot)=\|\cdot\|$, if and only 
+if $\|\cdot\|$ is power-multiplicative. 
+
+Given a Banach $\bC$-algebra $(A,\|\cdot\|)$, one can always find a related 
+uniform algebra $(A^\mathrm{u},\rho(\cdot))$. Namely, $A^\mathrm{u}$ is the 
+completion of $A/\ker(\rho)$ with respect to the norm $\rho$. 
+
+\begin{example}
+Let $A=\Lp^1(\bR^n)\oplus \bC\delta$. Given any $\omega\in \bR^n$, we have a 
+character $\chi_\omega\colon A\to \bC$, defined by 
+\[
+  \chi_\omega(f+\lambda\cdot\delta) = \hat f(\omega) + \lambda .
+\]
+Here, $\hat f$ is the usual Fourier transform of $f$. Also, there is the 
+character 
+\[
+  \chi_\infty(f+\lambda\cdot \delta) = \lambda .
+\]
+It is known that 
+$\cM(A) = \{\chi_\omega\}_{\omega\in \bR^n}\cup\{\chi_\infty\}$. So 
+$\cM(A)$ is the ``spectrum'' space. Moreover, the (weak) topology on $\cM(A)$ 
+is the same as the one-point compactification of $\bR^n$. 
+\end{example}
+
+As an exercise, make $[0,1]$ out of $[0,1]\cap \bQ$ by announcing what you 
+would like to be your continuous functions on $[0,1]$. For a more formal 
+discussion, see the introduction to \cite{berkovich-1990}. 
+
+The theory of Gelfand-Mazur has another analytic generalization to 
+C*-algebras and non-commutative geometry in the sense of A.~Connes. The 
+``spectrum'' can be replaced by the \emph{unitary dual}, which plays a large 
+role in the representation theory of real reductive groups. 
+
+
+
+
+
+\subsection{Banach rings: the general case}
+
+Let $A$ be a Banach ring, $f\in A$. 
+
+\begin{definition}\label{def:general-spectral-radius}
+The \emph{spectral radius} of $f$ is 
+\[
+  \rho(f) = \lim_{n\to \infty} \|f^n\|^{1/n} = \inf\{\|f^n\|^{1/n}\colon n\geqslant 1\} .
+\]
+\end{definition}
+
+\begin{lemma}
+\autoref{def:general-spectral-radius} makes sense. 
+\end{lemma}
+\begin{proof}
+This follows from \autoref{thm:fekete} applied to $a_n=\log\|f^n\|$. The 
+sequence is subadditive because $\|f^{n+m}\| \leqslant \|f^n\| \|f^m\|$.
+\end{proof}
+
+\begin{theorem}[Fekete]\label{thm:fekete}
+Let $\{a_n\}_{n\geqslant 1}\subset \bR\cup\{-\infty\}$. If $\{a_n\}$ is 
+subadditive ($a_{n+m}\leqslant a_n+a_m$), then 
+$\lim_{n\to \infty} \frac{a_n}{n}$ exists and is equal to 
+$\inf\{\frac{a_n}{n}\colon n\geqslant 1\}$. 
+\end{theorem}
+\begin{proof}
+If $\inf\{\frac{a_n}{n}\colon n\geqslant 1\}=-\infty$, then it easily follows 
+that $\lim \frac{a_n}{n}=-\infty$. 
+
+Suppose the infimum is finite, and let 
+$a=\inf\{\frac{a_n}{n}\colon n\geqslant 1\}$. Fix $\epsilon>0$, and let 
+$k\gg 0$ be such that $\left|\frac{a_k}{k}-a\right|<\epsilon/2$. Let $l\gg 0$ 
+be such that $\frac{a_r}{kl}<\epsilon/2$ for $r<k$. If $n>k l$, write  
+$n=kq+r$ with $r<k$. Then $q\geqslant l$, so 
+\[
+  a \leqslant \frac{a_n}{n} \leqslant \frac{a_{kq}+a_r}{kq+r} \leqslant \frac{q a_k + kl\epsilon/2}{kq} = \frac{a_k}{k} + \frac{l\epsilon}{2q} < a+\epsilon .
+\]
+\end{proof}
+
+Recall the Gelfand transform 
+$\hat\cdot\colon A\twoheadrightarrow B\subset \prod^\mathrm{b}_{x\in \Berkspec(A)} \sH(x)$, given by 
+\[
+  \hat f(x) = f\mod{\ker|\cdot|_x} .
+\]
+The algebra $B$ inherits the supremum norm.  
+
+\begin{theorem}[Spectral radius vs.~Berkovich spectrum]
+Let $A$ be a commutative Banach ring. Then for all $f\in A$, 
+$\rho(f) = \|\hat f\|$, i.e.~
+\[
+ \lim_{n\to \infty} \|f^n\|^{1/n} = \max_{x\in \Berkspec(A)} |f(x)| .
+\]
+\end{theorem}
