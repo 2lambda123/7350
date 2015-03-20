@@ -856,6 +856,325 @@ The algebra $B$ inherits the supremum norm.
 Let $A$ be a commutative Banach ring. Then for all $f\in A$, 
 $\rho(f) = \|\hat f\|$, i.e.~
 \[
- \lim_{n\to \infty} \|f^n\|^{1/n} = \max_{x\in \Berkspec(A)} |f(x)| .
+  \lim_{n\to \infty} \|f^n\|^{1/n} = \max_{x\in \Berkspec(A)} |f(x)| .
 \]
 \end{theorem}
+\begin{proof}
+First we show that 
+$\lim_{n\to \infty} \|f^n\|^{1/n} \geqslant \max_{x\in \Berkspec(A)} |f(x)|$. 
+Let $f\in A$ and $x\in\Berkspec(A)$. Then
+\[
+  \|f^n\| \geqslant |f^n|_x=|f|_x^n=|f(x)|^n,
+\]
+so $\rho(f)\geqslant |f(x)|$ and therefore $\rho(f)\geqslant \|\hat f\|$.
+
+To show $\lim_{n\to \infty} \|f^n\|^{1/n} \leqslant \max_{x\in \Berkspec(A)} |f(x)|$, 
+we will prove that for any $r\in \bR^{\geqslant 0}$, $\|\hat f \|<r$ implies 
+$\rho(f)<r$. Fix $r$, and assume $\|\hat f\|<r$. Then, by boundedness, 
+$|f(x)|<r$ for all $x\in\Berkspec(A)$. Let
+\[
+  A^\prime=\left\{ \sum_{i=0}^\infty a_iT^i : a_i\in A, \sum_{i=0}^\infty a_ir^{-i}<\infty \right\}
+\]
+be the ring of convergent power series with coefficients in $A$ having radius 
+of convergence $r$. Note that $\sum_{i=0}^\infty a_ir^{-i}$ is a norm on 
+$A^\prime$.
+
+We claim that $1-fT$ is invertible in $A^\prime$. Assuming this claim, we have
+\begin{align*}
+  1-fT\text{ is invertible } 
+    &\Leftrightarrow \sum_{i=0}^\infty f^iT^i\in A^\prime \\
+    &\Leftrightarrow \sum_{i=0}^\infty a_ir^{-i}<\infty \\
+    &\Rightarrow \| f^i \|r^{-i}<1 \text{ for }i\text{ sufficiently large} \\
+    &\Rightarrow \|f^i\|^{\frac{1}{i}}<r \\
+    &\Rightarrow \rho(f)<r,
+\end{align*}
+and we are done. To prove the claim, note that 
+\begin{align*}
+  1-fT\text{ is invertible in }A^\prime 
+    &\Leftrightarrow (1-fT)(x)\neq 0 \;\forall x\in M(A^\prime) \\
+    &\Leftrightarrow |1-fT|_x\neq 0 \;\forall x\in M(A^\prime)
+\end{align*}
+To show this it suffices to show $|fT|_x<1$ because
+\[
+  1=|1|_x=|1-fT+fT|_x\leqslant |1-fT|_x+|fT|_x
+\]
+and if $|1-fT|_x=0$ then the above inequality implies $1<0+1$.
+
+To compute $|fT|_x$, note that $\|T\|=r^{-1}$. By assumption, we have $|f|_x<r$ 
+for all $x\in \Berkspec(A)$. But the map
+\[
+  \Phi:A\to A^\prime
+\]
+sending $f\mapsto f$ induces an isometry
+\[
+  \Phi^\ast:\Berkspec(A^\prime)\to\Berkspec(A),
+\]
+so $|f|_x=|f|_{\Phi^*(x)}<r$ for all $x\in \Berkspec(A^\prime)$, and therefore
+\[
+|fT|_x=|f|_x|T|_x<rr^{-1}=1.
+\]
+\end{proof}
+The following theorem shows that $\rho(\cdot)$ is a canonical seminorm
+\begin{theorem}\label{thm:rho}
+Let $(A,\|\cdot\|)$ be a commutative Banach algebra. Then
+\begin{enumerate}
+\item $\rho$ only depends on the equivalence class of $\|\cdot \|$.
+\item $\rho:A\to\bR$ is a seminorm.
+\item $\rho$ is always power-multiplicative.
+\item $\rho(f)\leqslant\|f\|\;\forall f\in A$, moreover, $\rho(\cdot)=\|\cdot\|$ 
+if and only if $\|\cdot\|$ is power-multiplicative.
+\end{enumerate}
+\end{theorem}
+These results can be restated in terms of properties of the Gelfand transform
+\begin{theorem}\label{thm:Gelfandtransform}
+Let $\hat \cdot:A\to B$ be the Gelfand transform. Then
+\begin{enumerate}
+\item[(a)] $\ker \hat\cdot =\ker \rho$.
+\item[(b)] $\hat\cdot$ is an isometry with respect to $(A,\|\cdot\|)$ and 
+$(B,\rho(\cdot)$ if and only if $\|\cdot\|$ is power-multiplicative.
+\end{enumerate}
+\end{theorem}
+The ideal $\ker\rho$ is called the \emph{quasinilradical} of $A$. Its elements 
+are the quasinilpotents of $A$, i.e.~those elements $f$ of $A$ for which
+\[
+  f(x)=0 \;\forall x\in \Berkspec(A).
+\]
+In algebraic geometry, $f\in R$ is identically zero on $\spec(R)$ if and only 
+if
+\[
+  f(\fp)=f+\fp=0\quad \forall\fp\in\spec(R).
+\]
+which happens if and only if
+\[
+  f\in\bigcap_{\fp\in\spec(R)}\fp=\text{rad}(\langle 0\rangle),
+\]
+which is known as the nilradical of $R$.
+
+Note that the nilradical is contained in the quasinilradical because of the 
+power-multiplicativity of $\rho$. Recall that we have shown that for 
+$\bC$-Banach algebras, the quasinilradical is equal to the Jacobson radical of 
+$A$.
+
+\begin{definition}\label{def:uniform}
+A Banach algebra $(A,\|\cdot\|)$ is called \emph{uniform} if $\|\cdot\|$ is 
+power-multiplicative.
+\end{definition}
+\begin{lemma}\label{lem:squaresonly}
+$\|\cdot \|$ is power-multiplicative if and only if for all $f\in A$, 
+$\| f^2\|=\|f\|^2$.
+\end{lemma}
+\begin{proof}
+Fix $f$. Define $\Phi(n)=\log \|f^n\|$. By assumption, we have
+\[
+  \Phi(2)=2\Phi(1)
+\]
+so $\Phi(2^m)=2^m\Phi(1)$. We want $\Phi(n)=n\Phi(1)$. Note: $\Phi$ is 
+subadditive, so $\Phi(n)\leqslant n\Phi(1)$. If $\Phi(n)<n\Phi(1)$, then let 
+$k$ be such that $k+n=2^m$. Then
+\[
+  2^m\Phi(1)=\Phi(2^m)=\Phi(k+n)\leqslant \Phi(k)+\Phi(n)<k\Phi(1)+n\Phi(1)=2^m\Phi(1)
+\]
+which is a contradiction.
+\end{proof}
+
+\begin{proof}[Proof of \autoref{thm:rho}]
+Let 
+\begin{align}\label{eq:def1}
+  \rho &= \lim_{n\to \infty} \|f^n\|^{1/n}) \\ \label{eq:def2}
+  \rho &= \max_{x\in \Berkspec(A)} |f(x)|
+\end{align}
+denote the two equivalent definitions of $\rho$. 
+\begin{enumerate}
+\item
+This follows immediately from \eqref{eq:def1}.
+
+\item
+$\rho(0)=0,\rho(1)=1$ and $\rho(fg)\leqslant\rho(f)\rho(g)$ follow from 
+\eqref{eq:def1}, $\rho(f+g)\leqslant\rho(f)+\rho(g)$ follows easily from 
+\eqref{eq:def2}.
+
+\item
+\eqref{eq:def1}
+
+\item
+By \eqref{eq:def1}, we have 
+$\rho(f)=\lim_{n\to\infty} \|f^n\|^{\frac{1}{n}}\leq \lim_{n\to\infty}\|f\|^{n\frac{1}{n}}=\|f\|$. 
+If $\rho=\|\cdot\|$, then by 3, $\|\cdot\|$ is power-multiplicative, so 
+$\rho(f)=\|f^n\|^{\frac{1}{n}}=\|f\|$.
+\end{enumerate}
+\end{proof}
+\begin{proof}[Proof of \autoref{thm:Gelfandtransform}]
+\begin{enumerate}
+\item[(a)] Follows from \eqref{eq:def1}.
+\item[(b)] Follows from \autoref{thm:rho}, 4.
+\end{enumerate}
+\end{proof}
+Recall that the kernel map $\ker\colon\Berkspec(A)\to\spec(A)$ sending 
+$x\mapsto \ker |\cdot|_x$ is continuous with respect to the Berkovich topology 
+on $\Berkspec(A)$ and the Zariski topology on $\spec(A)$.
+
+\begin{definition}\label{def:zariskiberkspec}
+The Zariski topology on $\Berkspec(A)$ is the weakest topology making $\ker$ 
+continuous.
+\end{definition}
+
+As an exercise, show that $\Berkspec(A)$ is irreducible with respect to the 
+Zariski topology if and only if $\ker\rho$ is a prime ideal.
+
+
+\subsection{Uniformization of Banach Rings}
+
+Let $(A,\|\cdot\|)$ be a Banach Ring. We would like to find a uniform 
+Banach Ring associated to $A$. Motivated by \autoref{thm:rho}, we would like to 
+use $\rho$, but as seen in that theorem, $\rho$ is in general only a seminorm, 
+and $A/\ker\rho$ might not be complete. Therefore we define the uniformization 
+$A^\mathrm{u}$ of $A$ to be
+\[
+  A^\mathrm{u}=\widehat{A/\ker \rho}
+\]
+where $\hat{\cdot}$ refers to completion with respect to $\rho$. Then 
+$(A^\mathrm{u},\rho)$ is a uniform Banach ring (we denote the residue norm of 
+$\rho$ by $\rho$ again). Let $\pi\colon A\to A^\mathrm{u}$ be the quotient map.
+
+\begin{theorem}\label{thm:uniformization}
+\leavevmode
+\begin{enumerate}
+\item For any bounded morphism $\phi\colon A\to B$ with $B$ uniform we have
+\[
+\begin{tikzcd}
+  A \ar[dr, "\phi"] \ar[r, "\pi"]
+    & A^\mathrm{u} \ar[d, dotted, "\exists !"] \\
+  & B
+\end{tikzcd}
+\]
+\item We have $\Berkspec(A^\mathrm{u}) = \Berkspec(A)$.
+\item $\Berkspec(A^\mathrm{u})$ has one point if and only if $A^\mathrm{u}$ is 
+a field and $\rho$ is an absolute value on $A^\mathrm{u}$.
+\item $\rho$ is non-archimedean on $A^\mathrm{u}$ if and only if for all 
+$x\in \Berkspec(A^u)$, $(\sH(x),{|\cdot|_x})$ is non-archimedean.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+1. By a similar trick as before, using power-multiplicativity of $\|\cdot\|_B$, we may assume
+\[
+  \|\phi(f)\|_B\leqslant \rho(f).
+\]
+So if $\rho(f)=0$ then $\phi(f)=0$ and $\phi\colon A\to B$ factors through 
+$\pi\colon A\to A^\mathrm{u}$.
+
+2. The map $\pi\colon A\to A^\mathrm{u}$ is bounded since it's a quotient map. Then
+\[
+  \pi^\ast\colon \Berkspec(A^\mathrm{u})\to\Berkspec(A)
+\]
+is injective, since $\pi(A)$ is dense in $A^\mathrm{u}$. Both $\Berkspec(A^\mathrm{u})$ 
+and $\Berkspec(A)$ are compact Hausdorff spaces, so injectivity of $\pi$ implies
+\[
+  \Berkspec(A^\mathrm{u})\simeq \pi\left( \Berkspec(A^\mathrm{u}) \right),
+\]
+so we just need to show that $\pi^\ast$ is surjective. Let 
+$|\cdot|_x\in \Berkspec(A)$. Note that it suffices to give such a 
+$|\cdot|_y\in\Berkspec(A/\ker\rho)$, since then $|\cdot|_y$ will extend uniquely 
+to the completion $A^\mathrm{u}$. Define
+\[
+  |f+\ker\rho|_y=|f|_x=|f(x)|.
+\]
+This is well-defined as $\rho(f)=\max_{x\in\Berkspec(A)}|f(x)|=0$ implies $f(x)=0$ 
+for all $x$.
+
+4. Assume that for all $x\in\Berkspec(A^\mathrm{u})$, $(\sH(x),|\cdot|_x)$ is 
+non-archimedean. Then as
+\[
+  \rho(f)=\max_{x\in\Berkspec(A^\mathrm{u})}|f(x)|=\max_{x\in\Berkspec(A^\mathrm{u})}|f|_x,
+\]
+$\rho$ is non-archimedean.
+
+For the converse, recall that it suffices to check the archimedean property for 
+integers. Assume that $\rho$ is non-archimedean. Then $\rho(n)\leq 1$ for all 
+$n\in\bZ$. Therefore for $x\in\Berkspec(A^\mathrm{u})$,
+\[
+  |n|_x\leqslant\rho(n)\leqslant 1
+\]
+so $|\cdot|_x$ is non-archimedean.
+\end{proof}
+
+
+
+\subsection{Products}
+
+Let $(A,\|\cdot\|_A)$ be a normed ring.
+\begin{definition}\label{def:modules}
+A \emph{seminorm} on an  $A$-module $M$ is a function
+\[
+  \|\cdot\|:M\to\bR
+\]
+such that
+\begin{enumerate}
+\item
+\begin{itemize}
+\item $\|0\|=0,$
+\item $\|m+n\|\leqslant \|m\|+\|n\|,$
+\item $\|m\|=\|-m\|.$
+\end{itemize}
+\item There exists some $c>0$ such that for all $f\in A,m\in M$,
+\[
+\|f\cdot\|\leqslant c\|f\|_A\|m\|.
+\]
+\end{enumerate}
+\end{definition}
+\emph{Fact:} We may assume $c=1$ by replacing $\|\cdot\|$ by $\|\cdot\|^\prime$, defined as
+\[
+\|m\|^\prime=\sup_{f\in A\setminus\{0\}}\frac{\|f\cdot m\|}{\|f\|_A}.
+\]
+Then
+\[
+\|m\|\leqslant \|m\|^\prime\leqslant c\|m\|
+\]
+so $\|\cdot\|$ is equivalent to $\|\cdot\|^\prime$.
+
+Let $M$ and $N$ be $A$-modules. On the tensor product $M\otimes_A N$ we have some natural choices for seminorms.
+\begin{enumerate}
+\item If $A,M,N$ are all archimedean, then for $s\in M\otimes_A N$, let
+\begin{align}
+\|s\|&=\inf \left( \sum_{i\in I}\|m_i\|\|n_i\| \right),\label{def:archtensor}
+\end{align}
+where we are taking the infimum of the above for all presentations of $s$:
+\begin{align}
+s&=\sum_{i\in I} m_i\otimes n_i.\label{def:nonarchtensor}
+\end{align}
+\item If $A,M,N$ are all non-archimedean, we prefer the following choice
+\[
+\|s\|=\inf \left( \text{Max}_{i\in I} \|m_i\|\|n_i\| \right)
+\]
+\end{enumerate}
+Some remarks about this definition:
+\begin{enumerate}
+\item Definition \autoref{def:archtensor} also makes sense in the non-archimedean setting, but the two definitons are nonequivalent in general.
+\item Definition \autoref{def:nonarchtensor} will not work in the archimedean case.
+\item Even when the seminorms on $M$ and $N$ are norms, the seminorm on $M\otimes_A N$ might have a nontrivial kernel.
+\item In general $M\otimes_A N$ is not complete.
+\end{enumerate}
+To remedy this, we define
+\[
+M\hat{\otimes}_AN=\widehat{M\otimes_A N}
+\]
+where completion is taken with respect to the above-defined norm. Then $M\hat{\otimes}_AN$ is also an $\hat{A}$-module.
+
+Note that the map
+\[
+M\otimes_A N\to M\hat{\otimes}_AN
+\]
+is not in general injective.
+\begin{theorem}[Gruson] Let $K$ be a non-archimedean complete field, $M$ and $N$ be $K$-Banach vector spaces. then
+\[
+M\otimes_A N\to M\hat{\otimes}_AN
+\]
+is injective.
+\end{theorem}
+The completed tensor product $M\hat{\otimes}_AN$ also has the following universal property: Any bounded bilinear map $M\times N\to L$ where $L$ is a complete normed $A$-module factors through the canonical map
+\[
+M\times N\to M\hat{\otimes}_A N.
+\]
+Our main interest in tensor products is extension of scalars, i.e. if $A$ is a $K$-Banach algebra and $L/K$ is a field extension, we want to study
+\[
+A^\prime=A\hat{\otimes}_K L
+\]
