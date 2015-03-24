@@ -980,8 +980,8 @@ which is a contradiction.
 \begin{proof}[Proof of \autoref{thm:rho}]
 Let 
 \begin{align}\label{eq:def1}
-  \rho &= \lim_{n\to \infty} \|f^n\|^{1/n}) \\ \label{eq:def2}
-  \rho &= \max_{x\in \Berkspec(A)} |f(x)|
+  \rho(f) &= \lim_{n\to \infty} \|f^n\|^{1/n}) \\ \label{eq:def2}
+  \rho(f) &= \max_{x\in \Berkspec(A)} |f(x)|
 \end{align}
 denote the two equivalent definitions of $\rho$. 
 \begin{enumerate}
@@ -1081,6 +1081,17 @@ to the completion $A^\mathrm{u}$. Define
 This is well-defined as $\rho(f)=\max_{x\in\Berkspec(A)}|f(x)|=0$ implies $f(x)=0$ 
 for all $x$.
 
+3. $\Leftarrow$. If $(K,|\cdot|)$ is a field with absolute value, then 
+$\Berkspec(K)$ is a point, because for any $x\in \Berkspec(K)$, 
+$\ker|\cdot|=0$. Thus $\sH(x)=K$, and the character $K\to \sH(K)$ is the 
+identity. 
+
+$\Rightarrow$. Suppose $\Berkspec(A^\mathrm{u}) = \{x\}$. First, we claim that 
+$\rho(\cdot)$ is multiplicative, which follows from \eqref{eq:def2}. Next, we 
+know that $f\in (A^\mathrm{u})^\times$ if and only if $f(x)\ne 0$. Thus 
+$x=\rho$, so $(A^\mathrm{u})^\times = A\smallsetminus \ker\rho = 0$. We have 
+shown that $A^\mathrm{u}$ is a field. 
+
 4. Assume that for all $x\in\Berkspec(A^\mathrm{u})$, $(\sH(x),|\cdot|_x)$ is 
 non-archimedean. Then as
 \[
@@ -1089,10 +1100,10 @@ non-archimedean. Then as
 $\rho$ is non-archimedean.
 
 For the converse, recall that it suffices to check the archimedean property for 
-integers. Assume that $\rho$ is non-archimedean. Then $\rho(n)\leq 1$ for all 
+integers. Assume that $\rho$ is non-archimedean. Then $\rho(n)\leqslant 1$ for all 
 $n\in\bZ$. Therefore for $x\in\Berkspec(A^\mathrm{u})$,
 \[
-  |n|_x\leqslant\rho(n)\leqslant 1
+  |n|_x\leqslant\rho(n)\leqslant 1 ,
 \]
 so $|\cdot|_x$ is non-archimedean.
 \end{proof}
@@ -1148,14 +1159,14 @@ s&=\sum_{i\in I} m_i\otimes n_i.\label{def:nonarchtensor}
 \end{enumerate}
 Some remarks about this definition:
 \begin{enumerate}
-\item Definition \autoref{def:archtensor} also makes sense in the non-archimedean setting, but the two definitons are nonequivalent in general.
-\item Definition \autoref{def:nonarchtensor} will not work in the archimedean case.
+\item Definition \eqref{def:archtensor} also makes sense in the non-archimedean setting, but the two definitons are nonequivalent in general.
+\item Definition \eqref{def:nonarchtensor} will not work in the archimedean case.
 \item Even when the seminorms on $M$ and $N$ are norms, the seminorm on $M\otimes_A N$ might have a nontrivial kernel.
 \item In general $M\otimes_A N$ is not complete.
 \end{enumerate}
 To remedy this, we define
 \[
-M\hat{\otimes}_AN=\widehat{M\otimes_A N}
+  M\hat{\otimes}_AN=\widehat{M\otimes_A N}
 \]
 where completion is taken with respect to the above-defined norm. Then $M\hat{\otimes}_AN$ is also an $\hat{A}$-module.
 
@@ -1164,9 +1175,9 @@ Note that the map
 M\otimes_A N\to M\hat{\otimes}_AN
 \]
 is not in general injective.
-\begin{theorem}[Gruson] Let $K$ be a non-archimedean complete field, $M$ and $N$ be $K$-Banach vector spaces. then
+\begin{theorem}[Gruson] Let $K$ be a non-archimedean complete field, $M$ and $N$ be $K$-Banach vector spaces. Then the natural map 
 \[
-M\otimes_A N\to M\hat{\otimes}_AN
+  M\otimes_A N\to M\hat{\otimes}_AN
 \]
 is injective.
 \end{theorem}
@@ -1177,4 +1188,129 @@ M\times N\to M\hat{\otimes}_A N.
 Our main interest in tensor products is extension of scalars, i.e. if $A$ is a $K$-Banach algebra and $L/K$ is a field extension, we want to study
 \[
 A^\prime=A\hat{\otimes}_K L
+\]
+
+
+
+
+
+\section{Behavior of \texorpdfstring{$\Berkspec(A)$}{M(A)} with respect to field extension}
+
+One motivation is: let $A$ be a $\bQ_p$-algebra. We would like to understand 
+$X_{\bQ_p}=\Berkspec(A)$ in terms of 
+$X_{\bC_p} = \Berkspec(A\hat\otimes_{\bQ_p}\bC_p)$. Another reason is that by 
+extending the base field, we can enlarge the value group. For example, we can 
+obtain value group $\bR$, which makes some things easier. 
+
+Let $A,B$ be Banach $K$-algebras, and put $X=\Berkspec(A)$, $Y=\Berkspec(B)$. 
+We have a commutative diagram 
+\[
+\begin{tikzcd}
+	K \ar[r] \ar[d]
+		& A \ar[d] \\
+	B \ar[r]
+		& A\hat\otimes_K B ,
+\end{tikzcd}
+\]
+which (by functoriality) gives us a commutative diagram of spectra:
+\[
+\begin{tikzcd}
+	\Berkspec(A\hat\otimes_K B) \ar[r] \ar[d]
+		& X \ar[d] \\
+	Y \ar[r]
+		& \{\ast\} .
+\end{tikzcd}
+\]
+We put $X\times_K Y = \Berkspec(A\hat\otimes_K B)$. There are projection maps 
+$X\times_K Y\to X$ and $\to Y$, corresponding e.g.~to the maps 
+$A\to A\hat\otimes_K B$, $f\mapsto f\otimes 1$. Write 
+$\pi\colon X\times_K Y\to X$. Given $x\in X$, what is the fiber $\pi^{-1}(x)$? 
+It turns out that $\pi^{-1}(x)\simeq\Berkspec(\sH(x)\hat\otimes_K B)$. That is, 
+topological and ``algebraic'' fibers agree. So in particular, 
+$\pi^{-1}(x)\ne\varnothing$ for all $x$, so $X\times Y\to X$ is surjective. The 
+algebraic incarnation of $\pi^{-1}(x)\hookrightarrow X\times Y$ is the map 
+$A\hat\otimes_K B\to \sH(x)\otimes_K B$. Since $\pi^{-1}(x)$ is compact 
+Hausdorff, the injection $\psi^\ast\colon\pi^{-1}(x)\hookrightarrow X\times Y$ 
+is a homeomorphism onto its image. 
+
+
+\subsection{Fibers in algebraic geometry}
+
+See [Hartshorne]. Let $f\colon X\to Y$ be a morphism of schemes, 
+$y\in Y=\spec(R)$. The fiber over $y$, written $f^{-1}(y)$, is defined to be 
+the fiber product $X\times_Y \spec(k(y)) = X\times_Y y$. 
+
+
+
+
+
+\subsection{Rigid geometry}
+
+Let $K$ be a non-archimedean field, $L/K$ a field extension, and $A$ a Banach 
+$K$-algebra. Write $X=\Berkspec(A)$ and $X_L=\Berkspec(A\hat\otimes_K L)$. From 
+the above discussion, we have a surjective continuous map $X_L\to X$. 
+
+
+
+
+\subsection{Interlude in Galois theory}
+
+Let $K$ be a field; fix an algebraic closure $\overline K$. Let $L/K$ be an 
+algebraic (but possibly infinite) extension. We say that $L/K$ is:
+\begin{itemize}
+\item
+\emph{normal} if all $K$-embeddings $L\hookrightarrow \overline K$ have the 
+same image. Let $\aut(L/K)$ be the group of field automorphisms of $L$ which 
+are trivial on $K$. For example, $\bQ(\sqrt[3]{2})/\bQ$ is not normal, but 
+$\bQ(\sqrt[3]{2},\zeta_3)/\bQ$ is normal. 
+
+\item
+\emph{separable} if for all $\alpha\in L$, the minimal polynomial 
+$f\in K[x]$ of $\alpha$ has distinct roots in $\overline K$. Equivalently, 
+$L\otimes_K \overline K$ is reduced. Any field extension in characteristic 
+zero is separable, as are all extensions of finite fields. More generally, any 
+extension of a perfect field is separable. (A field $K$ is \emph{perfect} if 
+either $K$ is characteristic zero or all $x\in K$ are of the form $y^p$ for 
+some $y\in K$.) For $p$ a prime, the extension $\bF_p(\sqrt[p]{t})/\bF_p(t)$ is 
+not separable. 
+
+\item
+\emph{purely inseparable} if for any $\alpha\in L\smallsetminus K$, the minimal 
+polynomial of $\alpha$ has repeated roots. Equivalently, if $K$ has 
+characteristic $p>0$, the extension $L/K$ is purely inseparable if and only if 
+for any $\alpha\in L$, there exists $n\geqslant 0$ such that 
+$\alpha^{p^n}\in K$. 
+
+\item
+\emph{Galois} if it is normal and separable. Alternatively, 
+$\# \aut(L/K)=[L\colon K]$, or $L^{\aut(L/K)} = K$. 
+\end{itemize}
+
+Artin proved a ``primitive element theorem'' for Galois extensions. One 
+corollary is that if $L/K$ is finite separable, then $L=K(\alpha)$ for some 
+$\alpha\in L$. Any algebraic extension $L/K$ has a distinguished 
+subset 
+\[
+	S = \{\alpha\in L\colon \text{the minimal polynomial of $\alpha$ is separable}\} .
+\]
+One can check that $S$ is a field. Moreover, $S/K$ is separable, and $L/S$ is 
+purely inseparable. 
+
+Let $L/K$ be an algebraic Galois extension with Galois group $G=\galois(L/K)$. 
+Let $\fF=\{K\subset K'\subset L\colon K'/K\text{ finite Galois}\}$. The group 
+$G$ naturally carries a topology (the \emph{Krull topology}); a basis of 
+neighborhoods of $1\in G$ is given by 
+\[
+  \{\galois(L/K')\colon K'\in \fF\} .
+\]
+Moreover, 
+\[
+  \galois(L/K) = \varprojlim_\fF \galois(K'/K) ,
+\]
+as topological groups, where we give each $\galois(K'/K)$ the discrete 
+topology. So $\galois(L/K)$ is a profinite group. Given any tower 
+$K_2/K_1/K$ of Galois extensions, we have a short exact sequence of profinite 
+groups:
+\[
+  1 \to \galois(K_2/K_1) \to \galois(K_2/K) \to \galois(K_1/K)\to 1 .
 \]
