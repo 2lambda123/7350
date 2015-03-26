@@ -1314,3 +1314,133 @@ groups:
 \[
   1 \to \galois(K_2/K_1) \to \galois(K_2/K) \to \galois(K_1/K)\to 1 .
 \]
+
+If $L/K$ is an algebraic extension that is not normal, the \emph{normal 
+closure} of $L$ (over $K$) is the composite of all images of $K$-embeddings 
+$L\hookrightarrow \overline K$. If we write $L'$ for the normal closure of 
+$L$, then $L'/L$ is normal, and $L'$ is the smallest normal extension of $L$ 
+which contains $L$. If $[L\colon K]<\infty$, then $[L'\colon K]<\infty$. 
+
+\begin{lemma}
+If $L/K$ is normal and purely inseparable, then $\aut(L/K)=1$. 
+\end{lemma}
+\begin{proof}
+Actually, purely inseparable extensions are automatically normal. We need to 
+show that for all $\sigma\in \aut(L/K)$ and $a\in L$, we have $\sigma(a)=a$. 
+Assume $L$ has characteristic $p>0$. Given $a\in L$, there exists 
+$n\geqslant 0$ such that $a^{p^n}\in K$. Then 
+$\sigma(a)^{p^n} = \sigma(a^{p^n}) = a^{p^n}$. Thus 
+$(\sigma(a)-a)^{p^n}=0$, so $\sigma(a)=a$. 
+\end{proof}
+
+
+
+\subsection{Completion of normal extensions}
+
+Let $L/K$ be an (algebraic) normal extension. Suppose we have an absolute 
+value $|\cdot|$ on $K$, for which $K$ is complete. We have seen that there is a 
+unique extenion of $|\cdot|$ to $L$. If $[L\colon K]<\infty$, then $(L,|\cdot|)$ 
+is complete. If not, let $\widehat L$ denote its completion. 
+
+\begin{lemma}
+The extension $\widehat L/K$ is normal, and $L\hookrightarrow \widehat L$ 
+induces an isomorphism $\aut(\widehat L/K)\xrightarrow\sim \aut(L/K)$. 
+\end{lemma}
+\begin{proof}
+The archimedean case can be checked directly, so we suppose $K$ (and hence $L$) 
+is non-archimedean. Note that any $\sigma\in \aut(L/K)$ is an isometry with 
+respect to $|\cdot|$. This follows from the norm-formula:
+\[
+  |x| = \left|\norm_{K(x)/K}(x)\right|^{[K(x)\colon K]^{-1}} ,
+\]
+which is clearly $\aut(L/K)$-invariant. Alternatively, use the fact that for 
+any $\sigma\in \aut(L/K)$, the pullback $\sigma^\ast |\cdot|$ is also an 
+extension of $|\cdot|$ to $L$, so uniqueness tells us that 
+$\sigma^\ast|\cdot|=|\cdot|$, i.e.~$|\cdot|$ is $\sigma$-invariant. Thus any 
+$\sigma\in \aut(L/K)$ extends by continuity to an element of 
+$\aut(\widehat L/K)$. 
+\end{proof}
+
+
+
+\subsection{Action of \texorpdfstring{$\aut(\widehat L/K)$}{Aut(L/K)} on Berkovich spectra}
+
+Let $L/K$ be a normal extension of complete non-archimedean fields. Let 
+$A$ be a Banach $K$-algebra. Write $A_L=A\widehat\otimes_K L$; this is a 
+Banach $L$-algebra. Let $G=\aut(L/K)$, $X=\Berkspec(A)$ and 
+$X_L=\Berkspec(A_L)$. We want to relate $X$ to $X_L$. The group $G$ acts on 
+$A_L$ and hence, by functoriality $X_L$ in the following way. Let 
+$\sigma\in G$. Then $\sigma\colon L\to L$ induces a $K$-bilinear map 
+$A\times L\to A_L$, namely $(f,a)\mapsto f\widehat\otimes \sigma(a)$, which 
+is bounded because 
+\[
+  |f\widehat\otimes \sigma(a)| \leqslant \|f\| |\sigma(a)| = \|f\| |a| .
+\]
+The universal property of tensor products gives us a map 
+$\sigma\colon A_L\to A_L$ extending 
+$f\widehat\otimes a\mapsto f\widehat\otimes \sigma(a)$. This is an isometry. By 
+functoriality, we get a continuous map $\sigma^\ast\colon X_L\to X_L$; it makes 
+the following diagram commute:
+\[
+\begin{tikzcd}
+	X_L \ar[r, "\sigma^\ast"] \ar[dr]
+		& X_L \ar[d] \\
+	& X .
+\end{tikzcd}
+\]
+This gives us a (right-) action of $G$ on $X_L$ over $X$. Give the quotient set 
+$X_L/G$ the quotient topology, i.e.~the strongest topology making the quotient 
+map $X_L\twoheadrightarrow X_L/G$ continuous. Since $X_L$ is compact, the 
+quotient $X_L/G$ is quasi-compact. Since the action of $G$ respects the map 
+$X_L\to X$, we have a continuous map $X_L/G\to X_K$. 
+
+\begin{theorem}
+Let $L/K$ be a normal extension, $X=\Berkspec(A)$ and $X_L$ as above. Then the 
+natural map $X_L/G\to X_K$ is a homeomorphism. 
+\end{theorem}
+
+\begin{theorem}
+Let $A$ be a commutative Banach $K$-ring, $L/K$ a normal extension. 
+\begin{enumerate}
+\item
+If $[L\colon K]<\infty$, then $X_L/G\simeq X_K$, i.e.: 
+\begin{enumerate}
+\item
+If $L/K$ is separable, then $X_L/\galois(L/K)\simeq X_K$. 
+
+\item
+If $L/K$ is purely inseparable, then $X_L=X_K$. 
+
+\item
+Let $S/K$ be the largest separable subextension of $L/K$. Then 
+$X_L\simeq X_S$ and $X_S/\galois(S/K)\simeq X_K$. 
+\end{enumerate}
+
+\item If $[L\colon K]=\infty$, then 
+$\Berkspec(A\widehat\otimes_K L)=\Berkspec(A\widehat\otimes_K \widehat L)$, and 
+$\Berkspec(A\widehat\otimes_K \widehat L)/\galois(S/K) = \Berkspec(A)$, where 
+$S$ is defined as above. In particular, 
+\[
+	\Berkspec\left(A\widehat\otimes_K \widehat{\overline K}\right) = \Berkspec(A) / \galois(K^\mathrm{sep}/K) .
+\]
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Essentially, it all comes down to proving 1(a). The archimedean case is 
+$\bC/\bR$. First, we may assume that $A$ is a field, which comes from examining 
+the map $X_L\to X_K$ fiberwise. Use the primitive element theorem to write 
+$L=K(\alpha)=K[x]/p$, where $p\in K[x]$ is the minimal polynomial of $\alpha$. 
+Then $A\otimes_K L = A[x]/p$, which is a product of fields. Use 
+\cite[1.2.3]{berkovich-1990}. 
+
+To prove 1(b), note that for all $f\in A\widehat\otimes_K L$, there exists 
+$n\geqslant 0$ such that $f^{p^n}\in A$. Thus, any $|\cdot|_x\in \Berkspec(A)$ 
+has a unique extension of $|\cdot|$ to $\Berkspec(A\widehat\otimes_K L)$, given 
+by 
+\[
+  |f|_{A\widehat\otimes_K L} = \left|f^{p^n}\right|_x^{1/p^n} .
+\]
+
+Part 1(c) follows from (a) and (b). Part 2 follows from part 1, and the 
+profinite description of $\galois(L/K)$. 
+\end{proof}
