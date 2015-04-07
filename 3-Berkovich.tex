@@ -1513,7 +1513,28 @@ In Berkovich's notation, we could write
 	\lim_{\varepsilon\to 0} |\cdot|_{\infty,\varepsilon} = |\cdot|_0 = \lim_{\varepsilon\to 1} |\cdot|_{p,\varepsilon} .
 \]
 
-\textbf{[Draw picture of $\Berkspec(\bZ)$.]}
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}%[scale = 0.5]
+%	\draw[help lines] (0,0) grid (10,10);
+	\draw (3,1) -- (3,2);
+	\draw (0,0) -- (3,1);
+	\draw (1,0) -- (3,1);
+	\draw (2,0) -- (3,1);
+	\draw (4,0) -- (3,1);
+	\draw (6,0) -- (3,1);
+	\node [right] at (3,2) {$|\cdot|_\infty$};
+	\node [above left] at (3,1) {$|\cdot|_0$};
+	\node [below] at (0,0) {$|\cdot|_{2,0}$};
+	\node [below] at (1,0) {$|\cdot|_{3,0}$};
+	\node [below] at (2,0) {$|\cdot|_{5,0}$};
+	\node [below] at (3,0) {$\cdots$};
+	\node [below] at (4,0) {$|\cdot|_{p,0}$};
+	\node [below] at (5,0) {$\cdots$};
+\end{tikzpicture}
+\end{center}
+\caption{The Berkovich spectrum $\Berkspec(\bZ)$}
+\end{figure}
 
 This picture is ``true,'' but you need 
 to be careful: the Berkovich topology is \emph{not} the naive (metric) 
