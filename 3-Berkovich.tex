@@ -1588,12 +1588,6 @@ map to $(p)\in \spec(\bZ)$.
 
 The whole picture generalizes to rings of integers in number fields. 
 
-
-
-
-
-\subsection{Dedekind domains}
-
 Let $A$ be a Dedekind domain (integrally closed domain of dimension one) and 
 $|\cdot|_0$ the trivial norm on $A$. Recall that the map 
 $\ker\colon \Berkspec(A)\to \spec(A)$, $|\cdot|\mapsto \ker(|\cdot|)$, is 
@@ -1618,3 +1612,166 @@ By \autoref{thm:rho}, $A^\circ$ is a ring and $A^{\circ\circ}$ is an ideal in
 $A^\circ$. So $A^\natural=A^\circ/A^{\circ\circ}$ is a ring (not necessarily a 
 field, as $A^{\circ\circ}$ may not be maximal). We will define a \emph{reduction 
 map} $\Berkspec(A)\to \spec(A^\natural)$. 
+
+\begin{lemma}
+Let $\varphi\colon A\to B$ be a bounded homomorphism of Banach rings. Then 
+$\varphi$ induces maps 
+\begin{align*}
+	\varphi^\circ &\colon A^\circ\to B^\circ \\
+	\varphi^{\circ\circ} &\colon A^{\circ\circ}\to B^{\circ\circ} \\ 
+	\varphi^\natural &\colon A^\natural \to B^\natural .
+\end{align*}
+\end{lemma}
+\begin{proof}
+Clearly, it suffices to prove the first two parts. Better, it suffices to 
+show that $\rho(\varphi(f))\leqslant \rho(f)$ for all $f\in A$. We know that 
+there exists $C>0$ such that $\|\varphi(f)\|_B\leqslant C \|f\|_A$. The rest 
+is an easy computation:
+\begin{align*}
+	\rho(\varphi(f)) 
+		&= \lim_{n\to \infty} \|\varphi(f)^n\|^{1/n} \\
+		&= \lim_{n\to \infty} \| \varphi(f^n)\|_B^{1/n} \\
+		&\leqslant \lim_{n\to \infty} \left(C \|f^n\|_A\right)^{1/n} \\
+		&= \lim_{n\to \infty} \|f^n\|^{1/n}_A = \rho(f) .
+\end{align*}
+\end{proof}
+
+Let $x\in \Berkspec(A)$. We have an associated bounded homomorphism 
+$\chi_x\colon A\to \sH(x)$. By the lemma, we get a homomorphism 
+$\chi_x^\natural\colon A^\natural\to \sH(x)^\natural$. The field 
+$\sH(x)^\natural$ is often written $\widetilde{\sH(x)}$ and called the 
+\emph{double residue field} of $\Berkspec(A)$ at $x$. The ideal 
+$\ker(\chi_x^\natural)\subset A^\natural$ is prime, so we have defined a map 
+\[
+	\red\colon \Berkspec(A)\to \spec(A^\natural) .
+\]
+If $\|\cdot\|=|\cdot|_0$ is the trivial norm on $A$, then 
+\[
+	\rho(f) = \begin{cases} 1 & f\text{ is not nilpotent} \\ 0 & f\text{ is nilpotent} \end{cases} 
+\]
+So $\ker(\rho)$ is the nilradical of $A$. Thus $A^\circ=A$, 
+$A^{\circ\circ}=\rad(0)$, and $A^\natural=A/\rad(0)$. In particular, if $A$ is 
+reduced, then $A^\natural=A$. 
+
+For the moment, assume $A$ is reduced, and let $\|\cdot\|_A=|\cdot|_0$. We have 
+a \emph{reduction map} $\red\colon \Berkspec(A)\to \spec(A)$, but this is 
+\emph{not} the same as the ``kernel map'' 
+$\ker\colon \Berkspec(A)\to \spec(A)$. Indeed, 
+\[
+	\red(x) = \{f\in A\colon |f(x)|<1\} \supset \{f\in A\colon |f(x)|=0\} = \ker(x) .
+\]
+
+If $K$ is a non-archimedean field and $A$ is a Banach $K$-algebra, then 
+$A^\natural$ is a $K^\natural$-algebra. So $\spec(A^\natural)$ is a scheme over 
+the residue field $K^\natural$. For example, if $K=\bQ_p$, then 
+$K^\natural=\bF_p$ and the reduction map 
+$\Berkspec(A)\to \spec(A^\natural)_{/\bF_p}$ takes values in a scheme over a 
+finite field. This is why we call the map \emph{reduction} or 
+\emph{specialization}. If $x\in \Berkspec(A)$, we have a point 
+$x^\natural=\red(x)=\fp_{x^\natural}\in \spec(A^\natural)$. The algebraic 
+residue field $k(x^\natural)$, namely $(A^\natural/\fp_{x^\natural})_{(0)}$, is 
+canonically a subfield of $\sH(x)^\natural$. 
+
+\begin{theorem}
+Let $A$ be a noetherian Banach ring. Then the reduction map 
+$\red\colon \Berkspec(A)\to \spec(A^\natural)$ is anticontinuous.
+\end{theorem}
+\begin{proof}
+Recall that a map $f\colon X\to Y$ of topological spaces is 
+\emph{anticontinuous} if $f^{-1}(\text{open})=\text{closed}$ and 
+$f^{-1}(\text{closed})=\text{open}$. 
+
+Let $\fa\subset A^\natural$ an ideal. Recall that the 
+induced closed set $V(\fa)=\{\fp\in \spec(A^\natural)\colon \fa\in \fp\}$. Such 
+closed sets define a topology on $\spec(A^\natural)$. It turns out that 
+\[
+	\red^{-1}(V(\fa)) = \{x\in \Berkspec(A)\colon |f(x)|<1\text{ for all }f+A^{\circ\circ}\in \fa\} .
+\]
+If $A$ is noetherian, the ideal $\fa+A^{\circ\circ}$ has a finite generating 
+set $\langle f_1,\dots,f_n\rangle$, and 
+\[
+	\red^{-1}(V(\fa)) = \bigcap_i \{x\in \Berkspec(A)\colon |f_i(x)|<1\} .
+\]
+As a finite intersection of open sets, this is open. 
+\end{proof}
+
+If $A$ is a $K$-algebra, one could define the reduction map using the 
+``valuative criterion of properness'' applied to $\spec(\sH(x))\to \fX$, 
+where $\fX_{/K^\circ}$ is a proper flat model, assuming such a model exists. 
+
+
+
+
+
+\subsection{Dedekind domains with trivial norm}
+
+\begin{definition}
+A commutative ring $A$ is called a \emph{Dedekind domain}  if it is an 
+integrally closed, noetherian integral domain with Krull dimension $1$. 
+\end{definition}
+
+This definition is ``nice'' in the sense that it is usually easy to check if 
+a given ring is Dedekind, but it is not immediately clear why we should care 
+about Dedekind rings. 
+
+\begin{theorem}
+A noetherian integral domain $A$ is Dedekind if and only if any nonzero ideal 
+$\fa\subset A$ factors uniquely as $\fa=\fp_1\cdots \fp_r$, where the $\fp_i$ 
+are prime ideals. 
+\end{theorem}
+
+\begin{example}
+If $F$ is a number field, then the ring of integers $O_F$ is Dedekind. For 
+example, we could have $\bZ$, $\bZ[i]$, 
+$\bZ\left[\frac{\sqrt{-3}+1}{2}\right]$, etc.
+\end{example}
+
+\begin{example}
+A curve $C$ is nonsingular if and only if for all $U\subset C$ open, the 
+ring $\h^0(U,\sO)$ is Dedekind. This is because one-dimensional varieties are 
+normal if and only if they are smooth. 
+\end{example}
+
+So proper algebraic curves are a kind of ``geometrization'' of the notion of 
+a Dedekind domain. 
+
+\begin{lemma}
+A noetherian domain $A$ is Dedekind if and only if $A_\fp$ is a discrete 
+valuation ring for all nonzero primes $\fp\subset A$. 
+\end{lemma}
+
+Let $A$ be a Dedekind domain with trivial norm $|\cdot|_0$. We'd like to 
+understand $\Berkspec(A)$. 
+\begin{center}
+\begin{tikzpicture}
+	\draw (0,0) -- (3,1);
+	\draw (1,0) -- (3,1);
+	\draw (2,0) -- (3,1);
+	\draw (4,0) -- (3,1);
+	\draw (6,0) -- (3,1);
+	\node [above] at (3,1) {$|\cdot|_0$};
+	\node [below] at (1,0) {$|\cdot|_{\fp,0}$};
+	\node [below] at (3,0) {$\cdots$};
+	\node [below] at (4,0) {$|\cdot|_{\fq,0}$};
+	\node [below] at (5,0) {$\cdots$};
+\end{tikzpicture}
+\end{center}
+Fix $x\in \Berkspec(A)$, and let $\fp_x=\ker(x)=\{f\in A\colon |f(x)|=0\}$. 
+Let $\fq_x=\red(x) = \{f\in A\colon |f(x)|<1\}$. Clearly $\fp_x\subset \fq_x$. 
+If $\fp_x\ne 0$, then $\dim(A)=1$ forces $\fp_x=\fq_x$. If $\fp_x=0$, there 
+are two possibilities: either $\fq_x=0$ or $\fq_x\ne 0$. 
+
+Case 1: $\fp_x\ne 0$. Then
+\[
+	|f| _x= \begin{cases} 0 & f\in \fp_x \\ 1 & f\notin \fp_x \end{cases}
+\]
+because $|f(x)| \leqslant |f|_0 = 1$ and $|f(x)|<1$ if and only if $|f(x)|=0$, 
+if and only if $f\in \fp_x$. So $|\cdot|_x$ is the image of $\fp_x=\fp$ under 
+the canonical section $\spec(A)\to \Berkspec(A)$. Call this norm 
+$|\cdot|_{\fp,0}$. 
+
+Case 2: $0=\fp_x= \fq_x$. One handles this exactly as in Case 1. We get that 
+$|\cdot|_x=|\cdot|_0$. 
+
+Case 3: $0=\fp_x\subsetneq \fq_x$.
+
