@@ -1812,7 +1812,7 @@ on $A$, and the completion of $A$ with respect to $\rho$? Since
 $\Berkspec(A)=\Berkspec(A^\mathrm{u})$, we still have the same rigid-analytic 
 space. 
 
-\begin{theorem}
+\begin{theorem}\label{thm:tate-algebra}
 Let $f=\sum_{i\geqslant 0} a_i T^i\in K\respow{r^{-1} T}$. 
 \begin{enumerate}
 \item
@@ -1873,14 +1873,36 @@ for $f\in K\respow{r^{-1} T}$, there exists $\{p_n\}\subset K[T]$ such that
 $p_n\to f$. If $|f|<\rho(f)$, then since $|p_n|\geqslant \rho(p_n)$ for all 
 $n$, we get a contradiction. 
 
-4. That $|f g| \leqslant |f| |g|$ is clear from the definition. To show 
-equality, we first assume $r=1$. Then 
-$A^\circ = \{f\colon |f|\leqslant 1\} = K^\circ\pow{T}$, and 
-$A^{\circ\circ} = K^{\circ\circ}\pow{T}$. The ``residue ring'' 
-$A^\natural = K^\natural[T]$, which is not a field.  Write 
-$\pi\colon A\to A^\natural$ for the projection. Note that 
-$\pi(f)\ne 0$ if and only if $|f|=1$. Assume $|f|=|g|=1$. Then 
-$\pi(f),\pi(g)\ne 0$, so $\pi(f g)\ne 0$, hence $|f g|=1$. 
+4. We prove that $|\cdot|$ is multiplicative. 
+That $|f g| \leqslant |f| |g|$ is clear from the definition. If the absolute 
+value on $K$ is trivial, the result is easy, so we assume it's not trivial. To 
+show equality, we first assume $r=1$. Put $B=K\conpow{T}$; then 
+$B^\circ = K^\circ\conpow{T}$ and $B^{\circ\circ}=K^{\circ\circ}\conpow{T}$, so 
+$B^\natural = K^\natural[T]$, which incidentally is not a field. Write 
+$\pi\colon B\to B^\natural$ for the projection. Note that $|f|<1$ if and only 
+if $f^\natural=0$. 
+
+We are trying to show that for $f,g\in K\conpow{T}$, $|fg|=|f||g|$. Clearly 
+$|f g|\leqslant |f| |g|$. If $f$ or $g$ are constant, there is nothing to 
+prove. So assume $|f|=|g|=1$. Then $f,g,f g\in B^\circ$, and 
+$f^\natural,g^\natural\ne 0$. Since $B^\natural=K^\natural[T]$ is an integral 
+domain, $(f g)^\natural\ne 0$, so $|f g|=1$. For general $f,g$, since $|\cdot|$ 
+is nontrivial, write $f=c f^\prime$, $g=d g^\prime$, where 
+$c,d\in K$, and $|f^\prime|=|g^\prime|=1$. We now compute: 
+\[
+	|f g| = |cdf^\prime g^\prime| = |c d| |f^\prime g^\prime| = |c d| = |f| |g| .
+\]
+
+We already have $A=K\respow{r^{-1} T}\subset B=K\conpow{r^{-1} T}$. 
+To show that $B=A^\mathrm{u}$, we show that $B$ is complete and $A$ is dense in 
+$B$. Density is easy ($K[T]$ is dense in both rings). Completeness is 
+equivalent to the convergence of absolutely convergent series. Consider a 
+series $\sum f_i$, where $f_i\in B$ are written 
+$f_i=\sum_{j\geqslant 0} a_{i j} T^j$. Assume $|f_i|\to 0$; we will show that 
+$\sum f_i$ converges. We know that $|a_{i j}| \leqslant |f_i|$ for all $i,j$. 
+So $\lim_{i\to \infty} |a_{i j}|=0$. Since $K$ is complete non-archimedean, 
+each $\sum_i a_{i j}$ is convergent; let $b_j$ be the sum. One can easily 
+check that $\sum_i f_i$ converges to $f=\sum_{j\geqslant 0} b_j T^j$. 
 \end{proof}
 
 By part 4, the spectral norm $\rho(\cdot)\in \Berkspec(A^\mathrm{u})$. One 
@@ -1888,4 +1910,80 @@ calls $\rho$ the \emph{Gauss norm} because the proof of its multiplicativity
 uses Gauss' lemma about the factorization of polynomials. In rigid-analytic 
 geometry, $(K\conpow{T},\rho)$ is called the \emph{Tate algebra} in one 
 variable. Since $\rho$ is multiplicative, $K\conpow{r^{-1} T}$ is an 
-integral domain. 
+integral domain. The proof of part 4 uses the same trick as is standard in 
+proving Gauss' Lemma. 
+
+In the proof of \autoref{thm:tate-algebra}, we assumed $r=1$. The reasons for 
+having this assumption are sometimes technical (as above), and sometimes 
+historical, as early texts in rigid-analytic geometry typically worked with 
+$r=1$. 
+
+Consider $K\conpow{r^{-1} T}$. If $r\in |K^\times|$, then there exists 
+$c\in K^\times$ such that $|c^{-1}|=r$, so we have a map 
+$K\conpow{T}\to K\conpow{r^{-1} T}$, given by $T\mapsto c T$. This is a 
+bounded $K$-algebra isomorphism. If $r\notin |K^\times|$, find a field 
+$L\supset K$ such that $r\in |L^\times|$, base-change to $L$, and then use some 
+kind of descent argument to ``go back'' to $K$. 
+
+
+
+
+
+\subsection{Ring-theoretic properties of Tate algebras}
+
+By a \emph{Tate algebra} over a non-archimedean field $K$, we mean a ring of 
+the form 
+\[
+	B_{\bm r} = K\conpow{\bm r^{-1} \bm T} = \left\{\sum_{\bm \nu} a_{\bm \nu} \bm T^{\bm \nu}\colon |a_{\bm \nu}| \bm r^{\bm \nu} \to 0\right\} .
+\]
+Here, $\bm r=(r_1,\dots,r_n)$ is a tuple of real numbers, and we write 
+$\bm T^{\bm \nu} = T_1^{\nu_1} \dotsm T_n^{\nu_n}$ for any multi-index 
+$\bm \nu=(\nu_1,\dots,\nu_n)$. Clearly, $K\conpow{\bm r^{-1} \bm T}$ is a 
+commutative ring, and a proof similar to that of \autoref{thm:tate-algebra} 
+tells us that 
+\[
+	|f| = \max_{\bm\nu} |a_{\bm\nu}| \bm r^{\bm\nu}
+\]
+is a multiplicative norm equal to the spectral norm. If $|\cdot|$ on $K$ is 
+trivial and the $r_i\geqslant 1$, then $B_{\bm r} = K[T_1,\dots,T_n]$. If 
+$|\cdot|$ is trivial on $K$ and all $r_i<1$, then 
+$B_{\bm r} = K\pow{T_1,\dots,T_n}$, the ring of formal power series. Just as 
+above, there is a general ``we may assume $\bm r=1$'' principle. 
+
+There is a non-archimedean Weierstrass theory. This theory is essential in 
+understanding why convergent power series act very like polynomials. For this 
+theory, we assume $\bm r=\bm 1$. The books \cite{bgr-1984,bosch-2014} are 
+good references. Put $B=K\conpow{T_1,\dots,T_n}$; here 
+$\rho(f) = \max|a_{\bm \nu}|$. 
+
+\begin{definition}
+For $f\in K\conpow{T_1,\dots,T_n}$, write $f=\sum_{i\geqslant 0} g_i T_n^i$, 
+where the $g_i\in K\conpow{T_1,\dots,T_{n-1}}$. We say that $f$ is 
+\emph{$(T_n,s)$-distinguished} if 
+\begin{enumerate}
+\item
+$g_s\in K\conpow{T_1,\dots,T_{n-1}}^\times$, 
+
+\item
+$|g_s| = |f|$ and $|g_s| > |g_i|$ for $i>s$. 
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+Let $f,g\in K\conpow{T_1,\dots,T_n}$ with $g$ 
+$(T_n,s)$-distinguished. Then there exists a unique 
+$q\in K\conpow{T_1,\dots,T_n}$ and $r\in K\conpow{T_1,\dots,T_{n-1}}[T_n]$ with 
+$\deg_{T_n}(r)<s$ such that 
+\[
+	f = g q+r .
+\]
+Moreover, $|f|=\max\{|g||q|,|r|\}$. 
+\end{theorem}
+
+\begin{theorem}[Weierstrass preparation]
+Let $f\in K\conpow{T_1,\dots,T_n}$ be $(T_n,s)$-distinguished. Then there 
+exists a unique monic $\omega\in K\conpow{T_1,\dots,T_{n-1}}[T_n]$ with 
+$\deg_{T_n}(\omega) = s$ and a unique $e\in K\conpow{T_1,\dots,T_n}^\times$ 
+such that $f=\omega e$. Moreover, $|\omega|=1$, and $\omega$ is 
+$(T_n,s)$-distinguished. 
+\end{theorem}
