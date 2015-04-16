@@ -1809,7 +1809,7 @@ The norm $\|\cdot\|$ is not even power-multiplicative (i.e., $A$ is not a
 uniform algebra), which makes certain computations very annoying. What is 
 $A^\mathrm{u}$? In other words, what is the spectral radius norm $\rho(\cdot)$ 
 on $A$, and the completion of $A$ with respect to $\rho$? Since 
-$\Berkspec(A)=\Berkspec(A^\mathrm{u})$, we still have the same rigid-analytic 
+$\Berkspec(A)=\Berkspec(A^\mathrm{u})$, we still have the same analytic 
 space. 
 
 \begin{theorem}\label{thm:tate-algebra}
@@ -1836,7 +1836,7 @@ functions, and $A^\mathrm{u}$ is the subalgebra of $(A_\bC)^\mathrm{u}$ with
 real Taylor coefficients. 
 
 \item
-If $K$ is non-archimedean, then $\rho(\cdot)$ multiplicative. 
+If $K$ is non-archimedean, then $\rho(\cdot)$ multiplicative norm. 
 \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -1859,16 +1859,11 @@ So in general,
 \[
 	\|f^n\|^{1/n} \leqslant (1+n\deg f)^{1/n} |f^n|^{1/n} ,
 \]
-whence $\rho(f) \leqslant |f|$. Assume for now that $r=1$. By the 
-Weierstrass Preparation Theorem, for any $f\in K\conpow{T}$, there exists a 
-polynomial $g\in K[T]$ and $h\in K\conpow{T}$ of the form 
-$h=1+\sum_{i>0} a_i T^i$ with $|b_i|<1$, such that $f = g h$. One checks 
-that $|h|=1$, and that $\rho(h)\leqslant 1$, using the definition of $\rho$. 
-So 
-\[
-	\rho(f) = \rho(g h) \leqslant \rho(g) \rho(h) \leqslant |g|\cdot 1 = |g h| = |f| . 
-\]
-Alternatively, polynomials are dense in $(K\respow{r^{-1}T},\|\cdot\|)$. So 
+whence $\rho(f) \leqslant |f|$. 
+%Assume for now that $r=1$. By the  Weierstrass Preparation Theorem, for any $f\in K\conpow{T}$, there exists a  polynomial $g\in K[T]$ and $h\in K\conpow{T}$ of the form  $h=1+\sum_{i>0} a_i T^i$ with $|b_i|<1$, such that $f = g h$. One checks  that $|h|=1$, and that $\rho(h)\leqslant 1$, using the definition of $\rho$.  So 
+%\[ \rho(f) = \rho(g h) \leqslant \rho(g) \rho(h) \leqslant |g|\cdot 1 = |g h| = |f| . \]
+%Alternatively, 
+Polynomials are dense in $(K\respow{r^{-1}T},\|\cdot\|)$. So 
 for $f\in K\respow{r^{-1} T}$, there exists $\{p_n\}\subset K[T]$ such that 
 $p_n\to f$. If $|f|<\rho(f)$, then since $|p_n|\geqslant \rho(p_n)$ for all 
 $n$, we get a contradiction. 
