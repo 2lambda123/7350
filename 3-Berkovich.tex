@@ -459,7 +459,7 @@ sense. Let $\varphi\colon (A,\|\cdot\|)\to (B,\|\cdot\|')$ be a bounded
 homomorphism of commutative Banach rings. (As always, we assume that 
 $\varphi(1)=1$.)
 
-\begin{theorem}
+\begin{theorem}\label{thm:functoriality-criterion}
 \leavevmode
 \begin{enumerate}
 \item
@@ -1794,7 +1794,7 @@ $|\cdot|_{\fq,t^{-1}} \to |\cdot|_{\fq,0}$.
 
 
 
-\subsection{Berkovich unit disk}
+\subsection{Berkovich closed disk}
 
 We consider convergent power series in one variable (i.e.~analytic functions). 
 The spectrum of this algebra will be the ``Berkovich closed disk.''
@@ -1945,6 +1945,21 @@ $|\cdot|$ is trivial on $K$ and all $r_i<1$, then
 $B_{\bm r} = K\pow{T_1,\dots,T_n}$, the ring of formal power series. Just as 
 above, there is a general ``we may assume $\bm r=1$'' principle. 
 
+\begin{theorem}[Maximum modulus principle]
+Let $K$ be a complete non-archimedean field, $f\in K\conpow{T_1,\dots,T_n}$. 
+Then for any $x = (x_1\dots,x_n)\in K^n$ with $|x_i|\leqslant 1$, 
+\[
+	|f(x)| \leqslant |f| ,
+\]
+and moreover $|f|=|f(x)|$ for some $x$ as above. 
+\end{theorem}
+\begin{proof}
+Recall that for $f=\sum a_{\bm\nu} T^{\bm \nu}$, the Gauss norm 
+$|f|=\max\{|a_{\bm\nu}|\}$. The fact that 
+$\rho(f)=\max_{x\in \Berkspec(A)} |f(x)|$ is a vast generalization of this 
+theorem. 
+\end{proof}
+
 There is a non-archimedean Weierstrass theory. This theory is essential in 
 understanding why convergent power series act very like polynomials. For this 
 theory, we assume $\bm r=\bm 1$. The books \cite{bgr-1984,bosch-2014} are 
@@ -1982,3 +1997,117 @@ $\deg_{T_n}(\omega) = s$ and a unique $e\in K\conpow{T_1,\dots,T_n}^\times$
 such that $f=\omega e$. Moreover, $|\omega|=1$, and $\omega$ is 
 $(T_n,s)$-distinguished. 
 \end{theorem}
+
+In complex analysis, if $f(z)$ is meromorphic near zero and $f\ne 0$, it can be 
+written as $z^k h(z)$, where $k\in \bZ$ is the order of vanishing of $f$ at 
+zero, and $h(0)\ne 0$. Weierstrass generalized this to functions of several 
+variables. Complex-analytic Weierstrass theory is essential in proving relating 
+analytic and algebraic geometry (i.e.~in proving GAGA-type theorems). 
+
+There is also a Noether normalization for Tate algebras. Let 
+$\fa\subset K\conpow{T_1,\dots,T_n}$ be a closed proper ideal. Then there is 
+an injective $K$-algebra homomorphism (for some $d$) 
+$K\conpow{s_1,\dots,s_d} \hookrightarrow K\conpow{T_1,\dots,T_n}$ such that 
+the composite $K\conpow{s_1,\dots,s_d} \to K\conpow{T_1,\dots,T_n}/\fa$ is 
+(module-)finite. In fact, $d=\dim(K\conpow{t_1,\dots,t_d}/\fa)$, the 
+(ring-theoretic) Krull dimension. 
+
+\begin{theorem}
+Let $K$ be a complete non-archimedean field. Then $K\conpow{T_1,\dots,T_n}$ is 
+a noetherian unique factorization domain, which is a Jacobson ring. 
+\end{theorem}
+
+Recall that a ring $A$ is \emph{Jacobson} if for all ideals $\fa\subset A$, the 
+radical $\sqrt{\fa}$ is the intersection of all \emph{maximal} ideals 
+containing $\fa$. If we replace $K$ with $K^\circ$, the rings may not be 
+noetherian. For example, $\bC_p^\circ$ is already non-noetherian. 
+
+
+\subsection{Constructing the open disk}
+
+Recall that $\sE(0,r)=\Berkspec(K\conpow{r^{-1} T})$ is the Berkovich closed 
+disk of radius $r$. If $0<r<s$, then the inclusion 
+$K\conpow{s^{-1} T}\hookrightarrow K\conpow{r^{-1} T}$ is bounded and 
+injective. By functoriality, we have a continuous map $\sE(0,r)\to \sE(0,s)$, 
+which induces a homeomorphism onto its image. (By 
+\autoref{thm:functoriality-criterion}, this follows from the fact that $K[T]$ 
+is dense in both rings.)
+
+Assume $K$ is complete. Put $B=K\conpow{r^{-1} T}$; it carries the absolute 
+value $|\sum a_i T^i| = \max \{|a_i| r^i\}$. If $|\cdot|$ is trivial on $K$, 
+there are three possibilities: 
+\begin{enumerate}
+\item
+$r<1$. Here $|f|=r^{\valuation_T(f)}$, and $B=K\pow{T}$. Let 
+$|\cdot|_x\colon B\to \bR$ be a bounded multiplicative seminorm. Let 
+$t=|T|_x\geqslant 0$; then $|T|_x \leqslant |T|=r$. Note further that 
+$|\cdot|_x$ is completely determined by $|T|_x$. This is because 
+$|a_i T^i|_x = |T|_x^i=t^i$ if $a_i\ne 0$, and if $t\ne 0$, then since the 
+$t^i$'s are distinct, $|f|\max\{=t^{\valuation_T(f)},|a_0|\}$ by the 
+non-archimedean triangle inequality. So $\sE(0,r) \simeq [0,r]$. 
+
+\item
+$r=1$. Here $B=K[T]$ and 
+$|f|=|f|_0=\begin{cases} 1 & f\ne 0 \\ 0 & \text{else}\end{cases}$. This is a 
+Dedekind domain with trivial valuation, so as we have already seen, its 
+Berkovich spectrum looks like: 
+\begin{center}
+\begin{tikzpicture}
+	\draw (0,0) -- (3,1);
+	\draw (1,0) -- (3,1);
+	\draw (2,0) -- (3,1);
+	\draw (4,0) -- (3,1);
+	\draw (6,0) -- (3,1);
+	\node [above] at (3,1) {$|\cdot|_0$};
+	\node [below] at (1,0) {$|\cdot|_{\fp,0}$};
+	\node [below] at (3,0) {$\cdots$};
+	\node [below] at (4,0) {$|\cdot|_{(T),0}$};
+	\node [below] at (5,0) {$\cdots$};
+\end{tikzpicture}
+\end{center}
+where $\fp\subset K[T]$ ranges over the maximal ideals. 
+
+\item
+$r>1$. We know that $\sE(0,1)\hookrightarrow \sE(0,r)$. In fact, $\sE(0,1)$ 
+consists of those seminorms with $|T|_x\leqslant 1$. Assume 
+$|\cdot|_x\in \sE(0,r)\smallsetminus \sE(0,1)$. Then $r\geqslant |T|_x=t>1$. As 
+above, we get ``$t$ determines $|\cdot|_x$,'' by 
+$|f|=t^{\deg f}$. So $\sE(0,r)$ looks like 
+\begin{center}
+\begin{tikzpicture}
+	\draw (3,1) -- (3,2);
+	\draw (0,0) -- (3,1);
+	\draw (1,0) -- (3,1);
+	\draw (2,0) -- (3,1);
+	\draw (4,0) -- (3,1);
+	\draw (6,0) -- (3,1);
+	\node [right] at (3,2) {$r^{\deg(\cdot)}$};
+	\node [above left] at (3,1) {$|\cdot|_0$};
+	\node [below] at (1,0) {$|\cdot|_{\fp,0}$};
+	\node [below] at (3,0) {$\cdots$};
+	\node [below] at (4,0) {$|\cdot|_{(T),0}$};
+	\node [below] at (5,0) {$\cdots$};
+\end{tikzpicture}
+\end{center}
+\end{enumerate}
+
+If $|\cdot|$ is non-trivial, things are more complicated. For simplicity, we 
+assume $K=\overline K$. It turns out that our classification of points is 
+compatible with the Galois action, so we can quotient out by the Galois action 
+to recover the picture over $K$. We want to find all possible 
+$|\cdot|_x\in \sE(0,r)$ when $r>0$. There are some obvious points. First, 
+recall that 
+\begin{align*}
+	\disk(a,r) &= \{x\in K\colon |x-a|\leqslant r\} \\
+	\disk^-(a,r) &= \{x\in K\colon |x-a|<r\} .
+\end{align*}
+Let $a\in \disk(0,r)$; then $f(a)$ makes sense for $f\in K\conpow{r^{-1} T}$. 
+Then $f\mapsto |f(a)|$ is an element of $\sE(0,r)$. We have defined an 
+embedding $\disk(0,r)\hookrightarrow \sE(0,r)$; write it as 
+$a\mapsto |\cdot|_{a,0}$. More generally, if $\disk(a,s)\subset \disk(0,r)$, 
+then 
+\[
+	f\mapsto \sup_{x\in \disk(a,s)} |f(x)|
+\]
+is a seminorm. By the maximum modulus principle, it is bounded and 
+multiplicative. 
