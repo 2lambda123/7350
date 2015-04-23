@@ -2107,7 +2107,126 @@ embedding $\disk(0,r)\hookrightarrow \sE(0,r)$; write it as
 $a\mapsto |\cdot|_{a,0}$. More generally, if $\disk(a,s)\subset \disk(0,r)$, 
 then 
 \[
-	f\mapsto \sup_{x\in \disk(a,s)} |f(x)|
+	|f|_{a,s} = \sup_{x\in \disk(a,s)} |f(x)|
 \]
 is a seminorm. By the maximum modulus principle, it is bounded and 
-multiplicative. 
+multiplicative. Indeed, write $f=\sum_{i\geqslant 0} bi (T-a)^i$; then 
+\[
+	\max_{x\in \disk(a,s)} |f(x)| = \max_{i\geqslant 0} |b_i| s^i ,
+\]
+which we have already shown is multiplicative. 
+
+Having $s\in |K^\times|$ is not important in the definition of $|\cdot|_{a,s}$, 
+but it does make a (huge) difference when we look at $\sH(x)$. 
+
+Even more generally, let $\fF=\{\disk(a_i,r_i)\}_{i\in I}$ be a nested family 
+of closed disks. Define $|\cdot|_\fF\colon K\conpow{r^{-1} T}\to \bR$ by 
+\[
+	|f|_\fF = \inf_{i\in I} |f|_{a_i,r_i} .
+\]
+If $r_i\to 0$ and $\bigcap \disk(a_i,r_i)\ne\varnothing$, then we recover an 
+absolute value of the form $|\cdot|_a$. If $r_i\to r$ and 
+$\bigcap \disk(a_i,r_i)\ne\varnothing$, we get a seminorm of the form 
+$|\cdot|_{a,s}$. But if $K$ is not spherically complete (e.g.~$\bC_p$), then 
+it might be the case that $\bigcap \disk(a_i,r_i)=\varnothing$. By passing to a 
+spherical completion of $K$, we can avoid these ``funny points.'' 
+
+We have four types of points:
+\begin{itemize}
+\item ``Type 1'' (or classical). $|\cdot|_a$.
+
+\item
+``Type 2.'' $|\cdot|_{a,s}$ for $s\in |K^\times|$. 
+
+\item
+``Type 3.'' $|\cdot|_{a,s}$ for $s\notin |K^\times|$. 
+
+\item
+``Type 4.'' $|\cdot|_\fF$ for $\bigcap \fF=\varnothing$.  
+\end{itemize}
+
+\begin{theorem}
+Let $K$ be a complete, algebraically closed, non-archimedean field. If 
+$|\cdot|_x\in \sE(0,r)$, then $|\cdot|_x=\lim |\cdot|_{a_i,r_i}$ for some 
+sequence of nested disks (in $K$) $\{\disk(a_1,r_1),\disk(a_2,r_2),\dots\}$. 
+\end{theorem}
+\begin{proof}
+Given $|\cdot|_x$, consider the collection 
+$\fF_x=\{\disk(a,|T-a|_x)\}_{a\in \disk(0,r)}$. We claim that $\subset$ gives 
+$\fF_x$ a total ordering. Let $a,b\in \disk(0,r)$; we can assume 
+$|T-a|_x\geqslant |T-b|_x$. We show $\disk(b,|T-b|_x)\subset \disk(a,|T-a|_x)$. 
+We compute:
+\[
+	|a-b| = |a-b|_x = |(T-b)-(T-a)|_x \leqslant \max(|T-a|_x,|T-b|_x) \leqslant |T-a|_x ,
+\]
+whence $b\in \disk(a,|T-a|_x)$. Balls in non-archimedean fields are either 
+disjoint or one contains the other, so we obtain the claim. Let 
+\[
+	s = \inf_{a\in \disk(0,r)} |T-a|_x ,
+\]
+and let $\{a_i\}\subset \disk(0,r)$ be such that $s_i=|T-a_i|_x\to s$. The 
+following claim finishes the proof: 
+
+Claim: for any $a\in \disk(0,r)$, 
+$|T-a|_x = \lim_{i\to \infty} |T-a|_{a_i,s_i}$. The claim suffices because of 
+the Weierstrass preparation theorem: any $f\in K\conpow{r^{-1} T}$ can be 
+written as $f=w e$, where $|e|_x=1$ and $w\in K[T]$. So $|f|=|w|_x$. Since $K$ 
+is algebraically closed, $w=\prod (T-\lambda)$, so 
+$|w|_x = \prod |T-\lambda|_x$. In other words, $|\cdot|_x$ is completely 
+determined by $\{|T-a|_x\}_{a\in \disk(0,r)}$. 
+
+Now we prove the claim. Fix $a\in \disk(0,r)$. By definition 
+$|T-a|_x\geqslant s$. Suppose $|T-a|_x=s$. Then $|T-a|_x\leqslant |T-a_i|_x$. 
+As above, we get $a\in \disk(a_i,s_i)$. Note that:
+\[
+	|T-a|_{a_i,s_i} = \sup_{x\in \disk(a_i,s_i)} |x-a| = \sup_{x\in \disk(a,s_i)} |x-a| = s_i ,
+\]
+so all we need to prove is $s_i\to s$. Duh! The case $|T-a|_x>s$ is similar. 
+\end{proof}
+
+We've completely described $\sE(0,r)$ as a set. Now, we'd like to understand 
+it topologically. Start by recalling that for a Banach algebra $A$ and 
+$x\in \Berkspec(A)$, $\sH(x)=\widehat{(A/\ker |\cdot|_x)_{(0)}}$. The Abhyankar 
+inequality tells us that if $L/K$ is an extension of valued fields, then 
+$\trdeg(L^\natural/K^\natural)+\rationalrank(\Gamma'/\Gamma)\leqslant \trdeg(L/K)$. 
+
+
+
+
+
+\subsection{Classification of points in \texorpdfstring{$K\conpow{r^{-1} T}$}{K(rT)}}
+
+A point $x\in \sE(0,r)$ is of \emph{type 1} (\emph{classical}) if it is of the 
+form $|\cdot|_{a,0}$ for $a\in \disk(0,r)$. 
+
+\begin{lemma}
+$x\in \sE(0,r)$ is type 1 if and only if $\sH(x)=K$. In this case, 
+$|\sH(x)^\times| = |K^\times|$ and $\sH(x)^\natural = K^\natural$. 
+\end{lemma}
+
+A point $x\in \sE(0,r)$ is of \emph{type 2} (\emph{rational}) if it is of the 
+form $|\cdot|_{a,r}$ for $r\in |K^\times|$. 
+
+\begin{lemma}
+$x\in \sE(0,r)$ is type 2 if and only if $\sH(x)\simeq \widehat{K(T)}$. 
+Moreover, $|\sH(x)^\times|=|K^\times|$ and $\sH(x)^\natural = K^\natural(T)$. 
+\end{lemma}
+
+Roughly, this is the ``$1+0\leqslant 1$'' case of Abhyankar's inequality. 
+
+A point $x\in \sE(0,r)$ is \emph{type 3} (\emph{irrational}) if it is of the 
+form $|\cdot|_{a,r}$ for $r\notin |K^\times|$. 
+
+\begin{lemma}
+$x\in \sE(r,0)$ is type 3 if and only if $\sH(x)= \widehat{K(T)}$. Moreover, 
+$|\sH(x)^\times|=\langle |K^\times|,r\rangle$, and 
+$\sH(x)^\natural = K^\natural$. 
+\end{lemma}
+
+A point $x\in \sE(0,r)$ is \emph{type 4} (\emph{pathological}) if it is a 
+limit of the previous types. 
+
+\begin{lemma}
+$x\in \sE(0,r)$ is type 4 if and only if $\sH(x)=\widehat{K(T)}$. Moreover, 
+$|\sH(x)^\times|=|K^\times|$ and $\sH(x)^\natural = K^\natural$. 
+\end{lemma}
