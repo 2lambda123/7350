@@ -2385,7 +2385,7 @@ in the weak topology.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-Use the fact that a continuous injection $[i,1]\to X$ is continuous in the 
+Use the fact that a continuous injection $[0,1]\to X$ is continuous in the 
 strong topology if and only if it's continuous in the weak topology. 
 \end{proof}
 
@@ -2400,4 +2400,148 @@ strong topology if and only if it's continuous in the weak topology.
 Define a poset structure on $\sE(0,r)$. Say $|\cdot|_x\leqslant |\cdot|_y$ if 
 and only if $|f|_x \leqslant |f|_y$ for all $f\in K\conpow{r^{-1} T}$. The Gauss 
 point is maximal, rational and pathological points are minimal, and containment 
-of disks is detected via this relation. 
+of disks is detected via this relation. We'll use this ordering to give an 
+interpretation of $\sE(0,r)$ as a ``Hasse diagram.'' 
+
+\begin{lemma}
+\leavevmode
+\begin{enumerate}
+\item
+$|\cdot|_{0,r} = |\cdot| = \rho(\cdot)$ is the unique maximal element of 
+$\sE(0,r)$ with respect to $\leqslant $. 
+
+\item
+$|\cdot|_{a,s} \leqslant |\cdot|_{a',s'}$ if and only if 
+$\disk(a,s)\subset \disk(a',s')$. 
+
+\item
+If $x$ is obtained by nested family $\{(\disk(a_i,s_i)\}$ and $y$ is obtained 
+from a nested family $\{\disk(b_i,t_i)\}$, then $x\leqslant y$ if and only if 
+for all $k>0$, there exists $m,n>k$ such that 
+$\disk(a_m,s_m)\subset \disk(b_n,t_n)$. 
+
+\item
+Classical and pathological points (types 1 and 4) are minimal with respect to 
+$\leqslant$. 
+\end{enumerate}
+\end{lemma}
+
+\begin{definition}
+Given $x\in \sE(0,r)$, we put 
+\[
+	\radius(x) = \inf_{b\in \disk(0,r)} |T-b|_x .
+\]
+\end{definition}
+
+Note that if $|\cdot|_x=|\cdot|_{a,s}$, then $\radius(x)=s$. More generally, if 
+$x$ corresponds to $\{\disk(a_i,s_i)\}_i$, then $\radius(x) = \lim s_i$. For, 
+\[
+	|T-b|_{a,s} = \sup_{z\in \disk(a,s)} |z-b| = 
+	\begin{cases}
+		s & \text{if }b\in \disk(a,s) \\
+		|a-b| & \text{if }b\notin \disk(a,s) 
+	\end{cases} .
+\]
+We can use this notion of radius to put a metric on 
+$\sE(0,r)\smallsetminus \disk(0,r)$, i.e.~on the set of non-classical points. 
+
+\begin{definition}
+Let $x\leqslant y$ be in $\sE(0,r)\smallsetminus \disk(0,r)$. Put 
+\[
+	d(x,y) = \log{\frac{\radius(y)}{\radius(x)}} .
+\]
+\end{definition}
+This definition was known well before Berkovich spaces---Coleman used it to 
+speak of ``distance between annuli.'' 
+
+We will consider $\sE(0,r)$ as an $\bR$-tree. 
+
+\begin{theorem}
+The Berkovich topology on $\sE(0,r)$ is identical to the weak topology (for 
+$\sE(0,r)$ considered as an $\bR$-tree via $d$). 
+\end{theorem}
+
+[picture: different depending on whether $r\in |K^\times|$.] 
+
+If $\disk(a,s)\subset \disk(0,r)$, then we get an embedding 
+$\sE(a,s)\hookrightarrow \sE(0,r)$. Note that $|\cdot|_{a,s}\in \sE(0,r)$. 
+Then $\sE(a,s) = \ball_{|\cdot|_{a,s}}(|\cdot|_{a,s} \to |\cdot|_{a,0})$, with 
+the obvious interpretation of ``$|\cdot|_{a,s} \to |\cdot|_{a,0}$'' as a 
+direction. Here we write $\ball_x(\bm v) = \ball_x^-(\bm v)\cup\{x\}$. 
+
+The subset $\disk(a,s)\subset \sE(a,s)$ is dense (with respect to the Berkovich 
+topology). So we have embedded $\disk(a,s)$ as a dense subset in a compact, 
+Hausdorff, locally connected space. Rational (type 2) points are also dense in 
+$\sE(a,s)$. This embedding gives a good explanation of the failure of 
+``affinoid covers'' to form an honest topology (instead of a Grothendieck 
+topology) in rigid geometry. 
+
+
+
+
+
+\section{Berkovich affine \texorpdfstring{$n$}{n}-space}
+
+Let $\bm r=(r_1,\dots,r_n)\in \bR^n$. Define the ``polydisk'' of radius $\bm r$ 
+centered at $\bm 0$ as 
+\[
+	\sE(\bm 0,\bm r) = \Berkspec(K\respow{\bm r^{-1} \bm T})\simeq \Berkspec(K\conpow{\bm r^{-1} \bm T}) .
+\]
+Only the case $n=1$ is completely understood, in the sense of us having a 
+classification theorem for points. Even for $n=2$, we don't have a complete 
+list of points. 
+
+What is $\bA_K^{n,\an}$? This is not supposed to be compact. But this is a 
+problem, because we only ``know how'' to construct compact spaces---namely the 
+$\Berkspec(A)$ for $A$ a Banach $K$-algebra. Morally, we would like 
+\[
+	\bA_K^{n,\an} = \bigcup_{\bm r>0} \sE(\bm 0,\bm r) ,
+\]
+just like $\bC^n$ is an increasing union of compact closed balls, in the 
+classical theory. 
+
+If $f=\sum a_{\bm \nu} \bm T^{\bm \nu}$, we had the spectral norm 
+$|f| = \max\{|a_{\bm\nu}|\bm r^{\bm\nu}\}$. But as $\bm r\to \infty$, these 
+rings ``converge to'' a polynomial ring, in the sense that 
+\[
+	\varprojlim_{\bm r\to \infty} K\conpow{\bm r^{-1} \bm T} = K[\bm T] .
+\]
+The only property of $|\cdot|$ on $K\conpow{\bm r^{-1} \bm T}$ that survives is 
+the fact that it is compatible with the absolute value on $K$ that we started 
+out with. Since, even for $f\in K[\bm T]$, 
+$\lim_{\bm r\to \infty} |f|_{\bm r}=\infty$, any multiplicative seminorm on 
+$K[\bm T]$ is ``bounded'' in some sense. This suggests the following 
+definition. 
+
+\begin{definition}
+Let $K$ be a complete non-archimedean field. Then $(\bA_K^{n,\an})'$ is the set 
+of all multiplicative seminorms on $K[T_1,\dots,T_n]$ that restrict to 
+$|\cdot|$ on $K$. We give $(\bA_K^{n,\an})'$ the weakest topology making all 
+maps $|\cdot|_x\mapsto |f|_x$ continuous, as $f$ ranges over $K[\bm T]$. 
+\end{definition}
+
+We will give $\bA_K^{n,\an}$ the structure of a ringed space. 
+
+\begin{theorem}
+$\bA_K^{n,\an} = (\bA_K^{n,\an})'$. 
+\end{theorem}
+\begin{proof}
+Exercise. 
+\end{proof}
+
+If $K=R$ is a ring (not a field), then $|\cdot|_x$ on $R[T]$ needs to restrict 
+to a \emph{bounded} norm on $R$, i.e.~$|\cdot|\in \Berkspec(R)$. Note that 
+$R[T]$ is not itself a normed ring. 
+
+For $K$ non-archimedean, complete, and algebraically closed, $\bA_K^{1,\an}$ is 
+an infinite ascending union of $\bR$-trees. For general $n\geqslant 1$, any 
+$x\in \bA_K^{n,\an}$ has a residue field $\sH(x)$, defined as before. 
+
+Let $X_{/K}$ be any affine, connected, smooth, $n$-dimensional variety. Write 
+$K[X]=\Gamma(X,\sO_X)$ be its coordinate ring. As a set, $X^\an$ consists of 
+all multiplicative seminorms on $K[X]$ that restrict to $|\cdot|$ on $K$, with 
+the weakest topology making all maps $|\cdot|_x\mapsto |f|_x$ continuous, for 
+$f\in K[X]$. We would like to define $X^\an$ for general $X$ via gluing, but 
+this is tricky because the ``basic objects'' in Berkovich geometry are compact 
+objects $\sE(\bm 0,\bm r)$. These difficulties are not insurmountable, so one 
+can (with some headache) define $X^\an$ for arbitrary varieties $X_{/K}$. 
