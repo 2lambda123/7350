@@ -2545,3 +2545,132 @@ $f\in K[X]$. We would like to define $X^\an$ for general $X$ via gluing, but
 this is tricky because the ``basic objects'' in Berkovich geometry are compact 
 objects $\sE(\bm 0,\bm r)$. These difficulties are not insurmountable, so one 
 can (with some headache) define $X^\an$ for arbitrary varieties $X_{/K}$. 
+
+One can define $\bP_K^{1,\an}=\bA_K^{1,\an}\cup\{\infty\}$, or as 
+$\sE(0,1)\sqcup \sE^-(0,1)$, just as in the classical case. 
+
+
+
+
+
+\subsection{Equivalent definition of analytification}
+
+Recall that for $X_{/K}$ affine, we could define $X^\an$ as the set of 
+multiplicative seminorms on $\Gamma(X,\sO)$ extending $|\cdot|$ on $K$. There 
+is another approach. Let $X_{/K}$ be connected, smooth of dimension $n$. Here 
+$K$ is an algebraically closed complete non-archimedean field. As a set, we 
+could let $X^\an$ be the set of pairs $(x,|\cdot|)$, where $x$ is a 
+(scheme-theoretic) point of $X$, and $|\cdot|\colon k(x)\to \bR$ extends 
+$|\cdot|$ on $K$. Recall that $k(x)=\sO_{X,x}/\fm_x$ is the (algebraic) 
+residue field of $X$ at $x$. 
+
+There is an obvious forgetful map $i\colon X^\an\to X$, given by 
+$(x,|\cdot|)\mapsto x$. Give $X^\an$ the weakest topology making: 
+\begin{enumerate}
+\item
+$i$ is continuous.
+
+\item
+If $U\subset X$ is Zariski-open and $f\in \sO_X(U)$ is a regular function, then 
+the map $i^{-1}(U)\to \bR$ given by $(x,|\cdot|)\mapsto |f(x)|$ is continuous. 
+\end{enumerate}
+As an exercise, check that this agrees with our previous definition for 
+$\bA_K^{1,\an}$. Better, analytification is a functor in the sense that a 
+morphism $f\colon X\to Y$ induces a map $f_\ast\colon X^\an\to Y^\an$; this 
+satisfies $(f g)_\ast = f_\ast g_\ast$. 
+
+
+
+
+
+\subsection{Structure sheaves on Berkovich spaces}
+
+In many ``geometric'' theories (differential geometry, algebraic geometry, 
+complex analysis, etc.) the objects in question carry a natural structure 
+sheaf. In the case of affinoids 
+($\simeq \Berkspec(K\conpow{\bm r^{-1} \bm T}/\fa)$) there is more concrete and 
+rich theory. For $\bA_K^{n,\an}=\bigcup_{\bm r} \sE(0,\bm r)$, it's true but 
+nontrivial that we get the same theory. 
+
+The space $\bA_R^{n,\an}$, when $R$ is an integral domain, can be quite 
+complicated. We are looking at multiplicative seminorms on the integral domain 
+$R[T_1,\dots,T_n]$. Let $K_n=R[T_1,\dots,T_n]_{(0)} = R_{(0)}(T_1,\dots,T_n)$. 
+Let $U\subset \bA_R^{n,\an}$ be any subset, $f\in K_n$. We say $f$ is defined 
+on $U$ if $f=g/h$ for some $h,g\in R[T_1,\dots,T_n]$ such that $h(x)\ne 0$ for 
+all $x\in U$. (Recall $h(x)=h\mod |\cdot|_x$.) If $f$ is defined on $U$, then 
+$f(x)\in \sH(x)$ makes sense for all $x\in U$. 
+
+\begin{definition}
+Let $U$ be any subset of $\bA_R^{n,\an}$. The set of all analytic functions on 
+$U$, denoted $\sO_{\bA_R^{n,\an}}(U)$, consists of those 
+$f\colon U\to \prod_{x\in U} \sH(x)$ which are ``local limits'' of rational 
+functions defined on $U$. 
+\end{definition}
+
+We define the notion of \emph{local limit}. A function 
+$f\colon U\to \prod_{x\in U} \sH(x)$ is a local limit of rational functions 
+defined on $U$ if for all $x\in U$, there exists a neighborhood 
+$U\supset U'\ni x$ such that for all $\epsilon>0$, there exists $g\in K_n$ 
+defined on $U'$ such that for all $x'\in U'$, 
+\[
+	|f(x')-g(x')|<\epsilon .
+\]
+We have given a rule, $U\mapsto \sO_{\bA_R^{n,\an}}(U)$. 
+
+\begin{theorem}
+The above definition of $\sO_{\bA_R^{n,\an}}$ gives a sheaf of local rings on 
+$\bA_R^{n,\an}$. 
+\end{theorem}
+That $\sO_{\bA_R^{n,\an}}$ is (presheaf) of rings takes a bit of work to show. 
+Every $f\in \sO_{\bA_R^{n,\an}}(U)$ gives a continuous map $U\to \bR$, 
+$x\mapsto |f(x)|$. The fact that $\sO_x=\varinjlim_{x\in U} \sO(U)$ is local 
+(with unique maximal deal the functions vanishing on $x$) isn't hard. 
+
+Recall $\Berkspec(\bZ)$. [picture.] By definition, 
+$\Berkspec(\bZ)=\bA_\bZ^{0,\an}$ and $K_0=\bQ$. 
+
+If $x$ is ``between'' $|\cdot|_\infty$ and $|\cdot|_0$, then 
+$\sO_x = \bR$. Same for open sets (strictly) within any ``branch'' 
+$|\cdot|_0 \to |\cdot|_v$, namely you get $\bQ_v$. 
+$\sO_{|\cdot|_{p,0}} = \bZ_p$. 
+
+If $U$ is ``all branches but $p_1,\dots,p_n$,'' then 
+$\sO(U)=\bZ[\frac{1}{p_1\dotsm p_n}]$. Also, $\sO_{|\cdot|_0}$ is related to the 
+adeles. 
+
+[mention source: PhD thesis on Berkovich affine line over $\bZ$.]
+
+
+
+
+
+\subsection{Further topics}
+
+If we had another semester to learn about Berkovich spaces, here are some
+topics we'd cover:
+\begin{enumerate}
+\item
+Affinoid algebras and spaces, $\Berkspec(K\conpow{\bm r^{-1} \bm T}/\fa)$. 
+
+\item
+``Models'' versus Berkovich's skeletons for curves, abelian varieties, \ldots. 
+
+\item
+Raynaud's theory of formal models. 
+
+\item
+Tropicalization. Let $X_{/K}$ be a scheme, where $K$ is complete, algebraically 
+closed. Suppose we have a rational map $X\to (K^\times)^N=T$. By functoriality we 
+get a map $\varphi\colon X^\an \to T^\an$. There is a canonical map 
+$T^\an\to N_\bR\simeq \bR^N$. (``moment map'') Let $M$ be the lattice of 
+(algebraic) characters of $T$; note $M\simeq \bZ^N$, and we put 
+$N=\hom_\bZ(M,\bZ)$. So $N_\bR=\hom(M,\bR)$. Write $m\in M$ as $\chi^m$. Our 
+function $T^\an\to N_\bR$ is 
+\[
+	|\cdot|_x\mapsto -\log |\chi^m\circ\varphi|_x .
+\]
+\end{enumerate}
+
+Let's look at type 1 (classical) points of $T^\an$. Any $x=(x_1,\dots,x_N)$ is 
+mapped to $(\valuation(x_1),\dots,\valuation(x_n))$. The tropicalization of 
+$X$ is the image of $X^\an\to \bR^N$. 
