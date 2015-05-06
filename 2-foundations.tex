@@ -1,7 +1,5 @@
 % !TEX root = 7350.tex
 
-%\chapter{Foundations}
-
 
 
 
@@ -890,15 +888,12 @@ Kedlaya \cite{kedlaya-2001}, which rely on Mal'cev-Neumann rings (or fields of
 Hahn series) and their $p$-adic analogue. We will return to this in a later 
 section on arbitrary valuations. 
 
-[Clarifications]
-
-1. Let $K$ be a field. Then the extension $\overline K/K$ is unique up to 
+Let $K$ be a field. Then the extension $\overline K/K$ is unique up to 
 (possibly non-unique) isomorphism. That is, $\overline K$ is a unique 
 isomorphism class of extensions of $K$. 
-
 This fails for spherical completions. 
 
-2. The notion of ``immediate extension'' does not make sense for archimedean 
+The notion of ``immediate extension'' does not make sense for archimedean 
 fields. All the notions of $K^\circ$, $K^{\circ\circ}$, $K^\natural$, 
 immediate extension, maximally complete, etc.~only make sense for non-archimedean 
 $|\cdot|$. 
@@ -908,12 +903,12 @@ field) in fact shows that the (maximally complete) field is maximal (in a
 precise sense) among immediate extensions. So every field admits a maximally 
 complete immediate extension. 
 
-3. Krasner's theorem tells us that the completion of an algebraically closed 
+Krasner's theorem tells us that the completion of an algebraically closed 
 field is algebraically closed. It is not clear (and possibly not true) that 
-every field admits a dense embedding into a spherically complete field. 
-[Roberts, chapter 3] constructs a non-immediate algebraically closed spherically 
-complete field. Conclusion: Krasner's lemma doesn't (necessarily) hold for 
-spherical completion. 
+every field admits a dense embedding into a spherically complete field. Chapter 
+3 of \cite{robert-2000} constructs a non-immediate algebraically closed 
+spherically complete field. Conclusion: Krasner's lemma doesn't (necessarily) 
+hold for spherical completion. 
 
 
 
@@ -926,12 +921,12 @@ $K$ to (purely algebraic) problems in $K^\natural$. Since
 $\bQ_p^\natural=\bF_p$, this generally makes a problem effectively computable. 
 
 Let $(K,|\cdot|)$ be a complete non-archimedean field. We have a natural map 
-$K^\circ[x]\to K^\natural[x]$ denoted $f\mapsto \tilde f$, ``reduce modulo 
+$K^\circ[x]\to K^\natural[x]$ denoted $f\mapsto \bar f$, ``reduce modulo 
 $K^{\circ\circ}$.''
 
 \begin{theorem}[Hensel]\label{thm:Hensel}
 Assume $g\in K^\circ[x]$; assume $\tilde g\in K^\natural[x]$ is nonzero. 
-Assume $\tilde g=p q$ in $K^\natural[x]$, where 
+Assume $\bar g=p q$ in $K^\natural[x]$, where 
 \begin{itemize}
 \item
 $p$ is monic, 
@@ -942,7 +937,7 @@ $\gcd(p,q)=1$ in $K^\natural[x]$.
 Then $g=P Q$ in $K^\circ[x]$, where 
 \begin{itemize}
 \item $P$ is monic, 
-\item $\tilde P=p$, $\tilde Q=q$. 
+\item $\bar P=p$, $\bar Q=q$. 
 \end{itemize}
 \end{theorem}
 
@@ -953,7 +948,8 @@ approximating $P$ and $Q$. But in fact, completeness / denseness is not the
 core reason for the truth of this theorem! There is a general notion of 
 completion for arbitrary (higher rank) valuation rings, and in this context the 
 standard Hensel's lemma can fail. It is replaced by something called the 
-``henselization'' of a ring. We will see more about this in [later section]. 
+``henselization'' of a ring. We will see more about this in 
+\autoref{sec:henselization}. 
 
 \begin{corollary}\label{cor:integral-norm}
 Let $L/K$ be an algebraic extension. Then $\alpha\in L$ is integral over 
@@ -1227,7 +1223,7 @@ $\widehat K$. By \cite[2.4.4]{engler-prestel}, the extension
 $K\hookrightarrow \widehat K$ is dense and immediate.
 
 
-\subsection{Henselization}
+\subsection{Henselization}\label{sec:henselization}
 
 All this seems great, but Hensel's lemma can fail for complete fields in this 
 generality \cite[2.4.6]{engler-prestel}. The ``standard'' proof of Hensel's 

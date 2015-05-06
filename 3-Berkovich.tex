@@ -1,18 +1,15 @@
 % !TEX root = 7350.tex
 
-%\chapter{Berkovich spaces}
-
-This generalizes Gelfand's theory. Much of the theory even works for 
-non-commutative algebras. We do not require the existence of a base field, so 
-our theory applies to ``arithmetic'' rings like $\bZ$ or 
-$\bZ_2[x]/(7 x^3-5)$. 
-
 
 
 
 
 \section{Berkovich spectrum of a normed ring}
 
+This generalizes Gelfand's theory. Much of the theory even works for 
+non-commutative algebras. We do not require the existence of a base field, so 
+our theory applies to ``arithmetic'' rings like $\bZ$ or 
+$\bZ_2[x]/(7 x^3-5)$. 
 We could phrase everything in terms of (rank-one) valuations and semivaluations.
 Let $A$ be a commutative (unital) ring. 
 
@@ -452,7 +449,7 @@ section.
 \end{proof}
 
 
-\subsection{Functoriality of \texorpdfstring{$\Berkspec$}{M}}
+\subsection{Functoriality of Berkovich spectrum}
 
 We want to show that $A\mapsto \Berkspec(A)$ is functorial in the appropriate 
 sense. Let $\varphi\colon (A,\|\cdot\|)\to (B,\|\cdot\|')$ be a bounded 
@@ -806,7 +803,7 @@ role in the representation theory of real reductive groups.
 
 
 
-\subsection{Banach rings: the general case}
+\subsection{General Banach rings}
 
 Let $A$ be a Banach ring, $f\in A$. 
 
@@ -1194,7 +1191,14 @@ A^\prime=A\hat{\otimes}_K L
 
 
 
-\section{Behavior of \texorpdfstring{$\Berkspec(A)$}{M(A)} with respect to field extension}
+
+
+
+
+
+\section{Useful results}
+
+
 
 One motivation is: let $A$ be a $\bQ_p$-algebra. We would like to understand 
 $X_{\bQ_p}=\Berkspec(A)$ in terms of 
@@ -1233,18 +1237,10 @@ $A\hat\otimes_K B\to \sH(x)\otimes_K B$. Since $\pi^{-1}(x)$ is compact
 Hausdorff, the injection $\psi^\ast\colon\pi^{-1}(x)\hookrightarrow X\times Y$ 
 is a homeomorphism onto its image. 
 
-
-\subsection{Fibers in algebraic geometry}
-
-See [Hartshorne]. Let $f\colon X\to Y$ be a morphism of schemes, 
-$y\in Y=\spec(R)$. The fiber over $y$, written $f^{-1}(y)$, is defined to be 
-the fiber product $X\times_Y \spec(k(y)) = X\times_Y y$. 
-
-
-
-
-
-\subsection{Rigid geometry}
+Recall from \cite[II.3]{hartshorne-1977} the notion of fibers of a morphism. 
+If $f\colon X\to Y$ is a morphism of schemes, $y\in Y$ a point, then the fiber 
+of $f$ over $y$, written $f^{-1}(y)$, is by definition the fiber product 
+$X\times_Y \spec(k(y)) = X\times_Y y$. 
 
 Let $K$ be a non-archimedean field, $L/K$ a field extension, and $A$ a Banach 
 $K$-algebra. Write $X=\Berkspec(A)$ and $X_L=\Berkspec(A\hat\otimes_K L)$. From 
@@ -1458,143 +1454,8 @@ the ``type'' of points.
 
 
 
-\section{Examples of Berkovich spaces}
 
 
-
-
-
-\subsection{Ostrowski's theorem}
-
-Here, our Banach ring is $(A,\|\cdot\|) = (\bZ,|\cdot|_\infty)$. Clearly, this 
-is complete. We'd like to understand $\Berkspec(\bZ)$. This is the set of 
-bounded multiplicative seminorms on $\bZ$. First, observe that $|\cdot|_\infty$ 
-is maximal among seminorms on $\bZ$, in the sense that 
-$|n|\leqslant |n|_\infty$ for all seminorms $|\cdot|$ and $n\in \bZ$. Indeed, 
-\[
-	|n| = |1+\cdots + 1| \leqslant |n|_\infty\cdot |1| \leqslant |n|_\infty .
-\]
-So, as a set, $\Berkspec(\bZ)$ consists of \emph{all} multiplicative seminorms 
-on $\bZ$. We already know all multiplicative norms on $\bZ$ by Ostrowski, 
-so it seems like we should have a pretty good handle on $\Berkspec(\bZ)$. If 
-$|\cdot|_x\in \Berkspec(\bZ)$ has a non-trivial kernel, this kernel 
-$\fp_x=\ker(|\cdot|_x)$ is a prime ideal in $\bZ$, so $\fp_x=(p)$ for some 
-rational prime $p$. The induced norm on $\bF_p = \bZ/(p)$ must be the trivial 
-norm. 
-
-\begin{theorem}
-Any absolute value on a finite field is trivial. 
-\end{theorem}
-\begin{proof}
-Let $k$ be a finite field. We need to show that if $x\in k\smallsetminus 0$, 
-then $|x|=1$. Let $q=\# k$; then $x^q=x$, so $|x|^q=|x|$, which forces 
-$|x|=1$. 
-\end{proof}
-
-So $\Berkspec(\bZ)$ contains the following types of points:
-\begin{itemize}
-\item
-$|\cdot|_0$, the trivial norm.
-
-\item
-$|\cdot|_{\infty,\varepsilon} := |\cdot|_\infty^\varepsilon$ for any 
-$0<\varepsilon\leqslant 1$. 
-
-\item
-$|\cdot|_{p,\varepsilon}$, in which $|p|_{p,\varepsilon}=\varepsilon$, for all 
-primes $p$ and $0<\varepsilon<1$. 
-
-\item
-$|\cdot|_{p,0}$ given by 
-$|n|_{p,0} = \begin{cases} 1 & p\nmid n \\ 0 & p\mid n\end{cases}$. 
-\end{itemize}
-In Berkovich's notation, we could write 
-\[
-	\lim_{\varepsilon\to 0} |\cdot|_{\infty,\varepsilon} = |\cdot|_0 = \lim_{\varepsilon\to 1} |\cdot|_{p,\varepsilon} .
-\]
-
-\begin{figure}
-\begin{center}
-\begin{tikzpicture}%[scale = 0.5]
-%	\draw[help lines] (0,0) grid (10,10);
-	\draw (3,1) -- (3,2);
-	\draw (0,0) -- (3,1);
-	\draw (1,0) -- (3,1);
-	\draw (2,0) -- (3,1);
-	\draw (4,0) -- (3,1);
-	\draw (6,0) -- (3,1);
-	\node [right] at (3,2) {$|\cdot|_\infty$};
-	\node [above left] at (3,1) {$|\cdot|_0$};
-	\node [below] at (0,0) {$|\cdot|_{2,0}$};
-	\node [below] at (1,0) {$|\cdot|_{3,0}$};
-	\node [below] at (2,0) {$|\cdot|_{5,0}$};
-	\node [below] at (3,0) {$\cdots$};
-	\node [below] at (4,0) {$|\cdot|_{p,0}$};
-	\node [below] at (5,0) {$\cdots$};
-\end{tikzpicture}
-\end{center}
-\caption{The Berkovich spectrum $\Berkspec(\bZ)$}
-\end{figure}
-
-This picture is ``true,'' but you need 
-to be careful: the Berkovich topology is \emph{not} the naive (metric) 
-topology. Recall that $\Berkspec(\bZ)$ should carry the weakest topology 
-making all maps $|\cdot|\mapsto |n|$ continuous. Since the norms in question 
-are multiplicative, it suffices to ensure that the maps $|\cdot|\mapsto |p|$ 
-are continuous for all primes $p$. In other words, the topology is generated by 
-the sets 
-\begin{align*}
-	U_{p,t}^+ &= \{|\cdot|\colon |p|>t\} \\
-	U_{p,t}^- &= \{|\cdot|\colon |p|<t\} .
-\end{align*}
-Define: 
-\begin{align*}
-	I_p &= \{|\cdot|_{p,\varepsilon}\colon 0\leqslant \varepsilon \leqslant 1\} \\
-	I_\infty &= \{|\cdot|_{\infty,\varepsilon}\colon 0\leqslant \varepsilon \leqslant 1\} .
-\end{align*}
-
-\begin{proposition}
-\leavevmode
-\begin{enumerate}
-\item
-Any open set of $\Berkspec(\bZ)$ containing $|\cdot|_0$ contains all but 
-finitely many $I_v$ for $v\in \{\text{primes}\}\cup\{\infty\}$. 
-
-\item
-The maps $[0,1]\to \Berkspec(\bZ)$, $\varepsilon\mapsto |\cdot|_{v,\varepsilon}$ 
-are homeomorphisms onto the $I_v$. 
-\end{enumerate}
-\end{proposition}
-\begin{proof}
-1. Consider $U_{p,\varepsilon}^+$ for $t<1$. Recall that if $q\ne p$ is a prime, 
-then $|q|_{p,\varepsilon}=1$. So $U_{p,t}^+\supset \bigcup_{v\ne p} I_v$. The 
-similar statement holds for $U_{p,t}^-$. This (roughly) implies the first 
-claim. 
-
-2. It suffices to show that the maps $f_v\colon [0,1]\to I_v$ are continuous, as 
-bijectivity is easy. Let $U_{q,\varepsilon}^+(p)=U_{q,\varepsilon}^+\cap I_p$. 
-Then 
-\[
-  U_{q,\varepsilon}^+(p) = \begin{cases} I_p & t<1\text{ and }q\ne p \\ \varnothing & t>1\text{ and }q\ne p \\ \{|\cdot|_{p,\varepsilon}\colon \varepsilon>t\} & q=p \end{cases}
-\]
-So $f_p^{-1}(U_{q,\varepsilon}^+(p))$ will be either $[0,1]$, $\varnothing$, or 
-$\{\varepsilon>t\}$. Similarly one handles $U_{q,\varepsilon}^-(p)$, and the 
-infinite places. 
-\end{proof}
-
-Recall the ``kernel map'' $\ker\colon \Berkspec(\bZ)\to \spec(\bZ)$. It sends 
-everything to the generic point $(0)$ \emph{except} the $|\cdot|_{p,0}$, which 
-map to $(p)\in \spec(\bZ)$. 
-
-The whole picture generalizes to rings of integers in number fields. 
-
-Let $A$ be a Dedekind domain (integrally closed domain of dimension one) and 
-$|\cdot|_0$ the trivial norm on $A$. Recall that the map 
-$\ker\colon \Berkspec(A)\to \spec(A)$, $|\cdot|\mapsto \ker(|\cdot|)$, is 
-continuous. We saw that there is a canonical section 
-$\sigma\colon \spec(A)\to \Berkspec(A)$, which sends $\fp$ to the pullback of 
-the trivial norm on $A/\fp$. However, $\sigma$ is not continuous, because 
-$\Berkspec(A)$ is Hausdorff and $\spec(A)$ is not. 
 
 
 
@@ -1698,6 +1559,268 @@ As a finite intersection of open sets, this is open.
 If $A$ is a $K$-algebra, one could define the reduction map using the 
 ``valuative criterion of properness'' applied to $\spec(\sH(x))\to \fX$, 
 where $\fX_{/K^\circ}$ is a proper flat model, assuming such a model exists. 
+
+
+
+
+
+
+
+\subsection{Ring-theoretic properties of Tate algebras}
+
+By a \emph{Tate algebra} over a non-archimedean field $K$, we mean a ring of 
+the form 
+\[
+	B_{\bm r} = K\conpow{\bm r^{-1} \bm T} = \left\{\sum_{\bm \nu} a_{\bm \nu} \bm T^{\bm \nu}\colon |a_{\bm \nu}| \bm r^{\bm \nu} \to 0\right\} .
+\]
+Here, $\bm r=(r_1,\dots,r_n)$ is a tuple of real numbers, and we write 
+$\bm T^{\bm \nu} = T_1^{\nu_1} \dotsm T_n^{\nu_n}$ for any multi-index 
+$\bm \nu=(\nu_1,\dots,\nu_n)$. Clearly, $K\conpow{\bm r^{-1} \bm T}$ is a 
+commutative ring, and a proof similar to that of \autoref{thm:tate-algebra} 
+tells us that 
+\[
+	|f| = \max_{\bm\nu} |a_{\bm\nu}| \bm r^{\bm\nu}
+\]
+is a multiplicative norm equal to the spectral norm. If $|\cdot|$ on $K$ is 
+trivial and the $r_i\geqslant 1$, then $B_{\bm r} = K[T_1,\dots,T_n]$. If 
+$|\cdot|$ is trivial on $K$ and all $r_i<1$, then 
+$B_{\bm r} = K\pow{T_1,\dots,T_n}$, the ring of formal power series. Just as 
+above, there is a general ``we may assume $\bm r=1$'' principle. 
+
+\begin{theorem}[Maximum modulus principle]
+Let $K$ be a complete non-archimedean field, $f\in K\conpow{T_1,\dots,T_n}$. 
+Then for any $x = (x_1\dots,x_n)\in K^n$ with $|x_i|\leqslant 1$, 
+\[
+	|f(x)| \leqslant |f| ,
+\]
+and moreover $|f|=|f(x)|$ for some $x$ as above. 
+\end{theorem}
+\begin{proof}
+Recall that for $f=\sum a_{\bm\nu} T^{\bm \nu}$, the Gauss norm 
+$|f|=\max\{|a_{\bm\nu}|\}$. The fact that 
+$\rho(f)=\max_{x\in \Berkspec(A)} |f(x)|$ is a vast generalization of this 
+theorem. 
+\end{proof}
+
+There is a non-archimedean Weierstrass theory. This theory is essential in 
+understanding why convergent power series act very like polynomials. For this 
+theory, we assume $\bm r=\bm 1$. The books \cite{bgr-1984,bosch-2014} are 
+good references. Put $B=K\conpow{T_1,\dots,T_n}$; here 
+$\rho(f) = \max|a_{\bm \nu}|$. 
+
+\begin{definition}
+For $f\in K\conpow{T_1,\dots,T_n}$, write $f=\sum_{i\geqslant 0} g_i T_n^i$, 
+where the $g_i\in K\conpow{T_1,\dots,T_{n-1}}$. We say that $f$ is 
+\emph{$(T_n,s)$-distinguished} if 
+\begin{enumerate}
+\item
+$g_s\in K\conpow{T_1,\dots,T_{n-1}}^\times$, 
+
+\item
+$|g_s| = |f|$ and $|g_s| > |g_i|$ for $i>s$. 
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+Let $f,g\in K\conpow{T_1,\dots,T_n}$ with $g$ 
+$(T_n,s)$-distinguished. Then there exists a unique 
+$q\in K\conpow{T_1,\dots,T_n}$ and $r\in K\conpow{T_1,\dots,T_{n-1}}[T_n]$ with 
+$\deg_{T_n}(r)<s$ such that 
+\[
+	f = g q+r .
+\]
+Moreover, $|f|=\max\{|g||q|,|r|\}$. 
+\end{theorem}
+
+\begin{theorem}[Weierstrass preparation]
+Let $f\in K\conpow{T_1,\dots,T_n}$ be $(T_n,s)$-distinguished. Then there 
+exists a unique monic $\omega\in K\conpow{T_1,\dots,T_{n-1}}[T_n]$ with 
+$\deg_{T_n}(\omega) = s$ and a unique $e\in K\conpow{T_1,\dots,T_n}^\times$ 
+such that $f=\omega e$. Moreover, $|\omega|=1$, and $\omega$ is 
+$(T_n,s)$-distinguished. 
+\end{theorem}
+
+In complex analysis, if $f(z)$ is meromorphic near zero and $f\ne 0$, it can be 
+written as $z^k h(z)$, where $k\in \bZ$ is the order of vanishing of $f$ at 
+zero, and $h(0)\ne 0$. Weierstrass generalized this to functions of several 
+variables. Complex-analytic Weierstrass theory is essential in proving relating 
+analytic and algebraic geometry (i.e.~in proving GAGA-type theorems). 
+
+There is also a Noether normalization for Tate algebras. Let 
+$\fa\subset K\conpow{T_1,\dots,T_n}$ be a closed proper ideal. Then there is 
+an injective $K$-algebra homomorphism (for some $d$) 
+$K\conpow{s_1,\dots,s_d} \hookrightarrow K\conpow{T_1,\dots,T_n}$ such that 
+the composite $K\conpow{s_1,\dots,s_d} \to K\conpow{T_1,\dots,T_n}/\fa$ is 
+(module-)finite. In fact, $d=\dim(K\conpow{t_1,\dots,t_d}/\fa)$, the 
+(ring-theoretic) Krull dimension. 
+
+\begin{theorem}
+Let $K$ be a complete non-archimedean field. Then $K\conpow{T_1,\dots,T_n}$ is 
+a noetherian unique factorization domain, which is a Jacobson ring. 
+\end{theorem}
+
+Recall that a ring $A$ is \emph{Jacobson} if for all ideals $\fa\subset A$, the 
+radical $\sqrt{\fa}$ is the intersection of all \emph{maximal} ideals 
+containing $\fa$. If we replace $K$ with $K^\circ$, the rings may not be 
+noetherian. For example, $\bC_p^\circ$ is already non-noetherian. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Examples of Berkovich spaces}
+
+
+
+
+
+
+\subsection{Ostrowski's theorem and \texorpdfstring{$\Berkspec(\bZ$)}{M(Z)}}
+
+Here, our Banach ring is $(A,\|\cdot\|) = (\bZ,|\cdot|_\infty)$. Clearly, this 
+is complete. We'd like to understand $\Berkspec(\bZ)$. This is the set of 
+bounded multiplicative seminorms on $\bZ$. First, observe that $|\cdot|_\infty$ 
+is maximal among seminorms on $\bZ$, in the sense that 
+$|n|\leqslant |n|_\infty$ for all seminorms $|\cdot|$ and $n\in \bZ$. Indeed, 
+\[
+	|n| = |1+\cdots + 1| \leqslant |n|_\infty\cdot |1| \leqslant |n|_\infty .
+\]
+So, as a set, $\Berkspec(\bZ)$ consists of \emph{all} multiplicative seminorms 
+on $\bZ$. We already know all multiplicative norms on $\bZ$ by Ostrowski, 
+so it seems like we should have a pretty good handle on $\Berkspec(\bZ)$. If 
+$|\cdot|_x\in \Berkspec(\bZ)$ has a non-trivial kernel, this kernel 
+$\fp_x=\ker(|\cdot|_x)$ is a prime ideal in $\bZ$, so $\fp_x=(p)$ for some 
+rational prime $p$. The induced norm on $\bF_p = \bZ/(p)$ must be the trivial 
+norm. 
+
+\begin{theorem}
+Any absolute value on a finite field is trivial. 
+\end{theorem}
+\begin{proof}
+Let $k$ be a finite field. We need to show that if $x\in k\smallsetminus 0$, 
+then $|x|=1$. Let $q=\# k$; then $x^q=x$, so $|x|^q=|x|$, which forces 
+$|x|=1$. 
+\end{proof}
+
+So $\Berkspec(\bZ)$ contains the following types of points:
+\begin{itemize}
+\item
+$|\cdot|_0$, the trivial norm.
+
+\item
+$|\cdot|_{\infty,\varepsilon} := |\cdot|_\infty^\varepsilon$ for any 
+$0<\varepsilon\leqslant 1$. 
+
+\item
+$|\cdot|_{p,\varepsilon}$, in which $|p|_{p,\varepsilon}=\varepsilon$, for all 
+primes $p$ and $0<\varepsilon<1$. 
+
+\item
+$|\cdot|_{p,0}$ given by 
+$|n|_{p,0} = \begin{cases} 1 & p\nmid n \\ 0 & p\mid n\end{cases}$. 
+\end{itemize}
+In Berkovich's notation, we could write 
+\[
+	\lim_{\varepsilon\to 0} |\cdot|_{\infty,\varepsilon} = |\cdot|_0 = \lim_{\varepsilon\to 1} |\cdot|_{p,\varepsilon} .
+\]
+
+\begin{center}
+\begin{tikzpicture}
+	\draw (3,1) -- (3,2);
+	\draw (0,0) -- (3,1);
+	\draw (1,0) -- (3,1);
+	\draw (2,0) -- (3,1);
+	\draw (4,0) -- (3,1);
+	\draw (6,0) -- (3,1);
+	\node [right] at (3,2) {$|\cdot|_\infty$};
+	\node [above left] at (3,1) {$|\cdot|_0$};
+	\node [below] at (0,0) {$|\cdot|_{2,0}$};
+	\node [below] at (1,0) {$|\cdot|_{3,0}$};
+	\node [below] at (2,0) {$|\cdot|_{5,0}$};
+	\node [below] at (3,0) {$\cdots$};
+	\node [below] at (4,0) {$|\cdot|_{p,0}$};
+	\node [below] at (5,0) {$\cdots$};
+\end{tikzpicture}
+\end{center}
+
+This picture is ``true,'' but you need 
+to be careful: the Berkovich topology is \emph{not} the naive (metric) 
+topology. Recall that $\Berkspec(\bZ)$ should carry the weakest topology 
+making all maps $|\cdot|\mapsto |n|$ continuous. Since the norms in question 
+are multiplicative, it suffices to ensure that the maps $|\cdot|\mapsto |p|$ 
+are continuous for all primes $p$. In other words, the topology is generated by 
+the sets 
+\begin{align*}
+	U_{p,t}^+ &= \{|\cdot|\colon |p|>t\} \\
+	U_{p,t}^- &= \{|\cdot|\colon |p|<t\} .
+\end{align*}
+Define: 
+\begin{align*}
+	I_p &= \{|\cdot|_{p,\varepsilon}\colon 0\leqslant \varepsilon \leqslant 1\} \\
+	I_\infty &= \{|\cdot|_{\infty,\varepsilon}\colon 0\leqslant \varepsilon \leqslant 1\} .
+\end{align*}
+
+\begin{proposition}
+\leavevmode
+\begin{enumerate}
+\item
+Any open set of $\Berkspec(\bZ)$ containing $|\cdot|_0$ contains all but 
+finitely many $I_v$ for $v\in \{\text{primes}\}\cup\{\infty\}$. 
+
+\item
+The maps $[0,1]\to \Berkspec(\bZ)$, $\varepsilon\mapsto |\cdot|_{v,\varepsilon}$ 
+are homeomorphisms onto the $I_v$. 
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+1. Consider $U_{p,\varepsilon}^+$ for $t<1$. Recall that if $q\ne p$ is a prime, 
+then $|q|_{p,\varepsilon}=1$. So $U_{p,t}^+\supset \bigcup_{v\ne p} I_v$. The 
+similar statement holds for $U_{p,t}^-$. This (roughly) implies the first 
+claim. 
+
+2. It suffices to show that the maps $f_v\colon [0,1]\to I_v$ are continuous, as 
+bijectivity is easy. Let $U_{q,\varepsilon}^+(p)=U_{q,\varepsilon}^+\cap I_p$. 
+Then 
+\[
+  U_{q,\varepsilon}^+(p) = \begin{cases} I_p & t<1\text{ and }q\ne p \\ \varnothing & t>1\text{ and }q\ne p \\ \{|\cdot|_{p,\varepsilon}\colon \varepsilon>t\} & q=p \end{cases}
+\]
+So $f_p^{-1}(U_{q,\varepsilon}^+(p))$ will be either $[0,1]$, $\varnothing$, or 
+$\{\varepsilon>t\}$. Similarly one handles $U_{q,\varepsilon}^-(p)$, and the 
+infinite places. 
+\end{proof}
+
+Recall the ``kernel map'' $\ker\colon \Berkspec(\bZ)\to \spec(\bZ)$. It sends 
+everything to the generic point $(0)$ \emph{except} the $|\cdot|_{p,0}$, which 
+map to $(p)\in \spec(\bZ)$. 
+
+The whole picture generalizes to rings of integers in number fields. 
+
+Let $A$ be a Dedekind domain (integrally closed domain of dimension one) and 
+$|\cdot|_0$ the trivial norm on $A$. Recall that the map 
+$\ker\colon \Berkspec(A)\to \spec(A)$, $|\cdot|\mapsto \ker(|\cdot|)$, is 
+continuous. We saw that there is a canonical section 
+$\sigma\colon \spec(A)\to \Berkspec(A)$, which sends $\fp$ to the pullback of 
+the trivial norm on $A/\fp$. However, $\sigma$ is not continuous, because 
+$\Berkspec(A)$ is Hausdorff and $\spec(A)$ is not. 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1923,104 +2046,6 @@ kind of descent argument to ``go back'' to $K$.
 
 
 
-
-\subsection{Ring-theoretic properties of Tate algebras}
-
-By a \emph{Tate algebra} over a non-archimedean field $K$, we mean a ring of 
-the form 
-\[
-	B_{\bm r} = K\conpow{\bm r^{-1} \bm T} = \left\{\sum_{\bm \nu} a_{\bm \nu} \bm T^{\bm \nu}\colon |a_{\bm \nu}| \bm r^{\bm \nu} \to 0\right\} .
-\]
-Here, $\bm r=(r_1,\dots,r_n)$ is a tuple of real numbers, and we write 
-$\bm T^{\bm \nu} = T_1^{\nu_1} \dotsm T_n^{\nu_n}$ for any multi-index 
-$\bm \nu=(\nu_1,\dots,\nu_n)$. Clearly, $K\conpow{\bm r^{-1} \bm T}$ is a 
-commutative ring, and a proof similar to that of \autoref{thm:tate-algebra} 
-tells us that 
-\[
-	|f| = \max_{\bm\nu} |a_{\bm\nu}| \bm r^{\bm\nu}
-\]
-is a multiplicative norm equal to the spectral norm. If $|\cdot|$ on $K$ is 
-trivial and the $r_i\geqslant 1$, then $B_{\bm r} = K[T_1,\dots,T_n]$. If 
-$|\cdot|$ is trivial on $K$ and all $r_i<1$, then 
-$B_{\bm r} = K\pow{T_1,\dots,T_n}$, the ring of formal power series. Just as 
-above, there is a general ``we may assume $\bm r=1$'' principle. 
-
-\begin{theorem}[Maximum modulus principle]
-Let $K$ be a complete non-archimedean field, $f\in K\conpow{T_1,\dots,T_n}$. 
-Then for any $x = (x_1\dots,x_n)\in K^n$ with $|x_i|\leqslant 1$, 
-\[
-	|f(x)| \leqslant |f| ,
-\]
-and moreover $|f|=|f(x)|$ for some $x$ as above. 
-\end{theorem}
-\begin{proof}
-Recall that for $f=\sum a_{\bm\nu} T^{\bm \nu}$, the Gauss norm 
-$|f|=\max\{|a_{\bm\nu}|\}$. The fact that 
-$\rho(f)=\max_{x\in \Berkspec(A)} |f(x)|$ is a vast generalization of this 
-theorem. 
-\end{proof}
-
-There is a non-archimedean Weierstrass theory. This theory is essential in 
-understanding why convergent power series act very like polynomials. For this 
-theory, we assume $\bm r=\bm 1$. The books \cite{bgr-1984,bosch-2014} are 
-good references. Put $B=K\conpow{T_1,\dots,T_n}$; here 
-$\rho(f) = \max|a_{\bm \nu}|$. 
-
-\begin{definition}
-For $f\in K\conpow{T_1,\dots,T_n}$, write $f=\sum_{i\geqslant 0} g_i T_n^i$, 
-where the $g_i\in K\conpow{T_1,\dots,T_{n-1}}$. We say that $f$ is 
-\emph{$(T_n,s)$-distinguished} if 
-\begin{enumerate}
-\item
-$g_s\in K\conpow{T_1,\dots,T_{n-1}}^\times$, 
-
-\item
-$|g_s| = |f|$ and $|g_s| > |g_i|$ for $i>s$. 
-\end{enumerate}
-\end{definition}
-
-\begin{theorem}
-Let $f,g\in K\conpow{T_1,\dots,T_n}$ with $g$ 
-$(T_n,s)$-distinguished. Then there exists a unique 
-$q\in K\conpow{T_1,\dots,T_n}$ and $r\in K\conpow{T_1,\dots,T_{n-1}}[T_n]$ with 
-$\deg_{T_n}(r)<s$ such that 
-\[
-	f = g q+r .
-\]
-Moreover, $|f|=\max\{|g||q|,|r|\}$. 
-\end{theorem}
-
-\begin{theorem}[Weierstrass preparation]
-Let $f\in K\conpow{T_1,\dots,T_n}$ be $(T_n,s)$-distinguished. Then there 
-exists a unique monic $\omega\in K\conpow{T_1,\dots,T_{n-1}}[T_n]$ with 
-$\deg_{T_n}(\omega) = s$ and a unique $e\in K\conpow{T_1,\dots,T_n}^\times$ 
-such that $f=\omega e$. Moreover, $|\omega|=1$, and $\omega$ is 
-$(T_n,s)$-distinguished. 
-\end{theorem}
-
-In complex analysis, if $f(z)$ is meromorphic near zero and $f\ne 0$, it can be 
-written as $z^k h(z)$, where $k\in \bZ$ is the order of vanishing of $f$ at 
-zero, and $h(0)\ne 0$. Weierstrass generalized this to functions of several 
-variables. Complex-analytic Weierstrass theory is essential in proving relating 
-analytic and algebraic geometry (i.e.~in proving GAGA-type theorems). 
-
-There is also a Noether normalization for Tate algebras. Let 
-$\fa\subset K\conpow{T_1,\dots,T_n}$ be a closed proper ideal. Then there is 
-an injective $K$-algebra homomorphism (for some $d$) 
-$K\conpow{s_1,\dots,s_d} \hookrightarrow K\conpow{T_1,\dots,T_n}$ such that 
-the composite $K\conpow{s_1,\dots,s_d} \to K\conpow{T_1,\dots,T_n}/\fa$ is 
-(module-)finite. In fact, $d=\dim(K\conpow{t_1,\dots,t_d}/\fa)$, the 
-(ring-theoretic) Krull dimension. 
-
-\begin{theorem}
-Let $K$ be a complete non-archimedean field. Then $K\conpow{T_1,\dots,T_n}$ is 
-a noetherian unique factorization domain, which is a Jacobson ring. 
-\end{theorem}
-
-Recall that a ring $A$ is \emph{Jacobson} if for all ideals $\fa\subset A$, the 
-radical $\sqrt{\fa}$ is the intersection of all \emph{maximal} ideals 
-containing $\fa$. If we replace $K$ with $K^\circ$, the rings may not be 
-noetherian. For example, $\bC_p^\circ$ is already non-noetherian. 
 
 
 \subsection{Constructing the open disk}
@@ -2329,23 +2354,15 @@ $\sE^-(0,1)=\sE(0,1)\smallsetminus \{\text{Gauss point}\}$.
 
 
 
-\section{Topology of \texorpdfstring{$\sE(0,r)$}{E(0,r)}}
+\subsection{\texorpdfstring{$\bR$}{R}-trees}
 
 We want to show that $\sE(0,r)$, with the Berkovich topology, is homeomorphic 
 an $\bR$-tree with the weak topology. 
-
-
-
-
-
-\subsection{\texorpdfstring{$\bR$}{R}-trees}
 
 \begin{definition}
 An \emph{$\bR$-tree} is a metric space such that any two points are connected 
 by a unique path.
 \end{definition}
-
-[Hedghog space]
 
 The metric topology on an $\bR$-tree is called the \emph{strong topology}. 
 
@@ -2480,7 +2497,7 @@ topology) in rigid geometry.
 
 
 
-\section{Berkovich affine \texorpdfstring{$n$}{n}-space}
+\subsection{Berkovich affine \texorpdfstring{$n$}{n}-space}
 
 Let $\bm r=(r_1,\dots,r_n)\in \bR^n$. Define the ``polydisk'' of radius $\bm r$ 
 centered at $\bm 0$ as 
