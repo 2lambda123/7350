@@ -1,20 +1,20 @@
-\documentclass[oneside]{book}
+\documentclass[oneside]{article}
 
 \usepackage[
-	paperheight = 21  cm,
-	paperwidth  = 14  cm,
-	margin      = 1.2 cm,
-	top         = 1.5 cm
+	paperwidth  = 6.1in,
+	paperheight = 9.25in,
+	margin      = 1.5cm,
+	top         = 1.5cm
 ]{geometry}
 
 \usepackage{
 	amsmath,
+	amssymb,
 	amsthm,
 	bm,        % bold Greek letters
 	bookmark,  % replaces (and loads) hyperref
 	mathrsfs,  % mathscr
 	microtype, % improved formatting
-	MnSymbol,  % dashed arrow
 	stmaryrd,  % formal power series
 	tikz-cd,   % commutative diagrams
 	thmtools,  % fixes theorem referencing
@@ -27,7 +27,6 @@
 	linkcolor  = blue,
 	urlcolor   = cyan
 }
-\renewcommand{\ast}{\star}
 
 
 \pagestyle{myheadings}
@@ -42,19 +41,11 @@
 \date{Spring 2015}
 
 \begin{document}
-
-\pagenumbering{Alph}
-
-\begin{titlepage}
 \maketitle
-\thispagestyle{empty}
-\end{titlepage}
 
-\pagenumbering{arabic}
-
-\frontmatter
 \tableofcontents
-\mainmatter
+
+\newpage
 \input{1-introduction}
 \input{2-foundations}
 \input{3-Berkovich}

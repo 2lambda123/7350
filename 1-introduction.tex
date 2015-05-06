@@ -3,8 +3,7 @@
 
 
 
-
-\chapter{Introduction}
+\section{Introduction}
 
 Conrad's note in \cite{aws-2008} is a good overview. For a long term, 
 \cite{bgr-1984} was the main reference, but it is difficult to read. We will 
@@ -33,31 +32,31 @@ but sadly, we will not be able to say much about contemporary applications.
 
 
 
-\section{Motivation and background}
+\subsection{Motivation and background}
 
 First, what is the archimedean property? Fix a field $K$, and a ``norm'' 
 (we'll give precise definitions later) $|\cdot|:K\to \bR$. We say that $K$ 
 satisfies the \emph{archimedean property} if for any $x\in K^\times$, there 
 exists $n\in \bZ$ such that $|n x|>1$. 
 
-\begin{example_}
+\begin{example}
 The fields of real and complex numbers, with their classical absolute 
 values, are archimedean.
-\end{example_}
+\end{example}
 
 According to a theorem of Gelfand and Mazur, $\bR$ and $\bC$ are the ``only'' 
 examples of archimedean fields. Since there are many examples of 
 non-archimedean fields, there is a sense in which $\bR$ and $\bC$ are 
 exceptional. 
 
-\begin{example_}
+\begin{example}
 In classical (complex) algebraic geometry, one is interested in the zero sets 
 of polynomials in $\bC^n$. Call such sets \emph{algebraic}. This gives us a 
 topology on $\bC^n$ and its subvarieties known as the \emph{Zariski topology}. 
 We can also give $\bC^n$ the topology coming from the absolute value $|\cdot|$ 
 on $\bC$. This finer topology is called the \emph{canonical topology}. It 
 allows us to do analysis on complex varieties. 
-\end{example_}
+\end{example}
 
 The canonical topology (and the analytic techniques accompanying it) allow for: 
 \begin{itemize}
@@ -77,16 +76,16 @@ theory), or $\bC\laurent{t}$ (in the deformation theory of complex varieties).
 All these fields have interesting absolute values which are \emph{not} 
 archimedean.
 
-\begin{example_}
+\begin{example}
 Any field $K$ can be given the ``stupid'' absolute value by 
 \[
   |x| = \begin{cases} 1 & x\ne 0 \\ 0 & x=0 \end{cases} .
 \]
 Although it seems like a degenerate case, the theory of the ``stupid'' 
 absolute value is highly interesting. 
-\end{example_}
+\end{example}
 
-\begin{example_}
+\begin{example}
 The field $K=\bQ$ has two classes of absolute values. One is the classical 
 absolute value, which we denote by $|\cdot|_\infty$. There is of course the 
 ``stupid'' absolute value, which we denote $|\cdot|_0$. Fix a prime $p$. There 
@@ -96,7 +95,7 @@ is an absolute value $|\cdot|_p$ on $\bQ$, defined by
 \]
 where $\frac a b=p^e \frac{a'}{b'}$ is such that both $a$ and $b$ are 
 relatively prime to $p$. 
-\end{example_}
+\end{example}
 
 In a precise sense, Otrowski's theorem tells us that 
 $\{|\cdot|_\infty,|\cdot|_0,|\cdot|_p:\text{$p$ prime}\}$ is essentially a 
@@ -115,7 +114,7 @@ $\bQ_p$ for this completion, called the field of \emph{$p$-adic numbers}.
 (Incidentally, it is easy to check that $\bQ$ is not complete with respect 
 to $|\cdot|_p$. Alternatively: general theorem about complete metric spaces\ldots). 
 
-\begin{example_}
+\begin{example}
 The field $\bC\laurent{t}$ is often given the \emph{$t$-adic} absolute 
 value: 
 \[
@@ -124,7 +123,7 @@ value:
 whenever $a_k\ne 0$. The algebraic closure of $\bC\laurent{t}$ has an easy 
 explicit description, and is called the field of \emph{Puiseaux series}, first 
 studied by Isaac Newton. 
-\end{example_}
+\end{example}
 
 Recall how one constructs $\bR$ from $\bQ$. First form the ring of Cauchy 
 sequences, then mod out by the (maximal) ideal of sequences converging to zero. 
@@ -151,12 +150,12 @@ spaces.
 
 
 
-\section{Approaches to non-archimedean geometry}
+\subsection{Approaches to non-archimedean geometry}
 
 Before the 1960's, things stood here; no satisfactory theory existed. Today 
 a plethora of solutions to this problem exist:
 
-\subsection{Tate-Grothendieck, 1960's}
+\subsubsection{Tate-Grothendieck, 1960's}
 John Tate realized that certain types of 
 elliptic curves can be ``formally uniformized'' over arbitrary fields. He wrote 
 to Grothendieck with this discovery, but Grothendieck was unimpressed. Despite 
@@ -169,7 +168,7 @@ Grothendieck topology. The introduction to \cite{aws-2008} has a good
 historical overview. Affinoid algebras, the analytic substitute for polynomial 
 rings, are the only aspect of the theory still actively used today. 
 
-\subsection{Raynaud, 1670's}
+\subsubsection{Raynaud, 1670's}
 Raynaud, a former student of Grothendieck, developed an extremely 
 powerful technique for approaching non-archimedean geometry using ``formal 
 models.'' A downside is that the theory is quite technical. It is analogous to 
@@ -180,14 +179,14 @@ one represents rigid $K$-varieties with formal $R$-schemes. Raynaud's theory is
 good for answering ``algebraic'' questions, e.g.~of flatness, base change, 
 fiber dimension, \ldots. 
 
-\subsection{Berkovich, early 1990's}
+\subsubsection{Berkovich, early 1990's}
 Berkovich spaces, developed in \cite{berkovich-1990}. This turns Tate's 
 rigid spaces into honest topological spaces by adding points. One ends up with 
 a topological space together with a structure sheaf. The topological space is 
 compact, Hausdorff, and locally path connected on connected components. In a 
 precise sense, a Berkovich space is a ``space of rank-one valuations.'' 
 
-\subsection{Huber, late 1990's}
+\subsubsection{Huber, late 1990's}
 Huber has defined in \cite{huber-1996} a category of adic spaces. In a 
 precise sense, an adic 
 space is the ``limit of all formal models'' (Riemann-Zariski space). 
@@ -203,10 +202,10 @@ $X^\an$. It is an extremely
 hard theorem that this ``Berkovich space'' deformation retracts onto a 
 finite simplicial complex. 
 
-\begin{theorem_}[Berkovich, Thuillier, Loeser-Hrushovski]
+\begin{theorem}[Berkovich, Thuillier, Loeser-Hrushovski]
 Any analytic space (in the sense of Berkovich) has a strong deformation retract 
 onto a finite simplicial complex. 
-\end{theorem_}
+\end{theorem}
 
 See \cite{berkovich-1999,thuillier-2007} for partial results in this direction. 
 So the ``wild'' spaces we will construct will always be homotopy equivalent to 
@@ -216,7 +215,7 @@ something managable. For curves, this simplicial complex will be a graph.
 
 
 
-\section{Tropicalization}
+\subsection{Tropicalization}
 
 Consider the curve $X\colon z_1+z_2=1$. The idea of behind \emph{am\oe{}bas} is that 
 instead of looking at $X(\bC)$, which is hard to visualize, one should consider the 
@@ -232,7 +231,7 @@ to consider the following set:
 \]
 
 More generally, let $K$ be a non-archimedean field, $X_{/K}$ a variety. 
-Given a rational map $g\colon X\dashedrightarrow \Gm^N$, let 
+Given a rational map $g\colon X\dashrightarrow \Gm^N$, let 
 $f\colon X(K)\to \bR^N$ be the map 
 \[
   f(x) = (-\log|g_1(x)|,\dots,-\log|g_N(x)|) 
@@ -249,9 +248,9 @@ analytification of $X$:
 \]
 So $\trop(X)$ is a ``snapshot'' of $X^\an$. 
 
-\begin{theorem_}[Payne]\label{thm:limit-tropicalizations}
+\begin{theorem}[Payne]\label{thm:limit-tropicalizations}
 $X^\mathrm{an}$ is the limit of all tropicalizations of $X$. 
-\end{theorem_}
+\end{theorem}
 
 See \cite{payne-2009} for a rigorous formulation and proof. 
 
@@ -259,7 +258,7 @@ See \cite{payne-2009} for a rigorous formulation and proof.
 
 
 
-\section{Applications}
+\subsection{Applications}
 
 Non-archimedean geometry has many applications in diverse fields. These 
 include: 
