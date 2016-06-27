@@ -429,7 +429,7 @@ Work in $\bQ_3$ and let $S=\{0,1,2\}$. One such sequence is:
   a_1 &= 1 \\
   a_2 &= 1+0\cdot 3 \\
   a_3 &= 1+0\cdot 3+2\cdot 3^2 \\
-  a_4 &= 1+0\cdot 3+3\cdot 3^2 + 1\cdot 3^3 \\
+  a_4 &= 1+0\cdot 3+2\cdot 3^2 + 1\cdot 3^3 \\
   \vdots &
 \end{align*}
 \end{example}
@@ -484,7 +484,7 @@ completeness and completion make sense. The whole machinery of
 
 Two norms $\|\cdot\|_1$, $\|\cdot\|_2$ induce some topology if and only if 
 \[
-  c_2 \|\cdot\|_2 \leqslant \|\cdot\|_1 \leqslant c1 \|\cdot\|_2 ,
+  c_2 \|\cdot\|_2 \leqslant \|\cdot\|_1 \leqslant c_1 \|\cdot\|_2 ,
 \]
 for some $c_1,c_2>0$. We call such norms \emph{equivalent}. 
 In classical linear algebra, one often rescales vectors 
@@ -702,7 +702,7 @@ We mentioned that earlier that $(\bQ,|\cdot|_p)$ is not complete. There is an
 explicit, algorithmic way to show this. One shows that if $(\bQ,|\cdot|_p)$ 
 were complete, then all $(p-1)$-st roots of unity would lie in $\bQ$, which is 
 not the case, at least if $p\geqslant 5$. The general technique relies on the 
-isomorphism $\bZ_p=\varprojlim \bZ/pie$, and uses Hensel's Lemma to construct 
+isomorphism $\bZ_p=\varprojlim \bZ/p^i$, and uses Hensel's Lemma to construct 
 compatible sequences $\{a_i\mod{p^i}\}$. This is done very nicely in 
 \cite[3.2.3]{gouvea-1997}. 
 
