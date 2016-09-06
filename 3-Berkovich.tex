@@ -261,7 +261,7 @@ $|\cdot|$ is multiplicative. To show this, it's enough to show that
 $|f^{-1}| = |f|^{-1}$ for all $f\in A^\times$. For, we already know that 
 $|f g|\leqslant |f| |g|$, so just compute:
 \[
-  |f g|^{-1} = |f^{-1} g^{-1}| \leqslant |f^{-1} |g^{-1}| = |f|^{-1} |g|^{-1} .
+  |f g|^{-1} = |f^{-1} g^{-1}| \leqslant |f^{-1}| |g^{-1}| = |f|^{-1} |g|^{-1} .
 \]
 We always have $1\leqslant |f| |f^{-1}|$, so assume there exists $f$ with 
 $|f|^{-1}<|f^{-1}|$. Let $r=|f^{-1}|^{-1}<|f|$. Consider the 
@@ -439,7 +439,7 @@ $\fa\subset \fp_x$, i.e.~$\fp_x\in V_\fa$. This is equivalent to
 $\ker(|\cdot|_x)\subset V_\fa$, i.e.~$x\in \ker^{-1}(V_\fa)$. In fact, all the 
 above implications are equivalences.
 
-2. Givn $\fp\in \spec(A)$, define $|\cdot|_\fp\in \Berkspec(A)$ by 
+2. Given $\fp\in \spec(A)$, define $|\cdot|_\fp\in \Berkspec(A)$ by 
 \[
   |f|_\fp = \begin{cases} 0 & f\in \fp \\ 1 & f\notin \fp \end{cases} .
 \]
@@ -928,7 +928,7 @@ Let $\hat \cdot:A\to B$ be the Gelfand transform. Then
 \begin{enumerate}
 \item[(a)] $\ker \hat\cdot =\ker \rho$.
 \item[(b)] $\hat\cdot$ is an isometry with respect to $(A,\|\cdot\|)$ and 
-$(B,\rho(\cdot)$ if and only if $\|\cdot\|$ is power-multiplicative.
+$(B,\rho(\cdot))$ if and only if $\|\cdot\|$ is power-multiplicative.
 \end{enumerate}
 \end{theorem}
 The ideal $\ker\rho$ is called the \emph{quasinilradical} of $A$. Its elements 
